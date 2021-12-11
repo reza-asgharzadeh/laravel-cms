@@ -1,0 +1,51 @@
+ul li {
+    list-style: none;
+}
+
+.tags {
+    background: none repeat scroll 0 0 #fff;
+    border: solid 2px #e2e2e2;
+    display: flex;
+    padding: 0.5em;
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tags li.tagAdd, .tags li.addedTag {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    height: 25px;
+}
+
+.tags li.addedTag {
+    border:1px solid #e2e2e2;
+    border-radius: 2px;
+    padding: 0.25em;
+    font-size: 13px;
+    vertical-align: middle;
+    background: #337AB7;
+    color: #fff;
+}
+
+.tags input, li.addedTag {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: none;
+    display: block;
+    padding: 0.5em;
+    height: 25px;
+
+}
+
+span.tagRemove {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 0.5em;
+    margin-right: 7px;
+}
+span.tagRemove:hover {
+    color: #222222;
+}
