@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\ShowCategoryCourseController;
 use App\Http\Controllers\ShowCourseController;
 use App\Http\Controllers\ShowCourseTagController;
@@ -60,6 +61,8 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/profiles',EditProfileController::class)->only(['index','update']);
     Route::resource('/courses',CourseController::class)->except('show');
     Route::resource('/episodes',EpisodeController::class)->except('show');
+    Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
+    Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){

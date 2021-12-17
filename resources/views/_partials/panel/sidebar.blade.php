@@ -10,6 +10,12 @@
                     <li><a href="{{route('users.create')}}">ایجاد کاربر جدید</a></li>
                 </ul>
             </li>
+            <li><a><i class="fa fa-ticket"></i> تیکت ها <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('tickets.create')}}">ایجاد تیکت جدید</a></li>
+                    <li><a href="{{route('tickets.index')}}">مدیریت تیکت ها</a></li>
+                </ul>
+            </li>
             <li><a><i class="fa fa-lock"></i> سطح دسترسی <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('roles.index')}}">ایجاد نقش</a></li>
