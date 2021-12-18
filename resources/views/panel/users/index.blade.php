@@ -57,6 +57,8 @@
                                     <th>نقش کاربری</th>
                                     <th>سطح دسترسی</th>
                                     <th>تاریخ عضویت</th>
+                                    <th>وضعیت کاربر</th>
+                                    <th>آخرین ورود</th>
                                     <th>وضعیت حساب</th>
                                     <th>عملیات</th>
                                 </tr>
@@ -74,6 +76,14 @@
                                             @endforeach
                                         </td>
                                         <td>{{$user->created_at}}</td>
+                                        <td>
+                                            @if(Cache::has('user-is-online-' . $user->id))
+                                                <span class="text-success">آنلاین</span>
+                                            @else
+                                                <span class="text-danger">آفلاین</span>
+                                            @endif
+                                        </td>
+                                        <td>{{is_null($user->last_seen) ? 'وارد نشده' : Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</td>
                                         <td class="{{is_null($user->email_verified_at) ? 'text-danger' : 'text-success'}}">{{is_null($user->email_verified_at) ? 'تایید نشده' : 'تاییده شده'}}</td>
                                         <td>
                                             <a href="{{route('users.edit',$user->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>

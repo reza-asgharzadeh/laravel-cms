@@ -34,6 +34,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        /* last login */
+        User::where('id', Auth::user()->id)->update(['last_seen' => now()]);
         $request->session()->flash('login-register','شما با موفقیت وارد حساب خود شدید!');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -77,6 +79,8 @@ class AuthenticatedSessionController extends Controller
         }
 
         Auth::login($user);
+        /* last login */
+        User::where('id', Auth::user()->id)->update(['last_seen' => now()]);
         $request->session()->flash('login-register','شما با موفقیت وارد حساب خود شدید!');
         return redirect(RouteServiceProvider::HOME);
     }
