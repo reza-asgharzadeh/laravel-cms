@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Panel\ActivityController;
 use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\ShowCategoryCourseController;
 use App\Http\Controllers\ShowCourseController;
@@ -63,6 +64,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/episodes',EpisodeController::class)->except('show');
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
+    Route::resource('/activity',ActivityController::class)->only(['index','destroy']);
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
