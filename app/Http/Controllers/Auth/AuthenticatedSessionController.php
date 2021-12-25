@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\ActivityLog;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -34,9 +35,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        /* last login */
-        User::where('id', Auth::user()->id)->update(['last_seen' => now()]);
+
+        ActivityLog::create([
+            'user_id' => Auth::user()->id,
+        ]);
         $request->session()->flash('login-register','شما با موفقیت وارد حساب خود شدید!');
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -78,9 +82,11 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
+        ActivityLog::create([
+            'user_id' => Auth::user()->id,
+        ]);
+
         Auth::login($user);
-        /* last login */
-        User::where('id', Auth::user()->id)->update(['last_seen' => now()]);
         $request->session()->flash('login-register','شما با موفقیت وارد حساب خود شدید!');
         return redirect(RouteServiceProvider::HOME);
     }

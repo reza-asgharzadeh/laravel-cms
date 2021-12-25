@@ -56,8 +56,7 @@
                                     <th>ایمیل</th>
                                     <th>نقش کاربری</th>
                                     <th>سطح دسترسی</th>
-                                    <th>تاریخ عضویت</th>
-                                    <th>وضعیت کاربر</th>
+                                    <th>ساعت و تاریخ عضویت</th>
                                     <th>آخرین ورود</th>
                                     <th>وضعیت حساب</th>
                                     <th>عملیات</th>
@@ -75,15 +74,16 @@
                                             {{$permission->name}}
                                             @endforeach
                                         </td>
-                                        <td>{{$user->created_at}}</td>
+                                        <td>{{$user->getCreatedAtInJalali()}}</td>
                                         <td>
-                                            @if(Cache::has('user-is-online-' . $user->id))
-                                                <span class="text-success">آنلاین</span>
-                                            @else
-                                                <span class="text-danger">آفلاین</span>
-                                            @endif
+                                            @forelse($user->lastLoginsDateTime as $lastLogin)
+                                                @if($loop->last)
+                                                    {{$lastLogin->created_at->diffForHumans()}}
+                                                @endif
+                                            @empty
+                                                <p>وارد نشده</p>
+                                            @endforelse
                                         </td>
-                                        <td>{{is_null($user->last_seen) ? 'وارد نشده' : Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</td>
                                         <td class="{{is_null($user->email_verified_at) ? 'text-danger' : 'text-success'}}">{{is_null($user->email_verified_at) ? 'تایید نشده' : 'تاییده شده'}}</td>
                                         <td>
                                             <a href="{{route('users.edit',$user->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>

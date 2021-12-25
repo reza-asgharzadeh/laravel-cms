@@ -25,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile',
         'role_id',
         'email_verified_at',
-        'last_seen'
+        'status'
     ];
 
     /**
@@ -47,6 +47,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function getCreatedAtInJalali()
+    {
+        return verta($this->created_at)->format('h:i:s - Y/m/d');
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -55,5 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getProfile()
     {
         return asset('profiles/images/' . $this->profile);
+    }
+
+    public function lastLoginsDateTime()
+    {
+        return $this->hasMany(ActivityLog::class);
     }
 }
