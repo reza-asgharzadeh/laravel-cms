@@ -4,7 +4,7 @@
             <li><a href="{{route('panel')}}"><i class="fa fa-dashboard"></i> داشبورد</a></li>
             <li><a href="{{route('landing')}}" target="_blank"><i class="fa fa-eye"></i> مشاهده سایت</a></li>
             <li><a href="{{route('profiles.index')}}"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
-            <li><a href="{{route('activity.index')}}"><i class="fa fa-calendar"></i> فعالیت های من</a></li>
+            <li><a href="{{route('activities.index')}}"><i class="fa fa-calendar"></i> فعالیت های من</a></li>
             <li><a><i class="fa fa-user-circle"></i> کاربران <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('users.index')}}">مدیریت کاربران</a></li>
@@ -15,6 +15,12 @@
                 <ul class="nav child_menu">
                     <li><a href="{{route('tickets.create')}}">ایجاد تیکت جدید</a></li>
                     <li><a href="{{route('tickets.index')}}">مدیریت تیکت ها</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-question-circle"></i> پرسش و پاسخ من <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('questions.create')}}">ایجاد پرسش جدید</a></li>
+                    <li><a href="{{route('questions.index')}}">مدیریت پرسش و پاسخ</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-lock"></i> سطح دسترسی <span class="fa fa-chevron-down"></span></a>

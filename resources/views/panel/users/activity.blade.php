@@ -116,7 +116,7 @@
 {{--                                        <td>{{$session->last_activity->diffForHumans()}}</td>--}}
                                         <td>5 ثانیه پیش</td>
                                         <td><a class="btn btn-sm btn-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-user-{{$session->id}}').submit();"><i class="fa fa-sign-out pull-right"></i> پایان نشست</a></td>
-                                        <form action="{{route('activity.destroy',$session->id)}}" method="post" id="logout-user-{{$session->id}}">
+                                        <form action="{{route('activities.destroy',$session->id)}}" method="post" id="logout-user-{{$session->id}}">
                                             @csrf
                                             @method('delete')
                                         </form>
