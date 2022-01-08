@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Panel\Question;
+namespace App\Http\Requests\Panel\Answer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateQuestionRequest extends FormRequest
+class CreateAnswerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class CreateQuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'question' => ['required','string', 'max:255'],
-            'content' => ['required']
+            'answer' => ['required','string', 'max:255'],
         ];
     }
 }

@@ -19,22 +19,6 @@ class CommentController extends Controller
         return view('panel.comments.index',compact(['comments','ParentComments']));
     }
 
-//    public function store(CreateCommentRequest $request)
-//    {
-//        if($request->course_id){
-//            $course_post = Course::where('id',$request->course_id)->first();
-//        } else {
-//            $course_post = Post::where('id',$request->post_id)->first();
-//        }
-//
-//        $course_post->comments()->create([
-//            'content' => $request->content,
-//            'comment_id' => $request->comment_id,
-//            'user_id' => auth()->user()->id
-//        ]);
-//        return back();
-//    }
-
     public function save(CreateCommentRequest $request, Comment $comment)
     {
         if ($comment->commentable_type == 'App\Models\Course'){

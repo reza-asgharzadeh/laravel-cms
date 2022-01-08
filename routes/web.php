@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Panel\ActivityLogController;
+use App\Http\Controllers\Panel\AnswerController;
 use App\Http\Controllers\Panel\QuestionController;
 use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\ShowCategoryCourseController;
@@ -67,6 +68,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
     Route::resource('/activities',ActivityLogController::class);
     Route::resource('/questions',QuestionController::class)->except(['edit','update','destroy']);
+    Route::post('/answers/{question}',[AnswerController::class,'store'])->name('answers.store');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){

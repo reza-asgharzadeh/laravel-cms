@@ -48,13 +48,14 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        event(new Registered($user));
+
+        Auth::login($user);
+
         ActivityLog::create([
             'user_id' => Auth::user()->id,
         ]);
 
-        event(new Registered($user));
-
-        Auth::login($user);
         $request->session()->flash('login-register','ثبت نام شما با موفقیت انجام شد!');
         return redirect(RouteServiceProvider::HOME);
     }

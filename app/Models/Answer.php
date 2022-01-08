@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Answer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'question',
-        'content',
+        'answer',
         'user_id',
-        'answer_status',
-        'best_answer'
+        'question_id'
     ];
 
     public function getCreatedAtInJalali()
@@ -24,9 +22,5 @@ class Question extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function children(){
-        return $this->hasMany(Answer::class,'question_id');
     }
 }

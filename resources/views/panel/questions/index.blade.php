@@ -62,7 +62,7 @@
                                     @foreach($questions as $question)
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
-                                            <td>{{$question->title}}</td>
+                                            <td>{{$question->question}}</td>
                                             <td><span class="btn {{$question->status ? 'btn-success' : 'btn-warning'}} btn-xs">{{$question->status ? 'پاسخ داده شد' : 'در انتظار پاسخ'}}</span></td>
                                             <td>{{$question->getCreatedAtInJalali()}}</td>
                                             <td>

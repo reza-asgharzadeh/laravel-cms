@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Question\CreateQuestionRequest;
 use App\Models\Question;
-use Illuminate\Http\Request;
+use App\Models\Ticket;
 
 class QuestionController extends Controller
 {
@@ -32,6 +32,9 @@ class QuestionController extends Controller
 
     public function show(Question $question)
     {
-        return view('panel.questions.show',compact('question'));
+        $user_id = auth()->user()->id;
+        $questions = Question::where('user_id',$user_id)->where('id',$question->id)->get();
+
+        return view('panel.questions.show',compact(['question','questions']));
     }
 }

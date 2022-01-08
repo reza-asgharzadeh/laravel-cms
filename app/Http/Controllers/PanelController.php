@@ -8,8 +8,10 @@ use App\Models\Course;
 use App\Models\Episode;
 use App\Models\Permission;
 use App\Models\Post;
+use App\Models\Question;
 use App\Models\Role;
 use App\Models\Tag;
+use App\Models\Ticket;
 use App\Models\User;
 
 class PanelController extends Controller
@@ -25,6 +27,9 @@ class PanelController extends Controller
         $tags_count = Tag::count();
         $roles_count = Role::count();
         $permissions_count = Permission::count();
-        return view('panel',compact(['users_count', 'comments_count', 'posts_count', 'courses_count', 'episodes_count', 'categories_count', 'tags_count', 'roles_count', 'permissions_count']));
+        $tickets_count = Ticket::count();
+        $questions_count = Question::count();
+
+        return view('panel',compact(['users_count', 'comments_count', 'posts_count', 'courses_count', 'episodes_count', 'categories_count', 'tags_count', 'roles_count', 'permissions_count','tickets_count','questions_count']));
     }
 }

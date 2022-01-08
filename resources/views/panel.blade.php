@@ -38,6 +38,14 @@
                 <span class="count_top"><i class="fa-x fa-lock"></i> تعداد دسترسی ها</span><br><br>
                 <div class="count green">{{$permissions_count}}</div>
             </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 tile_stats_count">
+                <span class="count_top"><i class="fa-x fa-ticket"></i> تعداد تیکت ها</span><br><br>
+                <div class="count green">{{$tickets_count}}</div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 tile_stats_count">
+                <span class="count_top"><i class="fa-x fa-question-circle"></i> تعداد پرسش ها</span><br><br>
+                <div class="count green">{{$questions_count}}</div>
+            </div>
         </div>
         <!-- /top tiles -->
     </div>
