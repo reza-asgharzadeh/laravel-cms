@@ -58,7 +58,14 @@
                     <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more">{{$course->getPrice()}} {{$course->price == 0 ? '' : 'تومان'}}</a>
                 </div>
                 <div class="card-footer text-center">
-                    <small class="text-success">مدرس دوره: {{$course->user->name}}</small>
+                    <div class="d-flex justify-content-between">
+                        <div><p class="d-inline-block card-txt mx-1">{{$course->user->name}}</p> <img class="card-profile img-fluid" src="{{$course->user->getProfile()}}" alt="profile"></div>
+                        <div><i class="fa fa-clock-o text-muted"></i> <p class="d-inline-block card-txt">{{$course->time}} ساعت</p></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div><i class="fa fa-info text-muted"></i> <p class="d-inline-block card-txt mx-1">{{$course->getStatus()}}</p></div>
+                        <div><i class="fa fa-level-up text-muted"></i> <p class="d-inline-block card-txt">{{$course->getLevel()}}</p></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,12 +91,12 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
-                        <div><p class="d-inline card-txt mx-1">{{$post->user->name}}</p> <img class="card-profile img-fluid" src="{{$post->user->getProfile()}}" alt="profile"></div>
-                        <div><p class="card-txt">مدت زمان مطالعه: 10 دقیقه</p></div>
+                        <div><p class="d-inline-block card-txt mx-1">{{$post->user->name}}</p> <img class="card-profile img-fluid" src="{{$post->user->getProfile()}}" alt="profile"></div>
+                        <div><i class="fa fa-clock-o text-muted"></i> <p class="d-inline-block card-txt">مطالعه در: 10 دقیقه</p></div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <div><p class="d-inline card-txt mx-1">{{$post->view_count}}</p> <i class="fa fa-eye"></i></div>
-                        <div><p class="d-inline card-txt">{{$post->created_at->diffForHumans()}}</p> <i class="fa fa-calendar"></i></div>
+                        <div><i class="fa fa-eye text-muted"></i> <p class="d-inline-block card-txt mx-1">{{$post->view_count}}</p></div>
+                        <div><i class="fa fa-calendar text-muted"></i> <p class="d-inline-block card-txt">{{$post->created_at->diffForHumans()}}</p></div>
                     </div>
                 </div>
             </div>
