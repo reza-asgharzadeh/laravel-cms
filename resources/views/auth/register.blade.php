@@ -12,25 +12,25 @@
             <label>
                 <input name="name" type="text" placeholder="نام و نام خانوادگی">
                 @error('name')
-                <p class="text-danger">{{$message}}</p>
+                <p class="text-danger mt-2">{{$message}}</p>
                 @enderror
             </label>
             <label>
                 <input name="email" type="text" placeholder="ایمیل">
                 @error('email')
-                <p class="text-danger">{{$message}}</p>
+                <p class="text-danger mt-2">{{$message}}</p>
                 @enderror
             </label>
             <label>
                 <input name="mobile" type="text" placeholder="شماره موبایل">
                 @error('mobile')
-                <p class="text-danger">{{$message}}</p>
+                <p class="text-danger mt-2">{{$message}}</p>
                 @enderror
             </label>
             <label>
                 <input name="password" type="password" placeholder="رمز عبور">
                 @error('password')
-                <p class="text-danger">{{$message}}</p>
+                <p class="text-danger mt-2">{{$message}}</p>
                 @enderror
             </label>
             <label>

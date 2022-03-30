@@ -53,7 +53,7 @@
             <div class="card h-100 custom-box-shadow">
                 <img src="{{$course->getBanner()}}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title">{{$course->name}}</h5>
+                    <a class="card-title text-xl" href="{{route('courses.show',$course->slug)}}">{{$course->name}}</a>
                     <p class="card-text">{!! \Illuminate\Support\Str::limit($course->content, 150, $end='...') !!}</p>
                     <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more">{{$course->getPrice()}} {{$course->price == 0 ? '' : 'تومان'}}</a>
                 </div>
@@ -76,14 +76,21 @@
         @foreach($posts as $post)
         <div class="col-xs-12 col-sm-6 col-lg-3">
             <div class="card h-100 custom-box-shadow">
-                <img src="{{$post->getBanner()}}" class="card-img-top" alt="...">
+                <a href="{{route('posts.show',$post->slug)}}"><img src="{{$post->getBanner()}}" class="card-img-top" alt="..."></a>
                 <div class="card-body text-center">
-                    <h5 class="card-title">{{$post->title}}</h5>
+                    <a class="card-title text-xl" href="{{route('posts.show',$post->slug)}}">{{$post->title}}</a>
                     <p class="card-text">{!! \Illuminate\Support\Str::limit($post->content, 150, $end='...') !!}</p>
-                    <a href="{{route('posts.show',$post->slug)}}" class="btn btn-more">ادامه مطلب</a>
+
                 </div>
-                <div class="card-footer text-center">
-                    <small class="text-success">{{$post->created_at->diffForHumans()}}</small>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between">
+                        <div><p class="d-inline card-txt mx-1">{{$post->user->name}}</p> <img class="card-profile img-fluid" src="{{$post->user->getProfile()}}" alt="profile"></div>
+                        <div><p class="card-txt">مدت زمان مطالعه: 10 دقیقه</p></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div><p class="d-inline card-txt mx-1">{{$post->view_count}}</p> <i class="fa fa-eye"></i></div>
+                        <div><p class="d-inline card-txt">{{$post->created_at->diffForHumans()}}</p> <i class="fa fa-calendar"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
