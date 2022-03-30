@@ -9,7 +9,7 @@
         @endif
         <form method="POST" action="{{ route('verification.send') }}">
             @csrf
-            <button class="purple">ارسال مجدد لینک تاییدیه</button>
+            <button class="main">ارسال مجدد لینک تاییدیه</button>
         </form>
     </div>
 </x-landing-layout>

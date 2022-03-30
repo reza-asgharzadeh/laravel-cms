@@ -13,7 +13,7 @@ class CommentController extends Controller
         $course = Course::where('id',$course->id)->first();
 
         $course->comments()->create([
-            'content' => $request->content,
+            'content' => $request->get('content'),
             'comment_id' => $request->comment_id,
             'user_id' => auth()->user()->id
         ]);
@@ -25,7 +25,7 @@ class CommentController extends Controller
         $post = Post::where('id',$post->id)->first();
 
         $post->comments()->create([
-            'content' => $request->content,
+            'content' => $request->get('content'),
             'comment_id' => $request->comment_id,
             'user_id' => auth()->user()->id
         ]);

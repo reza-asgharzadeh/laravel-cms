@@ -36,7 +36,7 @@
             <label>
                 <input name="password_confirmation" type="password" placeholder="تکرار رمز عبور">
             </label>
-            <button class="purple">ثبت نام</button>
+            <button class="main">ثبت نام</button>
         </form>
         <a href="{{route('login')}}">قبلا ثبت نام کرده اید؟ ورود</a><br><br>
     </div>

@@ -15,7 +15,7 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </label>
-            <button class="purple">بازیابی رمز عبور</button>
+            <button class="main">بازیابی رمز عبور</button>
         </form>
     </div>
 </x-landing-layout>

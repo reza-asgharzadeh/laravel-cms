@@ -1,6 +1,5 @@
-body,
-html {
-  background-color: #ebecf0;
+body, html {
+    background-color: #ebecf0;
 }
 
 form {
@@ -21,6 +20,7 @@ button,input {
     border-radius: 12px;
     padding: 12px;
     background-color: #ebecf0;
+    font-weight: 500;
     text-shadow: 1px 1px 0 #fff;
 }
 
@@ -48,7 +48,6 @@ input:focus {
 }
 
 button {
-  color: #61677c;
   font-weight: bold;
   box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   transition: all 0.2s ease-in-out;
@@ -78,10 +77,10 @@ button.unit {
 button.unit .icon {
   margin-right: 0;
 }
-button.purple {
+button.main {
   display: block;
   width: 100%;
-  color: #4d187e;
+  color: #000;
 }
 
 .input-group {
@@ -96,8 +95,19 @@ button.purple {
 
 a{
     text-decoration: none;
+    color: #475466;
 }
 
 .remember-color{
     color: #67676e;
+    font-weight: 600;
+}
+
+.checkbox-xl{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.google-btn{
+    font-weight: 500;
 }

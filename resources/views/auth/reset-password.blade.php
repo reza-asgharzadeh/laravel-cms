@@ -23,7 +23,7 @@
             <label>
                 <input name="password_confirmation" type="password" placeholder="تکرار رمز عبور جدید">
             </label>
-            <button class="purple">تغییر رمز عبور</button>
+            <button class="main">تغییر رمز عبور</button>
         </form>
     </div>
 </x-landing-layout>

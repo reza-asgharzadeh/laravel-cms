@@ -22,16 +22,15 @@
                 @enderror
             </label>
             <label>
-                <input type="checkbox" name="remember"> <span class="remember-color">مرا بخاطر بسپار</span>
+                <input class="checkbox-xl" type="checkbox" name="remember"> <span class="remember-color mx-1">مرا بخاطر بسپار</span>
             </label>
             <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
             <br/>
             @if(Session::has('g-recaptcha-response'))
                 <p class="text-danger">{{Session::get('g-recaptcha-response')}}</p>
             @endif
-            <a class="btn btn-danger mb-2" href="{{route('auth.google')}}"><i class="fa fa-google-plus"></i> ورود با اکانت گوکل</a>
-            <a class="btn btn-primary mb-3" href=""><i class="fa fa-yahoo"></i> ورود با اکانت یاهو</a>
-            <button class="purple">ورود</button>
+            <a class="btn btn-danger google-btn mb-3" href="{{route('auth.google')}}"><i class="fa fa-google-plus mx-2"></i>ورود با اکانت گوگل</a>
+            <button class="main">ورود</button>
         </form>
         <a href="{{route('password.request')}}">رمز عبور خود را فراموش کرده‌اید؟ بازیابی</a><br><br>
         <a href="{{route('register')}}">عضو سایت نیستید؟ عضویت</a>

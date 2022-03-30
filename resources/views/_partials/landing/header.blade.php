@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body rounded">
+    <nav class="navbar navbar-expand-lg shadow p-3 mb-5 bg-body rounded">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="{{asset('assets/landing/img/logo.png')}}" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
