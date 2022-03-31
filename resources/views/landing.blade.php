@@ -13,7 +13,7 @@
 </div>
 
 <div class="container mt-5">
-    <h3 class="text-center main-color mb-4">خدمات ما</h3>
+    <h3 class="text-center main-color h2 mb-4">خدمات ما</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col-sm-4">
             <div class="card h-100 custom-box-services">
@@ -46,7 +46,7 @@
 </div>
 
 <div class="container mt-5">
-    <h3 class="text-center main-color mb-4">دوره‌های اخیر</h3>
+    <h3 class="text-center main-color h2 mb-4">دوره‌های اخیر</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($courses as $course)
         <div class="col-xs-12 col-sm-6 col-lg-3">
@@ -78,7 +78,7 @@
 
 
 <div class="container mt-5">
-    <h3 class="text-center main-color mb-4">مقالات اخیر</h3>
+    <h3 class="text-center main-color h2 mb-4">مقالات اخیر</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($posts as $post)
         <div class="col-xs-12 col-sm-6 col-lg-3">

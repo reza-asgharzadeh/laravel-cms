@@ -1,19 +1,42 @@
-/*footer bottom start*/
-body{
-    min-height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+/*start footer color*/
+.social-icon-bg{
+    border-radius: 27% 60% 41% 46% / 32% 41% 29% 51%;
+    background-color: #F3F4F6;
+    padding: 0.6rem 0.6rem;
 }
 
-header{
-    min-height:50px;
+.social-icon-bg:hover{
+    background-color: #dfe0e5;
 }
 
-footer{
-    min-height:50px;
+.footer-color{
+    color: #6B7280 !important;
 }
-/*footer bottom end*/
+
+a.footer-color:hover {
+    text-decoration: underline !important;
+}
+
+.instagram-color,.telegram-color,.youtube-color,.linkedin-color,.twitter-color{
+    color: #6B7280 !important;
+}
+.instagram-color:hover{
+    color: #D94289 !important;
+}
+.telegram-color:hover{
+    color: #36AEE2 !important;
+}
+.youtube-color:hover{
+    color: #FE0000 !important;
+}
+.linkedin-color:hover{
+    color: #0077B5 !important;
+}
+.twitter-color:hover{
+    color: #1D9BF0 !important;
+}
+/*end footer color*/
+
 
 .custom-shadow{
     box-shadow: 0 10px 16px -6px rgb(228, 228, 228);
