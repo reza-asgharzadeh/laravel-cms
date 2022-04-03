@@ -1,4 +1,6 @@
 <x-landing-layout>
+
+{{--  Header  --}}
 <div class="container mt-5">
     <div class="row">
         <div class="col-xs-12 col-md-6">
@@ -12,39 +14,47 @@
     </div>
 </div>
 
+{{--  services card  --}}
 <div class="container mt-5">
     <h3 class="text-center main-color h2 mb-4">خدمات ما</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col-sm-4">
-            <div class="card h-100 custom-box-services">
-                <img src="{{asset('assets/landing/img/course.png')}}" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title card-title-color">دوره‌های آموزشی</h5>
-                    <p class="card-text text-muted">آموزش برنامه‌نویسی برای آماده سازی شما برای ورود به بازار کار</p>
+            <div class="card-services">
+                <div class="box">
+                    <div class="content">
+                        <img src="{{asset('assets/landing/img/course.png')}}" class="card-img-top w-50" alt="...">
+                        <h4>دوره‌های آموزشی</h4>
+                        <p>آموزش برنامه‌نویسی برای آماده سازی شما برای ورود به بازار کار</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="card h-100 custom-box-services">
-                <img src="{{asset('assets/landing/img/article.png')}}" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title card-title-color">مقالات تخصصی</h5>
-                    <p class="card-text text-muted">ارائه مقالات آموزشی در جهت یادگیری شما</p>
+            <div class="card-services">
+                <div class="box">
+                    <div class="content">
+                        <img src="{{asset('assets/landing/img/article.png')}}" class="card-img-top w-50" alt="...">
+                        <h4>مقالات تخصصی</h4>
+                        <p>ارائه مقالات آموزشی در جهت یادگیری شما</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="card h-100 custom-box-services">
-                <img src="{{asset('assets/landing/img/services.png')}}" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title card-title-color">برنامه نویسی و طراحی سایت</h5>
-                    <p class="card-text text-muted">طراحی انواع سایت‌ها و فروشگاه‌ها برای رونق کسب‌وکار شما</p>
+            <div class="card-services">
+                <div class="box">
+                    <div class="content">
+                        <img src="{{asset('assets/landing/img/services.png')}}" class="card-img-top w-50" alt="...">
+                        <h4>برنامه نویسی سایت</h4>
+                        <p>طراحی انواع سایت‌ها و فروشگاه‌ها برای رونق کسب‌وکار شما</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+{{--  courses card  --}}
 <div class="container mt-5">
     <h3 class="text-center main-color h2 mb-4">دوره‌های اخیر</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -76,7 +86,7 @@
     </div>
 </div>
 
-
+{{--  blogs card  --}}
 <div class="container mt-5">
     <h3 class="text-center main-color h2 mb-4">مقالات اخیر</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -107,14 +117,14 @@
     </div>
 </div>
 
-
+{{--  Questions and Answers card  --}}
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-xl-between">
         <div class="align-self-center">
             <h3 class="text-center main-color h2 mb-4">پرسش و پاسخ اخیر</h3>
             <p class="h4">در این بخش به پرسش و پاسخ استک اورفلو میپردازیم</p>
             <div class="btn all-blog m-auto mt-5 mb-5">
-                <a href="course">مشاهده تمامی پرسش و پاسخ</a>
+                <a href="">مشاهده تمامی پرسش و پاسخ</a>
             </div>
         </div>
         <div>
@@ -362,4 +372,5 @@
         </div>
     </div>
 </div>
+
 </x-landing-layout>
