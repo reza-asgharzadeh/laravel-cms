@@ -512,25 +512,12 @@ p{
 /*start services card*/
 .card-services {
     position: relative;
-    min-width: 320px;
     height: 285px;
     box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 15px rgba(255, 255, 255, 0.1),
     5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     transition: 0.5s;
-}
-
-.card-services:nth-child(1) .box .content a {
-    background: #2196f3;
-}
-
-.card-services:nth-child(2) .box .content a {
-    background: #e91e63;
-}
-
-.card-services:nth-child(3) .box .content a {
-    background: #23c186;
 }
 
 .card-services .box {
@@ -545,11 +532,11 @@ p{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 
 .card-services .box:hover {
-    transform: translateY(-50px);
+    transform: translateY(-20px);
 }
 
 .card-services .box:before {
@@ -607,5 +594,3 @@ p{
     color: #000;
 }
 /*end services card*/
-
-

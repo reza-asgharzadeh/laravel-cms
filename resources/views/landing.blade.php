@@ -18,33 +18,33 @@
 <div class="container mt-5">
     <h3 class="text-center main-color h2 mb-4">خدمات ما</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="card-services">
                 <div class="box">
                     <div class="content">
-                        <img src="{{asset('assets/landing/img/course.png')}}" class="card-img-top w-50" alt="...">
+                        <img src="{{asset('assets/landing/img/course.png')}}" class="" alt="...">
                         <h4>دوره‌های آموزشی</h4>
                         <p>آموزش برنامه‌نویسی برای آماده سازی شما برای ورود به بازار کار</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="card-services">
                 <div class="box">
                     <div class="content">
-                        <img src="{{asset('assets/landing/img/article.png')}}" class="card-img-top w-50" alt="...">
+                        <img src="{{asset('assets/landing/img/article.png')}}" class="" alt="...">
                         <h4>مقالات تخصصی</h4>
                         <p>ارائه مقالات آموزشی در جهت یادگیری شما</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="card-services">
                 <div class="box">
                     <div class="content">
-                        <img src="{{asset('assets/landing/img/services.png')}}" class="card-img-top w-50" alt="...">
+                        <img src="{{asset('assets/landing/img/services.png')}}" class="" alt="...">
                         <h4>برنامه نویسی سایت</h4>
                         <p>طراحی انواع سایت‌ها و فروشگاه‌ها برای رونق کسب‌وکار شما</p>
                     </div>
