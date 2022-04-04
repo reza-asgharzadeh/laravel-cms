@@ -52,6 +52,12 @@
                         </div>
                         <div class="x_content">
                                 @foreach($questions as $question)
+                                    <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto; background: #e6edf2">
+                                        <div><i class="fa fa-user"></i> {{$question->user->name}}:</div>
+                                        <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$question->created_at->diffForHumans()}}</div>
+                                        <h4>{{$question->title}}</h4>
+                                        <p>{!! $question->content !!}</p>
+                                    </div>
                                     @foreach($question->children as $child)
                                     <br>
                                     <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto;">
@@ -80,7 +86,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <button class="btn btn-primary">ثبت</button>
-                                        <a href="{{route('tickets.index')}}" class="btn btn-danger">انصراف</a>
+                                        <a href="{{route('questions.index')}}" class="btn btn-danger">انصراف</a>
                                     </div>
                                 </div>
                             </form>

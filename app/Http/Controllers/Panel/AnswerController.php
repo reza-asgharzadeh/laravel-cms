@@ -11,16 +11,23 @@ class AnswerController extends Controller
 {
     public function store(CreateAnswerRequest $request,Question $question)
     {
-        dd($question->id);
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
-        $data['question_id'] = $request->id;
+        $data['question_id'] = $question->id;
         Answer::create(
             $data
         );
 
-        Question::update([
-            'question_status' => 1
-        ]);
+        if(auth()->user()->id != $question->user_id && auth()->user()->role_id == 1){
+            $question->update([
+                'answer_status' => 1
+            ]);
+        } else {
+            $question->update([
+                'answer_status' => 0
+            ]);
+        }
+
+        return to_route('questions.index');
     }
 }

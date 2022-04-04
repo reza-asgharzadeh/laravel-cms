@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Question\CreateQuestionRequest;
 use App\Models\Question;
-use App\Models\Ticket;
+use App\Models\User;
 
 class QuestionController extends Controller
 {
     public function index()
     {
-        $questions = Question::where('user_id',auth()->user()->id)->paginate(5);
+        $questions = auth()->user()->questions()->orderByDesc('id')->paginate(5);
         return view('panel.questions.index',compact('questions'));
     }
 
@@ -27,14 +27,12 @@ class QuestionController extends Controller
         Question::create(
             $data
         );
-        return redirect()->route('questions.index');
+        return to_route('questions.index');
     }
 
     public function show(Question $question)
     {
-        $user_id = auth()->user()->id;
-        $questions = Question::where('user_id',$user_id)->where('id',$question->id)->get();
-
+        $questions = auth()->user()->questions()->where('id',$question->id)->get();
         return view('panel.questions.show',compact(['question','questions']));
     }
 }

@@ -24,7 +24,7 @@ class CreateAnswerRequest extends FormRequest
     public function rules()
     {
         return [
-            'answer' => ['required','string', 'max:255'],
+            'answer' => ['required','string'],
         ];
     }
 }

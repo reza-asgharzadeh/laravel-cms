@@ -22,7 +22,7 @@
             <div class="card-services">
                 <div class="box">
                     <div class="content">
-                        <img src="{{asset('assets/landing/img/course.png')}}" class="" alt="...">
+                        <img src="{{asset('assets/landing/img/course.png')}}" alt="...">
                         <h4>دوره‌های آموزشی</h4>
                         <p>آموزش برنامه‌نویسی برای آماده سازی شما برای ورود به بازار کار</p>
                     </div>
@@ -33,7 +33,7 @@
             <div class="card-services">
                 <div class="box">
                     <div class="content">
-                        <img src="{{asset('assets/landing/img/article.png')}}" class="" alt="...">
+                        <img src="{{asset('assets/landing/img/article.png')}}" alt="...">
                         <h4>مقالات تخصصی</h4>
                         <p>ارائه مقالات آموزشی در جهت یادگیری شما</p>
                     </div>
@@ -44,7 +44,7 @@
             <div class="card-services">
                 <div class="box">
                     <div class="content">
-                        <img src="{{asset('assets/landing/img/services.png')}}" class="" alt="...">
+                        <img src="{{asset('assets/landing/img/services.png')}}" alt="...">
                         <h4>برنامه نویسی سایت</h4>
                         <p>طراحی انواع سایت‌ها و فروشگاه‌ها برای رونق کسب‌وکار شما</p>
                     </div>

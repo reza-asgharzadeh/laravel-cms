@@ -55,14 +55,14 @@
                             <form action="{{route('questions.store')}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="question">عنوان گفتگو
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="title">عنوان گفتگو
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="question" name="question"
+                                        <input type="text" id="title" name="title"
                                                class="form-control col-md-7 col-xs-12">
                                     </div>
-                                    @error('question')
+                                    @error('title')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>

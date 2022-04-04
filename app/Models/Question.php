@@ -10,7 +10,7 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'question',
+        'title',
         'content',
         'user_id',
         'answer_status',
@@ -22,11 +22,11 @@ class Question extends Model
         return verta($this->created_at)->format('Y/m/d');
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
     public function children(){
         return $this->hasMany(Answer::class,'question_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
