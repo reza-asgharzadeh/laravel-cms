@@ -84,4 +84,7 @@
 
         </div>
     </div>
+    <x-slot name="scripts">
+        <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
+    </x-slot>
 </x-panel-layout>

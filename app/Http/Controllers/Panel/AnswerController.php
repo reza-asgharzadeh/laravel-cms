@@ -27,7 +27,7 @@ class AnswerController extends Controller
                 'answer_status' => 0
             ]);
         }
-
+        $request->session()->flash('status','پرسش شما با موفقیت ایجاد شد لطفا منتظر پاسخ باشید!');
         return to_route('questions.index');
     }
 }

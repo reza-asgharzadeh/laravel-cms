@@ -27,6 +27,7 @@ class QuestionController extends Controller
         Question::create(
             $data
         );
+        $request->session()->flash('status','پرسش جدید با موفقیت ایجاد شد لطفا منتظر پاسخ باشید!');
         return to_route('questions.index');
     }
 
