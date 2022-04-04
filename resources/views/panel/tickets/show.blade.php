@@ -58,14 +58,12 @@
                                 <p>{!! $ticket->content !!}</p>
                             </div>
                                 @foreach($tickets as $ticket)
-                                    @foreach($ticket->children as $child)
                                     <br>
                                     <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto;">
-                                        <div><i class="fa fa-user"></i> {{$child->user->name}}:</div>
-                                        <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$child->created_at->diffForHumans()}}</div>
-                                        <div style="margin-top: 10px">{!! $child->content !!}</div>
+                                        <div><i class="fa fa-user"></i> {{$ticket->user->name}}:</div>
+                                        <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$ticket->created_at->diffForHumans()}}</div>
+                                        <div style="margin-top: 10px">{!! $ticket->content !!}</div>
                                     </div>
-                                    @endforeach
                                 @endforeach
                             <br>
                             <form action="{{route('tickets.reply',$ticket->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">

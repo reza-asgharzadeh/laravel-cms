@@ -27,7 +27,7 @@ class CommentController extends Controller
             $course_post = Post::where('id',$comment->commentable_id)->first();
         }
         $course_post->comments()->create([
-            'content' => $request->content,
+            'content' => $request->get('content'),
             'comment_id' => $comment->id,
             'user_id' => auth()->user()->id
         ]);

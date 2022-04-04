@@ -41,7 +41,8 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket)
     {
-        $tickets = auth()->user()->tickets()->where('id',$ticket->id)->get();
+        $this->authorize('view', $ticket);
+        $tickets = $ticket->children()->get();
         return view('panel.tickets.show',compact(['ticket','tickets']));
     }
 
