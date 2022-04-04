@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Helper;
+use App\Http\RandomUniqueCode;
 use App\Http\Requests\Panel\Ticket\CreateTicketRequest;
 use App\Http\Requests\Panel\Ticket\ReplyTicketRequest;
 use App\Models\Ticket;
@@ -13,12 +13,10 @@ class TicketController extends Controller
 
     public function index()
     {
-        $role_id = auth()->user()->role_id;
-        $user_id = auth()->user()->id;
-        if ($role_id == 1){
-            $tickets = Ticket::where('user_id',$user_id)->where('ticket_id',null)->paginate(5);
+        if (auth()->user()->role_id == 1){
+            $tickets = Ticket::where('ticket_id',null)->orderByDesc('id')->paginate(5);
         } else {
-            $tickets = Ticket::where('ticket_id',null)->paginate(5);
+            $tickets = auth()->user()->tickets()->where('ticket_id',null)->orderByDesc('id')->paginate(5);
         }
 
         return view('panel.tickets.index',compact('tickets'));
@@ -33,24 +31,17 @@ class TicketController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
-        $data['code'] = Helper::generateUniqueNumber();
+        $data['code'] = RandomUniqueCode::randomString(6);
         Ticket::create(
             $data
         );
         $request->session()->flash('status','تیکت جدید با موفقیت ایجاد شد لطفا منتظر پاسخ باشید!');
-        return back();
+        return to_route('tickets.index');
     }
 
     public function show(Ticket $ticket)
     {
-        $role_id = auth()->user()->role_id;
-        $user_id = auth()->user()->id;
-        if ($role_id == 1){
-            $tickets = Ticket::where('user_id',$user_id)->where('ticket_id',null)->paginate(5);
-        } else {
-            $tickets = Ticket::where('id',$ticket->id)->where('ticket_id',null)->paginate(5);
-        }
-
+        $tickets = auth()->user()->tickets()->where('id',$ticket->id)->get();
         return view('panel.tickets.show',compact(['ticket','tickets']));
     }
 
@@ -62,16 +53,18 @@ class TicketController extends Controller
         Ticket::create(
             $data
         );
-        if (auth()->user()->role_id == 2){
+
+        if(auth()->user()->id != $ticket->user_id && auth()->user()->role_id == 1){
             $ticket->update([
-                'status' => true
+                'status' => 1
             ]);
         } else {
             $ticket->update([
-                'status' => false
+                'status' => 0
             ]);
         }
-        $request->session()->flash('status','تیکت شما با موفقیت ثبت شد!');
-        return back();
+
+        $request->session()->flash('status','تیکت شما با موفقیت ایجاد شد لطفا منتظر پاسخ باشید!');
+        return to_route('tickets.index');
     }
 }

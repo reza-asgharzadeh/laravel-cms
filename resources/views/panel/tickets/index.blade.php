@@ -66,13 +66,7 @@
                                             <td><span class="btn {{$ticket->status ? 'btn-success' : 'btn-warning'}} btn-xs">{{$ticket->status ? 'پاسخ داده شد' : 'در انتظار پاسخ'}}</span></td>
                                             <td>{{$ticket->getCreatedAtInJalali()}}</td>
                                             <td>
-{{--                                                <a href="{{route('tickets.edit',$ticket->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>--}}
-                                                <a href="{{route('tickets.show',$ticket->id)}}"><i class="fa-x fa-eye text-primary" title="پاسخ"></i></a>
-{{--                                                <a href="{{route('tickets.destroy',$ticket->id)}}" onclick="destroyTicket(event, {{ $ticket->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>--}}
-{{--                                                <form action="{{route('tickets.destroy',$ticket->id)}}" method="post" id="destroy-ticket-{{ $ticket->id }}">--}}
-{{--                                                    @csrf--}}
-{{--                                                    @method('delete')--}}
-{{--                                                </form>--}}
+                                                <a href="{{route('tickets.show',$ticket->id)}}"><i class="fa-x fa-eye text-primary" title="مشاهده"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -83,8 +77,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
                 </div>
@@ -94,25 +86,5 @@
     </div>
     <x-slot name="scripts">
         <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
-        <script>
-            function destroyTicket(event, id) {
-                event.preventDefault();
-                Swal.fire({
-                    title: 'آیا از حذف اطمینان دارید؟',
-                    text: "اطلاعات بعد از حذف قابل بازیابی نیست !",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    reverseButtons: true,
-                    cancelButtonColor: '#EFEFEF',
-                    confirmButtonColor: '#D9534F',
-                    confirmButtonText: 'حذف',
-                    cancelButtonText: 'لغو',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById(`destroy-ticket-${id}`).submit()
-                    }
-                })
-            }
-        </script>
     </x-slot>
 </x-panel-layout>

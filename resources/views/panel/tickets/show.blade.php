@@ -10,7 +10,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>تیکت</h3>
+                    <h3>سیستم تیکت</h3>
                 </div>
 
                 <div class="title_right">
@@ -30,7 +30,7 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>
-                                <small>پرسش و پاسخ</small>
+                                <small>تیکت</small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -51,13 +51,11 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <br/>
-                            <div class="text-danger">موضوع تیکت: {{$ticket->subject}}</div>
-                            <br>
-                            <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto;">
+                            <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto; background: #e6edf2">
                                 <div><i class="fa fa-user"></i> {{$ticket->user->name}}:</div>
                                 <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$ticket->created_at->diffForHumans()}}</div>
-                                <div style="margin-top: 10px">{{$ticket->content}}</div>
+                                <h4>{{$ticket->subject}}</h4>
+                                <p>{!! $ticket->content !!}</p>
                             </div>
                                 @foreach($tickets as $ticket)
                                     @foreach($ticket->children as $child)
@@ -65,7 +63,7 @@
                                     <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto;">
                                         <div><i class="fa fa-user"></i> {{$child->user->name}}:</div>
                                         <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$child->created_at->diffForHumans()}}</div>
-                                        <div style="margin-top: 10px">{{$child->content}}</div>
+                                        <div style="margin-top: 10px">{!! $child->content !!}</div>
                                     </div>
                                     @endforeach
                                 @endforeach
