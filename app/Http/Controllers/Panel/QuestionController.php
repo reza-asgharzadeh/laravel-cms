@@ -11,7 +11,11 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        $questions = auth()->user()->questions()->orderByDesc('id')->paginate(5);
+        if (auth()->user()->role_id == 1){
+            $questions = Question::orderByDesc('id')->paginate(5);
+        } else {
+            $questions = auth()->user()->questions()->orderByDesc('id')->paginate(5);
+        }
         return view('panel.questions.index',compact('questions'));
     }
 
@@ -33,7 +37,8 @@ class QuestionController extends Controller
 
     public function show(Question $question)
     {
-        $questions = auth()->user()->questions()->where('id',$question->id)->get();
+        $this->authorize('view', $question);
+        $questions = Question::where('id',$question->id)->get();
         return view('panel.questions.show',compact(['question','questions']));
     }
 }
