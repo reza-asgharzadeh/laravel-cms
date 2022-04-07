@@ -15,12 +15,14 @@ class UserController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny',auth()->user());
         $users = User::paginate(5);
         return view('panel.users.index',compact('users'));
     }
 
     public function create()
     {
+        $this->authorize('create', auth()->user());
         $roles = Role::all();
         return view('panel.users.create',compact('roles'));
     }
@@ -39,12 +41,14 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('view', $user);
         $roles = Role::all();
         return view('panel.users.edit',compact(['user','roles']));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        $this->authorize('update', $user);
         $data = $request->validated();
         if ($request->password){
             $data['password'] = Hash::make($request->password);
@@ -60,6 +64,7 @@ class UserController extends Controller
 
     public function destroy(Request $request,User $user)
     {
+        $this->authorize('delete', $user);
         $user->delete();
         $request->session()->flash('status','کاربر مورد نظر با موفقیت حذف شد !');
         return back();
