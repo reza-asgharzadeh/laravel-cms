@@ -79,4 +79,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function tickets(){
         return $this->hasMany(Ticket::class,'user_id');
     }
+
+    public function getRoleName()
+    {
+        if($this->role_id == 1) return "مدیر" ;
+        if($this->role_id == 2) return "کاربر عادی" ;
+    }
 }

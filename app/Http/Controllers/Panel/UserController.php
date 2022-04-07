@@ -34,7 +34,7 @@ class UserController extends Controller
         );
 
         $request->session()->flash('status','کاربر جدید با موفقیت ایجاد شد !');
-        return redirect()->route('users.index');
+        return to_route('users.index');
     }
 
     public function edit(User $user)
@@ -55,7 +55,7 @@ class UserController extends Controller
             $data
         );
         $request->session()->flash('status','کاربر مورد نظر با موفقیت ویرایش شد !');
-        return redirect()->route('users.index');
+        return to_route('users.index');
     }
 
     public function destroy(Request $request,User $user)

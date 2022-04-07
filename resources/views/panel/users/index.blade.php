@@ -51,7 +51,7 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>شناسه</th>
+                                    <th>ردیف</th>
                                     <th>نام و نام خانوادگی</th>
                                     <th>ایمیل</th>
                                     <th>نقش کاربری</th>
@@ -65,10 +65,10 @@
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr>
-                                        <th scope="row">{{$user->id}}</th>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->role->name}}</td>
+                                        <td>{{$user->getRoleName()}}</td>
                                         <td>
                                             @foreach($user->role->permissions as $permission)
                                             {{$permission->name}}
