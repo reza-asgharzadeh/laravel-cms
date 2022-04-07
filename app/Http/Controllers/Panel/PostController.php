@@ -64,6 +64,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('view', $post);
         $postTags = $post->tags()->pluck('id')->toArray();
         $tags = Tag::all();
 
