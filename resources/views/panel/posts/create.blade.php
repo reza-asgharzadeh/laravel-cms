@@ -95,10 +95,11 @@
                                                 <input type="text" id="search-field">
                                             </li>
                                         </ul>
-                                        @foreach($tags as $tag)
-                                            {{$tag->name}}
-                                        @endforeach
-                                        <div id="suggestions-container"></div>
+                                        <div style="display: block; overflow: auto; height: 120px">
+                                            @foreach($tags as $tag)
+                                                <div id="suggestions-container">{{$tag->name}}</div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     @error('tags')
                                     <p class="text-danger">{{$message}}</p>
@@ -108,10 +109,12 @@
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12">دسته بندی ها
                                         <span class="required">*</span>
                                     </label>
-                                    <div class="control-label col-md-6 col-sm-6 col-xs-12 checkbox">
-                                        @foreach($categories as $category)
-                                            <span style="margin-left: 2.5rem">{{$category->name}}</span> <input type="checkbox" name="categories[]" value="{{$category->id}}">
-                                        @endforeach
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div style="display: block; overflow: auto; height: 120px">
+                                            @foreach($categories as $category)
+                                                <div id="suggestions-container"><input type="checkbox" name="categories[]" value="{{$category->id}}"><span style="margin-right: 1rem">{{$category->name}}</span></div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     @error('categories')
                                     <p class="text-danger">{{$message}}</p>

@@ -51,7 +51,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>شناسه</th>
+                                        <th>ردیف</th>
                                         <th>عنوان مقاله</th>
                                         <th>دسته بندی ها</th>
                                         <th>برچسب ها</th>
@@ -66,7 +66,7 @@
                                     <tbody>
                                     @foreach($posts as $post)
                                         <tr>
-                                            <th scope="row">{{$post->id}}</th>
+                                            <th scope="row">{{$loop->iteration}}</th>
                                             <td>{{$post->title}}</td>
                                             <td><ul>
                                             @foreach($post->categories as $category)

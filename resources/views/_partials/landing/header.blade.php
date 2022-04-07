@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="#"><img src="{{asset('assets/landing/img/logo.png')}}" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0">

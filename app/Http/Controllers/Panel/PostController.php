@@ -17,7 +17,11 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::paginate(5);
+        if (auth()->user()->role_id === 1){
+            $posts = Post::orderByDesc('id')->paginate(5);
+        } else {
+            $posts = auth()->user()->posts()->orderByDesc('id')->paginate(5);
+        }
         return view('panel.posts.index',compact('posts'));
     }
 
@@ -30,7 +34,7 @@ class PostController extends Controller
 
     public function store(CreatePostRequest $request)
     {
-        $tag_id = Tag::whereIn('name',$request->tags)->get()->pluck('id')->toArray();
+        $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
 
         if(count($tag_id) < 1 ){
             throw ValidationException::withMessages([
@@ -55,19 +59,23 @@ class PostController extends Controller
         $post->tags()->sync($tag_id);
 
         $request->session()->flash('status','مقاله جدید با موفقیت ایجاد شد !');
-        return redirect()->route('posts.index');
+        return to_route('posts.index');
     }
 
     public function edit(Post $post)
     {
-        $users = User::all();
+        $postTags = $post->tags()->pluck('id')->toArray();
+        $tags = Tag::all();
+
+        $postCategories = $post->categories()->pluck('id')->toArray();
         $categories = Category::all();
-        return view('panel.posts.edit',compact(['users','post','categories']));
+
+        return view('panel.posts.edit',compact('post','postTags','tags','postCategories','categories'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $tag_id = Tag::whereIn('name',$request->tags)->get()->pluck('id')->toArray();
+        $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
 
         if(count($tag_id) < 1 ){
             throw ValidationException::withMessages([
@@ -91,8 +99,9 @@ class PostController extends Controller
         $category_id = $request->categories;
         $post->categories()->sync($category_id);
         $post->tags()->sync($tag_id);
+
         $request->session()->flash('status','مقاله مورد نظر با موفقیت ویرایش شد !');
-        return redirect()->route('posts.index');
+        return to_route('posts.index');
     }
 
     public function destroy(Request $request, Post $post)
