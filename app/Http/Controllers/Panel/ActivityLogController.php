@@ -23,31 +23,6 @@ class ActivityLogController extends Controller
         return view('panel.users.activity',compact(['sessions','activities','getIp','getBrowser','getDevice','getOs']));
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(ActivityLog $activityLog)
-    {
-        //
-    }
-
-    public function edit(ActivityLog $activityLog)
-    {
-        //
-    }
-
-    public function update(Request $request, ActivityLog $activityLog)
-    {
-        //
-    }
-
     public function destroy(ActivityLog $activityLog,Request $request)
     {
         $id = $request->getPathInfo(); // panel/activity/ISStByQSgg9SVPPig2OmvuSyE8naqK0FJe5xvpxR"

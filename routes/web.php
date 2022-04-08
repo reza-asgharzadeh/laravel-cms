@@ -66,7 +66,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/episodes',EpisodeController::class)->except('show');
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
-    Route::resource('/activities',ActivityLogController::class);
+    Route::resource('/activities',ActivityLogController::class)->only(['index','destroy']);
     Route::resource('/questions',QuestionController::class)->except(['edit','update','destroy']);
     Route::post('/answers/{question}',[AnswerController::class,'store'])->name('answers.store');
 });
