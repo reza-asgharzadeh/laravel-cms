@@ -4,15 +4,13 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\User\UpdateProfileRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class EditProfileController extends Controller
 {
     public function index()
     {
-        $user = User::where('id',auth()->user()->id)->first();
+        $user = auth()->user();
         return view('panel.users.profile',compact('user'));
     }
 
