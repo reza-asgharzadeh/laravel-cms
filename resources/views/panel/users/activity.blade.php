@@ -102,6 +102,8 @@
                                 <tr>
                                     <th>آی پی</th>
                                     <th>مرورگر</th>
+                                    <th>محیط</th>
+                                    <th>دستگاه</th>
                                     <th>سیستم عامل</th>
                                     <th>آخرین فعالیت</th>
                                     <th>عملیات</th>
@@ -111,10 +113,11 @@
                                 @foreach($sessions as $session)
                                     <tr>
                                         <td>{{$session->ip_address}}</td>
-                                        <td>{{$getBrowser}}</td>
-                                        <td>{{$getOs}}</td>
-{{--                                        <td>{{$session->last_activity->diffForHumans()}}</td>--}}
-                                        <td>5 ثانیه پیش</td>
+                                        <td>{{$session->browser}}</td>
+                                        <td>{{$session->platform}}</td>
+                                        <td>{{$session->device}}</td>
+                                        <td>{{$session->os}}</td>
+                                        <td>{{$session->last_activity}}</td>
                                         <td><a class="btn btn-sm btn-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-user-{{$session->id}}').submit();"><i class="fa fa-sign-out pull-right"></i> پایان نشست</a></td>
                                         <form action="{{route('activities.destroy',$session->id)}}" method="post" id="logout-user-{{$session->id}}">
                                             @csrf
