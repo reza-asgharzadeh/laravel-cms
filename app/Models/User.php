@@ -62,7 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return asset('profiles/images/' . $this->profile);
     }
 
-    public function lastLoginsDateTime()
+    public function lastLoginDateTime()
     {
         return $this->hasMany(ActivityLog::class);
     }

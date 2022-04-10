@@ -76,7 +76,7 @@
                                         </td>
                                         <td>{{$user->getCreatedAtInJalali()}}</td>
                                         <td>
-                                            @forelse($user->lastLoginsDateTime as $lastLogin)
+                                            @forelse($user->lastLoginDateTime as $lastLogin)
                                                 @if($loop->last)
                                                     {{$lastLogin->created_at->diffForHumans()}}
                                                 @endif
