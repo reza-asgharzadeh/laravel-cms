@@ -79,7 +79,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" name="category_id">
                                             <option value="">ندارد</option>
-                                            @foreach($ParentCategories as $parent)
+                                            @foreach($parentCategories as $parent)
                                             <option value="{{$parent->id}}">{{$parent->name}}</option>
                                             @endforeach
                                         </select>
@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <button class="btn btn-primary">ثبت</button>
-                                        <a href="{{route('users.index')}}" class="btn btn-danger">انصراف</a>
+                                        <a href="{{route('categories.index')}}" class="btn btn-danger">انصراف</a>
                                     </div>
                                 </div>
                             </form>
@@ -136,7 +136,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($ParentCategories as $parent)
+                                    @foreach($parentCategories as $parent)
                                         <tr>
                                             <th scope="row">{{$parent->id}}</th>
                                             <td>{{$parent->name}}</td>
@@ -160,6 +160,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    {!! $parentCategories->links() !!}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -202,8 +205,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
-                                        @foreach($category->children as $child)
+                                    @foreach($childrenCategories as $child)
                                             <tr>
                                                 <th scope="row">{{$child->id}}</th>
                                                 <td>{{$child->name}}</td>
@@ -218,12 +220,11 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                        @endforeach
                                     @endforeach
                                     </tbody>
                                 </table>
                                 <div class="text-center">
-                                    {!! $categories->links() !!}
+                                    {!! $childrenCategories->links() !!}
                                 </div>
                             </div>
                         </div>
