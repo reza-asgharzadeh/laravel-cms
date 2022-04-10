@@ -117,7 +117,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>شناسه</th>
+                                        <th>ردیف</th>
                                         <th>نام برچسب</th>
                                         <th>لینک برچسب</th>
                                         <th>عملیات</th>
@@ -126,7 +126,7 @@
                                     <tbody>
                                     @foreach($tags as $tag)
                                         <tr>
-                                            <th scope="row">{{$tag->id}}</th>
+                                            <th scope="row">{{$loop->iteration}}</th>
                                             <td>{{$tag->name}}</td>
                                             <td>{{$tag->slug}}</td>
                                             <td>

@@ -128,7 +128,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>شناسه</th>
+                                        <th>ردیف</th>
                                         <th>دسته بندی مادر</th>
                                         <th>لینک</th>
                                         <th>دسته بندی فرزند</th>
@@ -138,7 +138,7 @@
                                     <tbody>
                                     @foreach($parentCategories as $parent)
                                         <tr>
-                                            <th scope="row">{{$parent->id}}</th>
+                                            <th scope="row">{{$loop->iteration}}</th>
                                             <td>{{$parent->name}}</td>
                                             <td>{{$parent->slug}}</td>
                                             <td>
@@ -197,7 +197,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>شناسه</th>
+                                        <th>ردیف</th>
                                         <th>دسته بندی فرزند</th>
                                         <th>لینک</th>
                                         <th>دسته بندی مادر</th>
@@ -207,7 +207,7 @@
                                     <tbody>
                                     @foreach($childrenCategories as $child)
                                             <tr>
-                                                <th scope="row">{{$child->id}}</th>
+                                                <th scope="row">{{$loop->iteration}}</th>
                                                 <td>{{$child->name}}</td>
                                                 <td>{{$child->slug}}</td>
                                                 <td>{{$child->parent->name}}</td>
