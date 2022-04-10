@@ -85,7 +85,7 @@
                                             <td class="text-center"><img src="{{$post->getBanner()}}" alt="" height="52"></td>
                                             <td>{{$post->view_count}}</td>
                                             <td>{{$post->user->name}}</td>
-                                            <td>{{$post->created_at}}</td>
+                                            <td>{{$post->getCreatedAtInJalali()}}</td>
                                             <td>
                                                 <a href="{{route('posts.edit',$post->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
                                                 <a href="{{route('posts.destroy',$post->id)}}" onclick="destroyPost(event, {{ $post->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
