@@ -13,9 +13,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::paginate(5);
-        $ParentCategories = Category::where('category_id',null)->get();
-        return view('panel.categories.index',compact(['categories', 'ParentCategories']));
+        $childrenCategories = Category::where('category_id','!=',null)->paginate(5);
+        $parentCategories = Category::where('category_id',null)->paginate(5);
+        return view('panel.categories.index',compact(['childrenCategories', 'parentCategories']));
     }
 
     public function store(CreateCategoryRequest $request)
@@ -39,7 +39,7 @@ class CategoryController extends Controller
             $request->validated()
         );
         $request->session()->flash('status','دسته بندی مورد نظر با موفقیت ویرایش شد !');
-        return redirect()->route('categories.index');
+        return to_route('categories.index');
     }
 
     public function destroy(Request $request, Category $category)
