@@ -37,7 +37,7 @@ class TagController extends Controller
             $request->validated()
         );
         $request->session()->flash('status','برچسب مورد نظر با موفقیت ویرایش شد !');
-        return redirect()->route('tags.index');
+        return to_route('tags.index');
     }
 
     public function destroy(Request $request,Tag $tag)
