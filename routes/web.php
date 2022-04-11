@@ -56,7 +56,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/categories',CategoryController::class)->except(['create','show']);
     Route::resource('/tags',TagController::class)->except(['create','show']);
     Route::resource('/posts',PostController::class)->except('show');
-    Route::resource('/comments',CommentController::class)->except('create');
+    Route::resource('/comments',CommentController::class)->except(['create','show']);
     Route::get('/comments/{comment}/reply',[CommentController::class,'reply'])->name('comments.reply');
     Route::post('/comments/{comment}/save',[CommentController::class,'save'])->name('comments.save');
     Route::put('/comments/{comment}/display',[CommentController::class,'display'])->name('comments.display');
@@ -72,8 +72,10 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
-    Route::post('/course/{course}/store',[StoreCommentController::class,'CourseStore'])->name('users.comment.course.store');
-    Route::post('/post/{post}/store',[StoreCommentController::class,'PostStore'])->name('users.comment.post.store');
+    Route::post('/course/{course}/store',[StoreCommentController::class,'CourseStore'])->name('comment.course.store');
+    Route::post('/post/{post}/store',[StoreCommentController::class,'PostStore'])->name('comment.post.store');
+    Route::post('/course/{course}/comment/{comment}/store',[StoreCommentController::class,'ReplyCourseStore'])->name('reply.comment.course.store');
+    Route::post('/post/{post}/comment/{comment}/store',[StoreCommentController::class,'ReplyPostStore'])->name('reply.comment.post.store');
 });
 
 //payment
