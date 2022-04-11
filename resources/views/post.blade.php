@@ -37,16 +37,18 @@
                                 <h3 class="comments__h3"> دیدگاه خود را بنویسید </h3>
                                 <span class="comments__count">  نظرات ( {{$post->comments_count}} ) </span>
                             </div>
-                            <form action="{{route('users.comment.post.store',$post->id)}}" method="post">
+                            @error('content')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
+                            <form action="{{route('comment.post.store',$post->id)}}" method="post">
                                 @csrf
-                                <input type="hidden" name="comment_id" value="">
-                                <textarea class="comments__textarea" name="content" placeholder="بنویسید"></textarea>
+                                <textarea class="comments__textarea" name="content" placeholder="محتوای نظر خود را بنویسید..."></textarea>
                                 <button class="btn btn-purple">ارسال نظر</button>
-                                <button class="btn btn-gray">انصراف</button>
+                                <button type="reset" class="btn btn-gray">انصراف</button>
                             </form>
                         </div>
                     @else
-                        <p>شما برای ارسال نظر باید اول وارد سایت شوید</p>
+                        <p class="text-danger">برای ارسال نظر، اول باید وارد سایت شوید.</p>
                     @endauth
                     <div class="comments__list">
                         @foreach($post->comments as $comment)
