@@ -42,11 +42,6 @@ class Course extends Model
         return asset('courses/banner/' . $this->banner);
     }
 
-//    public function tags()
-//    {
-//        return $this->belongsToMany(Tag::class);
-//    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -86,9 +81,4 @@ class Course extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
-//    public function hasManycomments()
-//    {
-//        return $this->hasMany(Comment::class);
-//    }
 }
