@@ -14,9 +14,9 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::paginate(5);
-        $ParentComments = Comment::where('comment_id',null)->paginate(5);
-        return view('panel.comments.index',compact(['comments','ParentComments']));
+        $parentComments = Comment::where('comment_id',null)->orderByDesc('id')->paginate(4);
+        $childrenComments = Comment::where('comment_id','!=',null)->orderByDesc('id')->paginate(4);
+        return view('panel.comments.index',compact(['parentComments','childrenComments']));
     }
 
     public function save(CreateCommentRequest $request, Comment $comment)
@@ -32,7 +32,7 @@ class CommentController extends Controller
             'user_id' => auth()->user()->id
         ]);
         $request->session()->flash('status','پاسخ کاربر مورد نظر با موفقیت ایجاد شد !');
-        return redirect()->route('comments.index');
+        return to_route('comments.index');
     }
 
     public function edit(Comment $comment)
@@ -45,18 +45,13 @@ class CommentController extends Controller
         return view('panel.comments.reply',compact('comment'));
     }
 
-    public function show(Comment $comment)
-    {
-        return view('panel.comments.reply',compact('comment'));
-    }
-
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
         $comment->update(
             $request->validated()
         );
         $request->session()->flash('status','نظر مورد نظر با موفقیت ویرایش شد !');
-        return redirect()->route('comments.index');
+        return to_route('comments.index');
     }
 
     public function display(Request $request, Comment $comment)
@@ -65,7 +60,7 @@ class CommentController extends Controller
             'is_approved' => ! $comment->is_approved
         ]);
         $request->session()->flash('status','وضعیت نظر با موفقیت تغییر کرد !');
-        return redirect()->route('comments.index');
+        return to_route('comments.index');
     }
 
     public function destroy(Request $request, Comment $comment)
