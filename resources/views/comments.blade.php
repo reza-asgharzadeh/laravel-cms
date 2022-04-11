@@ -12,19 +12,21 @@
                     </div>
                 <!-- Reply form start -->
                     <div class="d-flex flex-column">
-                        <a class="reply-color" onclick="{{$comment->id}}.style.display='block'" id="display-button" data-toggle="reply-form" data-target="{{$comment->id}}">پاسخ</a>
-                        @if(isset($post))
-                        <form action="{{route('users.comment.post.store',$post_id)}}" method="post" class="reply-form d-none" id="{{$comment->id}}">
-                            @csrf
-                            <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                            <textarea placeholder="متن پاسخ خود را بنویسید..." rows="4" name="content"></textarea>
-                            <button class="btn btn-purple" type="submit">ثبت پاسخ</button>
-                            <button class="btn btn-gray" type="button" data-toggle="reply-form" data-target="{{$comment->id}}">لغو</button>
-                        </form>
+                        @auth
+                            <a class="reply-color" onclick="{{$comment->id}}.style.display='block'" data-toggle="reply-form" data-target="{{$comment->id}}">پاسخ</a>
                         @else
-                            <form action="{{route('users.comment.course.store',$course_id)}}" method="post" class="reply-form d-none" id="{{$comment->id}}">
+                            <p class="reply-color"><small>برای ارسال پاسخ ابتدا وارد سایت شوید.</small></p>
+                        @endauth
+                        @if(isset($post))
+                            <form action="{{route('reply.comment.post.store',[$post_id,$comment->id])}}" method="post" class="reply-form d-none" id="{{$comment->id}}">
                                 @csrf
-                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                <textarea placeholder="متن پاسخ خود را بنویسید..." rows="4" name="content"></textarea>
+                                <button class="btn btn-purple" type="submit">ثبت پاسخ</button>
+                                <button class="btn btn-gray" type="button" data-toggle="reply-form" data-target="{{$comment->id}}">لغو</button>
+                            </form>
+                        @else
+                            <form action="{{route('reply.comment.course.store',[$course_id,$comment->id])}}" method="post" class="reply-form d-none" id="{{$comment->id}}">
+                                @csrf
                                 <textarea placeholder="متن پاسخ خود را بنویسید..." rows="4" name="content"></textarea>
                                 <button class="btn btn-purple" type="submit">ثبت پاسخ</button>
                                 <button class="btn btn-gray" type="button" data-toggle="reply-form" data-target="{{$comment->id}}">لغو</button>
