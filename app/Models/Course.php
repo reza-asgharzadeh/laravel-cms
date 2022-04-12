@@ -24,6 +24,16 @@ class Course extends Model
         'user_id'
     ];
 
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categorizable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
     public function getStatus()
     {
         if($this->course_status == 0) return "در حال برگزاری" ;
@@ -37,14 +47,14 @@ class Course extends Model
         if($this->course_level == 2) return "مقدماتی تا پیشرفته" ;
     }
 
-    public function getBanner()
-    {
-        return asset('courses/banner/' . $this->banner);
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getBanner()
+    {
+        return asset('courses/banner/' . $this->banner);
     }
 
     public function episodes()
@@ -70,15 +80,5 @@ class Course extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class,'commentable');
-    }
-
-    public function categories()
-    {
-        return $this->morphToMany(Category::class, 'categorizable');
-    }
-
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
     }
 }
