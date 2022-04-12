@@ -6,7 +6,9 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>عناصر فرم</h3>
+                    <h3>
+                        <small>ایجاد دوره جدید</small>
+                    </h3>
                 </div>
 
                 <div class="title_right">
@@ -25,8 +27,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>طرح فرم
-                                <small>عناصر فرم های مختلف</small>
+                            <h2>
+                                <small>دوره جدید</small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -95,10 +97,11 @@
                                                 <input type="text" id="search-field">
                                             </li>
                                         </ul>
-                                        @foreach($tags as $tag)
-                                            {{$tag->name}}
-                                        @endforeach
-                                        <div id="suggestions-container"></div>
+                                        <div style="display: block; overflow: auto; height: 120px">
+                                            @foreach($tags as $tag)
+                                                <div id="suggestions-container">{{$tag->name}}</div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     @error('tags')
                                     <p class="text-danger">{{$message}}</p>
@@ -108,10 +111,12 @@
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12">دسته بندی ها
                                         <span class="required">*</span>
                                     </label>
-                                    <div class="control-label col-md-6 col-sm-6 col-xs-12 checkbox">
-                                        @foreach($categories as $category)
-                                            <span style="margin-left: 2.5rem">{{$category->name}}</span> <input type="checkbox" name="categories[]" value="{{$category->id}}">
-                                        @endforeach
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div style="display: block; overflow: auto; height: 120px">
+                                            @foreach($categories as $category)
+                                                <div id="suggestions-container"><input type="checkbox" name="categories[]" value="{{$category->id}}"><span style="margin-right: 1rem">{{$category->name}}</span></div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     @error('categories')
                                     <p class="text-danger">{{$message}}</p>
