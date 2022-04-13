@@ -171,6 +171,7 @@ return [
         'author'=>'نویسنده',
         'status'=>'وضعیت',
         'slug' => 'لینک',
-        'categories' => 'دسته بندی'
+        'categories' => 'دسته بندی',
+        'downloadUrl' => 'لینک دانلود'
     ],
 ];
