@@ -17,9 +17,10 @@ class CreateEpisodesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->integer('price');
-            $table->string('time');
+            $table->string('downloadUrl')->unique();
             $table->longText('content');
+            $table->string('time');
+            $table->boolean('display');
             $table->timestamps();
         });
     }
