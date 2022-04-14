@@ -8,6 +8,7 @@ use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\ShowCategoryCourseController;
 use App\Http\Controllers\ShowCourseController;
 use App\Http\Controllers\ShowCourseTagController;
+use App\Http\Controllers\ShowEpisodeController;
 use App\Http\Controllers\ShowPostController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Panel\CategoryController;
@@ -42,6 +43,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[LandingController::class,'index'])->name('landing');
 Route::get('/post/{post:slug}',[ShowPostController::class,'show'])->name('posts.show');
 Route::get('/course/{course:slug}',[ShowCourseController::class,'show'])->name('courses.show');
+Route::get('/course/{course:slug}/episode/{episode:slug}',[ShowEpisodeController::class,'show'])->name('episodes.show');
 Route::get('/category/post/{category:slug}',[ShowCategoryPostController::class,'show'])->name('category.post.show');
 Route::get('/category/course/{category:slug}',[ShowCategoryCourseController::class,'show'])->name('category.course.show');
 Route::get('/post/tag/{tag:slug}',[ShowPostTagController::class,'show'])->name('post.tag.show');
@@ -74,8 +76,10 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
     Route::post('/course/{course}/store',[StoreCommentController::class,'CourseStore'])->name('comment.course.store');
     Route::post('/post/{post}/store',[StoreCommentController::class,'PostStore'])->name('comment.post.store');
+    Route::post('/episode/{episode}/store',[StoreCommentController::class,'EpisodeStore'])->name('comment.episode.store');
     Route::post('/course/{course}/comment/{comment}/store',[StoreCommentController::class,'ReplyCourseStore'])->name('reply.comment.course.store');
     Route::post('/post/{post}/comment/{comment}/store',[StoreCommentController::class,'ReplyPostStore'])->name('reply.comment.post.store');
+    Route::post('/episode/{episode}/comment/{comment}/store',[StoreCommentController::class,'ReplyEpisodeStore'])->name('reply.comment.episode.store');
 });
 
 //payment
