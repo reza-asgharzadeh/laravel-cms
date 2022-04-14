@@ -6,7 +6,7 @@
                     <div class="d-flex flex-grow-1">
                         <img class="comment-pic" src="{{$comment->getProfile()}}" alt="">
                         <div class="comments__details">
-                            <h5 class="comments__author"><span class="comments__author-name">{{ $comment->user->name }} <small>{{$comment->user->role_id == 3 ? '(مدیر سایت)' : ''}}</small></span></h5>
+                            <h5 class="comments__author"><span class="comments__author-name">{{ $comment->user->name }} <small>{{$comment->user->role_id == 1 ? '(مدیر سایت)' : ''}}</small></span></h5>
                             <span class="comments_date">{{ $comment->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
