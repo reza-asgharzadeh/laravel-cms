@@ -110,6 +110,10 @@ ul li a{
     font-size: 1.2rem;
 }
 
+ul.catalogue li a{
+    font-size: 1rem;
+}
+
 .card-txt{
     font-weight: 600 !important;
     font-size: 0.9rem;
@@ -262,6 +266,33 @@ ul li a{
   }
  /*end all-blog btn*/
 
+
+/*start btn video*/
+.btn-video {background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%)}
+.btn-video {
+    padding: 8px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #c1bece;
+    border-radius: 5px;
+    font-weight: 300;
+}
+
+.btn-video:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-video a{
+    color: white;
+}
+/*end btn video*/
+
+
  .custom-box-shadow{
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -330,9 +361,14 @@ h1,h2,h3,h4,h5,h6{
     font-weight: 800 !important;
 }
 
-p{
+p,button{
     font-family:iranyekanBakh !important;
     font-weight: 400 !important;
+}
+
+p.h6,p.h5,p.h4,p.h3,p.h2,p.h1{
+    font-family:iranyekanBakh !important;
+    font-weight: 600 !important;
 }
 /*Font Face End*/
 
