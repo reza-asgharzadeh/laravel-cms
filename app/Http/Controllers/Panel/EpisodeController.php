@@ -13,7 +13,7 @@ class EpisodeController extends Controller
 {
     public function index()
     {
-        $episodes = Episode::paginate(5);
+        $episodes = Episode::orderByDesc('id')->paginate(5);
         return view('panel.episodes.index',compact('episodes'));
     }
 
