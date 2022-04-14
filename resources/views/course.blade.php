@@ -40,7 +40,6 @@
                 {!! $course->content !!}
                 <hr>
                 <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید این دوره را خریداری کنید</div>
-                <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید عضویت ویژه تهیه کنید</div>
 
                 <div id="accordion">
                     <div class="card mb-3">
@@ -49,7 +48,7 @@
                             <div class="d-flex bd-highlight mb-3">
                                 <div class="p-2 bd-highlight"><a class="collapsed card-link" data-toggle="collapse" href="#{{$episode->slug}}"><span class="circle-number">{{$loop->iteration}}</span> {{$episode->name}}</a></div>
                                 <div class="ms-auto p-2 bd-highlight">{{$episode->time}} دقیقه</div>
-                                <div class="p-2 bd-highlight"><i class="fa fa-download text-primary"></i></div>
+                                <div class="bd-highlight btn-video"><small><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
                             </div>
                         </div>
                         <div id="{{$episode->slug}}" class="collapse" data-parent="#accordion">
@@ -61,7 +60,6 @@
                     </div>
                 </div>
                 <!-- Blog Comments -->
-
                 <div class="comments" id="comments">
                     @auth
                         <div class="comments__send">
@@ -84,7 +82,7 @@
                     @endauth
                     <div class="comments__list">
                         @foreach($course->comments as $comment)
-                            @include('comments',['comment' => $comment,'course_id' => $course->id])
+                            @include('panel.landing_comments.course',['comment' => $comment,'course_id' => $course->id])
                         @endforeach
                     </div>
                 </div>
@@ -94,7 +92,7 @@
             <!-- Blog Sidebar Widgets Column -->
 
             <div class="col-md-4">
-                {{--            @if(! auth()->user()->checkLearning($course))--}}
+
                 <div class="well bg shadow">
                     <p><i class="fa fa-money"></i> قیمت دوره: {{$course->price}} تومان</p>
                     <p><i class="fa fa-user"></i> مدرس: {{$course->user->name}}</p>
@@ -112,7 +110,7 @@
                         <button style="width: 100%;padding: 10px" type="submit" class="btn btn-purple">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</button>
                     </form>
                 </div>
-            {{--        @endif--}}
+
             <!-- Blog Search Well -->
                 <div class="well shadow">
                     <p class="h5">برچسب ها:</p>
