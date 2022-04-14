@@ -7,6 +7,7 @@ use App\Http\Requests\Panel\Comment\CreateCommentRequest;
 use App\Http\Requests\Panel\Comment\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Course;
+use App\Models\Episode;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -21,12 +22,13 @@ class CommentController extends Controller
 
     public function save(CreateCommentRequest $request, Comment $comment)
     {
-        if ($comment->commentable_type == 'App\Models\Course'){
-            $course_post = Course::where('id',$comment->commentable_id)->first();
-        } else {
-            $course_post = Post::where('id',$comment->commentable_id)->first();
-        }
-        $course_post->comments()->create([
+        $model = match ($comment->commentable_type) {
+            'App\Models\Course' => Course::where('id',$comment->commentable_id)->first(),
+            'App\Models\Post' => Post::where('id',$comment->commentable_id)->first(),
+            'App\Models\Episode' => Episode::where('id',$comment->commentable_id)->first(),
+        };
+
+        $model->comments()->create([
             'content' => $request->get('content'),
             'comment_id' => $comment->id,
             'user_id' => auth()->user()->id
