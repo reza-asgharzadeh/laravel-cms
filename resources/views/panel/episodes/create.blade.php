@@ -27,8 +27,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>طرح فرم
-                                <small>عناصر فرم های مختلف</small>
+                            <h2>
+                                <small>جلسه جدید</small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -126,6 +126,17 @@
                                         </select>
                                     </div>
                                     @error('course_id')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="description">توضیحات کوتاه
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea id="description" name="description" class="form-control col-md-7 col-xs-12"></textarea>
+                                    </div>
+                                    @error('description')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>

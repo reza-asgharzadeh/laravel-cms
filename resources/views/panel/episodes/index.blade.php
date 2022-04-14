@@ -51,11 +51,13 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>شناسه</th>
+                                    <th>ردیف</th>
                                     <th>نام جلسه</th>
                                     <th>متعلق به دوره</th>
-                                    <th>لینک</th>
-                                    <th>قیمت</th>
+                                    <th>توضیحات کوتاه</th>
+                                    <th>نمایش</th>
+                                    <th>آدرس</th>
+                                    <th>لینک دانلود</th>
                                     <th>مدت زمان</th>
                                     <th>تاریخ شروع</th>
                                     <th>تاریخ آخرین آپدیت</th>
@@ -65,11 +67,13 @@
                                 <tbody>
                                     @foreach($episodes as $episode)
                                     <tr>
-                                        <th scope="row">{{$episode->id}}</th>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$episode->name}}</td>
                                         <td>{{$episode->course->name}}</td>
+                                        <td>{{$episode->description}}</td>
+                                        <td>{{$episode->display()}}</td>
                                         <td>{{$episode->slug}}</td>
-                                        <td>{{$episode->price}}</td>
+                                        <td>{{$episode->downloadUrl}}</td>
                                         <td>{{$episode->time}}</td>
                                         <td>{{$episode->getCreatedAtInJalali()}}</td>
                                         <td>{{$episode->getUpdatedAtInJalali()}}</td>
