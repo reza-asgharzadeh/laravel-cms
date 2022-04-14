@@ -6,7 +6,9 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>عناصر فرم</h3>
+                    <h3>
+                        <small>ایجاد جلسه جدید</small>
+                    </h3>
                 </div>
 
                 <div class="title_right">
@@ -63,7 +65,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="slug">لینک
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="slug">آدرس
                                          <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -75,26 +77,40 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="price">قیمت
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="downloadUrl">لینک دانلود
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="price" name="price"
-                                               class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="downloadUrl" name="downloadUrl"
+                                               class="form-control col-md-7 col-xs-12" value="">
                                     </div>
-                                    @error('price')
+                                    @error('downloadUrl')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="time">مدت زمان
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="time">مدت زمان جلسه
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="time" name="time"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="">
                                     </div>
                                     @error('time')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">قابلیت نمایش
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control" name="display">
+                                            <option value="0">نمایش در صورت خرید دوره</option>
+                                            <option value="1">نمایش برای همه</option>
+                                        </select>
+                                    </div>
+                                    @error('display')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>

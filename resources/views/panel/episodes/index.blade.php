@@ -71,8 +71,8 @@
                                         <td>{{$episode->slug}}</td>
                                         <td>{{$episode->price}}</td>
                                         <td>{{$episode->time}}</td>
-                                        <td>{{$episode->created_at}}</td>
-                                        <td>{{$episode->updated_at}}</td>
+                                        <td>{{$episode->getCreatedAtInJalali()}}</td>
+                                        <td>{{$episode->getUpdatedAtInJalali()}}</td>
                                         <td>
                                             <a href="{{route('episodes.edit',$episode->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
                                             <a href="{{route('episodes.destroy',$episode->id)}}" onclick="destroyEpisode(event, {{ $episode->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
