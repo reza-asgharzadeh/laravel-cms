@@ -52,7 +52,7 @@
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
-                                    <th><span class="text-danger">عنوان مقاله</span> یا <span class="text-success">نام دوره</span></th>
+                                    <th><span class="text-danger">عنوان مقاله</span> - <span class="text-success">نام دوره</span> - <span class="text-warning">نام اپیزود</span></th>
                                     <th>نظر</th>
                                     <th>شناسه پاسخ</th>
                                     <th>نام کاربر</th>
@@ -65,7 +65,7 @@
                                 @foreach($parentComments as $comment)
                                     <tr>
                                         <th scope="row">{{$comment->id}}</th>
-                                        <td><span class="{{$comment->commentable->name ? 'text-success' : 'text-danger'}}">● </span>{{$comment->commentable->name ?? $comment->commentable->title}}</td>
+                                        <td><span class="@if($comment->commentable_type == 'App\Models\Course') text-success @elseif($comment->commentable_type == 'App\Models\Post') text-danger @else text-warning @endif">● </span>{{$comment->commentable->name ?? $comment->commentable->title}}</td>
                                         <td>{!! \Illuminate\Support\Str::limit($comment->content, 20, $end='...') !!}</td>
                                         <td>
                                             <ul>
@@ -150,7 +150,7 @@
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
-                                    <th><span class="text-danger">عنوان مقاله</span> یا <span class="text-success">نام دوره</span></th>
+                                    <th><span class="text-danger">عنوان مقاله</span> - <span class="text-success">نام دوره</span> - <span class="text-warning">نام اپیزود</span></th>
                                     <th>نظر</th>
                                     <th>پاسخ به شناسه</th>
                                     <th>نام کاربر</th>
@@ -161,45 +161,45 @@
                                 </thead>
                                 <tbody>
                                 @foreach($childrenComments as $comment)
-                                        <tr>
-                                            <th scope="row">{{$comment->id}}</th>
-                                            <td><span class="{{$comment->commentable->name ? 'text-success' : 'text-danger'}}">● </span>{{$comment->commentable->name ?? $comment->commentable->title}}</td>
-                                            <td>{!! \Illuminate\Support\Str::limit($comment->content, 20, $end='...') !!}</td>
-                                            <td>{{$comment->parent->id}}</td>
-                                            <td>{{$comment->user->name}}</td>
-                                            <td class="{{$comment->is_approved ? 'text-success' : 'text-danger'}}">{{$comment->is_approved ? 'تایید شده' : 'تاییده نشده'}}</td>
-                                            <td>{{$comment->getCreatedAtInJalali()}}</td>
-                                            <td>
-                                                <div style="display: flex; justify-content: space-evenly">
-                                                    <div><a href="{{route('comments.edit',$comment->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
-                                                    <div><a href="{{route('comments.reply',$comment->id)}}"><i class="fa-x fa-reply text-primary" title="پاسخ"></i></a></div>
-                                                    @if($comment->is_approved)
-                                                        <div>
-                                                            <a href="{{route('comments.display',$comment->id)}}" onclick="updateIsApproved(event, {{ $comment->id }})"><i class="fa-x fa-times" title="عدم تایید"></i></a>
-                                                            <form action="{{route('comments.display',$comment->id)}}" method="post" id="update-isApproved-{{ $comment->id }}">
-                                                                @csrf
-                                                                @method('put')
-                                                            </form>
-                                                        </div>
-                                                    @else
-                                                        <div>
-                                                            <a href="{{route('comments.display',$comment->id)}}" onclick="updateIsApproved(event, {{ $comment->id }})"><i class="fa-x fa-check" title="تایید"></i></a>
-                                                            <form action="{{route('comments.display',$comment->id)}}" method="post" id="update-isApproved-{{ $comment->id }}">
-                                                                @csrf
-                                                                @method('put')
-                                                            </form>
-                                                        </div>
-                                                    @endif
+                                    <tr>
+                                        <th scope="row">{{$comment->id}}</th>
+                                        <td><span class="@if($comment->commentable_type == 'App\Models\Course') text-success @elseif($comment->commentable_type == 'App\Models\Post') text-danger @else text-warning @endif">● </span>{{$comment->commentable->name ?? $comment->commentable->title}}</td>
+                                        <td>{!! \Illuminate\Support\Str::limit($comment->content, 20, $end='...') !!}</td>
+                                        <td>{{$comment->parent->id}}</td>
+                                        <td>{{$comment->user->name}}</td>
+                                        <td class="{{$comment->is_approved ? 'text-success' : 'text-danger'}}">{{$comment->is_approved ? 'تایید شده' : 'تاییده نشده'}}</td>
+                                        <td>{{$comment->getCreatedAtInJalali()}}</td>
+                                        <td>
+                                            <div style="display: flex; justify-content: space-evenly">
+                                                <div><a href="{{route('comments.edit',$comment->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
+                                                <div><a href="{{route('comments.reply',$comment->id)}}"><i class="fa-x fa-reply text-primary" title="پاسخ"></i></a></div>
+                                                @if($comment->is_approved)
                                                     <div>
-                                                        <a href="{{route('comments.destroy',$comment->id)}}" onclick="destroyComment(event, {{ $comment->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
-                                                        <form action="{{route('comments.destroy',$comment->id)}}" method="post" id="destroy-comment-{{ $comment->id }}">
+                                                        <a href="{{route('comments.display',$comment->id)}}" onclick="updateIsApproved(event, {{ $comment->id }})"><i class="fa-x fa-times" title="عدم تایید"></i></a>
+                                                        <form action="{{route('comments.display',$comment->id)}}" method="post" id="update-isApproved-{{ $comment->id }}">
                                                             @csrf
-                                                            @method('delete')
+                                                            @method('put')
                                                         </form>
                                                     </div>
+                                                @else
+                                                    <div>
+                                                        <a href="{{route('comments.display',$comment->id)}}" onclick="updateIsApproved(event, {{ $comment->id }})"><i class="fa-x fa-check" title="تایید"></i></a>
+                                                        <form action="{{route('comments.display',$comment->id)}}" method="post" id="update-isApproved-{{ $comment->id }}">
+                                                            @csrf
+                                                            @method('put')
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                                <div>
+                                                    <a href="{{route('comments.destroy',$comment->id)}}" onclick="destroyComment(event, {{ $comment->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
+                                                    <form action="{{route('comments.destroy',$comment->id)}}" method="post" id="destroy-comment-{{ $comment->id }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
                                                 </div>
-                                            </td>
-                                        </tr>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
