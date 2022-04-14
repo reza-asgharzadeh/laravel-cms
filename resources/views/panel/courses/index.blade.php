@@ -51,7 +51,7 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>شناسه</th>
+                                    <th>ردیف</th>
                                     <th>نام دوره</th>
                                     <th>مدرس</th>
                                     <th>لینک</th>
@@ -71,7 +71,7 @@
                                 <tbody>
                                     @foreach($courses as $course)
                                     <tr>
-                                        <th scope="row">{{$course->id}}</th>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$course->name}}</td>
                                         <td>{{$course->user->name}}</td>
                                         <td>{{$course->slug}}</td>
