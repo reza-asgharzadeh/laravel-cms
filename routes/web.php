@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
+use App\Http\Controllers\Panel\PaymentController;
 use App\Http\Controllers\Panel\QuestionController;
 use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\ShowCategoryCourseController;
@@ -84,8 +85,8 @@ Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
 
 //payment
 Route::middleware(['auth', 'verified'])->prefix('/payment')->group(function (){
-Route::post('/course/{course}',[CourseController::class,'payment'])->name('payment');
-Route::get('/course/checker',[CourseController::class,'checker'])->name('checker');
+Route::post('/course/{course}',[PaymentController::class,'payment'])->name('payment');
+Route::get('/course/checker',[PaymentController::class,'checker'])->name('checker');
 });
 
 //Login Google
