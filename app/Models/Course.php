@@ -81,4 +81,8 @@ class Course extends Model
     {
         return $this->morphMany(Comment::class,'commentable');
     }
+
+    public function payments(){
+        return $this->hasMany(Payment::class,'course_id');
+    }
 }

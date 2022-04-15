@@ -90,4 +90,8 @@ class User extends Authenticatable implements MustVerifyEmail
         if($this->role_id == 1) return "مدیر" ;
         if($this->role_id == 2) return "کاربر عادی" ;
     }
+
+    public function payments(){
+        return $this->hasMany(Payment::class,'user_id');
+    }
 }
