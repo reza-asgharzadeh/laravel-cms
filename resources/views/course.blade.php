@@ -48,7 +48,7 @@
                             <div class="d-flex bd-highlight mb-3">
                                 <div class="p-2 bd-highlight"><a class="collapsed card-link" data-toggle="collapse" href="#{{$episode->slug}}"><span class="circle-number">{{$loop->iteration}}</span> {{$episode->name}}</a></div>
                                 <div class="ms-auto p-2 bd-highlight">{{$episode->time}} دقیقه</div>
-                                <div class="bd-highlight btn-video"><small><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
+                                <div class="bd-highlight btn-video"><small><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}" target="_blank"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
                             </div>
                         </div>
                         <div id="{{$episode->slug}}" class="collapse" data-parent="#accordion">
@@ -106,7 +106,6 @@
                     <p><i class="fa fa-calendar"></i> آخرین بروزرسانی: {{$course->getUpdatedAtInJalali()}}</p>
                     <form action="{{route('payment',$course->id)}}" method="post">
                         @csrf
-                        <input type="hidden" name="course_id" value="">
                         <button style="width: 100%;padding: 10px" type="submit" class="btn btn-purple">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</button>
                     </form>
                 </div>
