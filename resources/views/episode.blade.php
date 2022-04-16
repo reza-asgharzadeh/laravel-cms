@@ -33,14 +33,35 @@
                 <div class="d-flex justify-content-between">
                     <p><i class="fa fa-calendar"></i> تاریخ انتشار: {{$episode->getCreatedAtInJalali()}}</p>
                 </div>
-                <video controls class="w-100">
-                    <source src="{{$episode->downloadUrl}}"
-                            type="video/mp4">
-                    Sorry, your browser doesn't support embedded videos.
-                </video>
+                @auth
+                    @if(!is_null($download_link))
+                        <video controls class="w-100">
+                            <source src="{{$episode->downloadUrl}}"
+                                    type="video/mp4">
+                            Sorry, your browser doesn't support embedded videos.
+                        </video>
+                    @else
+                        <img src="" alt="خریداری کنید">
+                    @endif
+                @else
+                    <img src="" alt="لاگین شوید">
+                @endauth
                 <div class="d-flex justify-content-between">
                     <div class="btn-video"><a href="{{route('courses.show',$course->slug)}}"><i class="fa fa-eye"></i> مشاهده جزئیات این دوره</a></div>
-                    <div class="btn-video"><a href="{{$episode->downloadUrl}}"><i class="fa fa-download"></i> دانلود این جلسه</a></div>
+                    @auth
+                        @if(!is_null($download_link))
+                            <div class="btn-video"><a href="{{$episode->downloadUrl}}" target="_blank"><i class="fa fa-download"></i> دانلود این جلسه</a></div>
+                        @else
+                            <div class="btn-video">
+                                <a href="{{route('payment',$course->id)}}" onclick="goToPayment(event, {{ $course->id }})"><i class="fa fa-money"></i> برای دانلود ابتدا باید در این دوره ثبت نام کنید</a>
+                                <form action="{{route('payment',$course->id)}}" method="post" id="go-to-payment-{{ $course->id }}">
+                                    @csrf
+                                </form>
+                            </div>
+                        @endif
+                    @else
+                        <div class="btn-video"><a href="{{route('login')}}"><i class="fa fa-sign-in"></i> برای دانلود ابتدا باید وارد سایت شوید</a></div>
+                    @endauth
                 </div>
                 <hr>
 
@@ -105,7 +126,6 @@
                     <p><i class="fa fa-calendar"></i> آخرین بروزرسانی: {{$course->getUpdatedAtInJalali()}}</p>
                     <form action="{{route('payment',$course->id)}}" method="post">
                         @csrf
-                        <input type="hidden" name="course_id" value="">
                         <button style="width: 100%;padding: 10px" type="submit" class="btn btn-purple">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</button>
                     </form>
                 </div>
@@ -135,10 +155,12 @@
     </div>
     <!-- /.container -->
     <x-slot name="scripts">
-        {{--    start episode toggle    --}}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        {{--    end episode toggle    --}}
         <script src="{{asset('assets/landing/js/comment-replies.js')}}"></script>
+        <script>
+            function goToPayment(event, id) {
+                event.preventDefault();
+                document.getElementById(`go-to-payment-${id}`).submit()
+            }
+        </script>
     </x-slot>
 </x-landing-layout>
