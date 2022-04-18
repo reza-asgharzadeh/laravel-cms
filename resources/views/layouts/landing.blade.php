@@ -10,6 +10,11 @@
 </head>
 <body>
 @include('_partials.landing.header')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 {{$slot}}
 @include('_partials.landing.footer')
 @include('_partials.landing.scripts')
