@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\ActivityLog;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -53,6 +54,10 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         ActivityLog::create([
+            'user_id' => Auth::user()->id,
+        ]);
+
+        Wallet::create([
             'user_id' => Auth::user()->id,
         ]);
 

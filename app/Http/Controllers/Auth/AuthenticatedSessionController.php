@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\ActivityLog;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -79,6 +80,10 @@ class AuthenticatedSessionController extends Controller
                 'password' => Hash::make($social_user->getId()),
                 'role_id' => 1,
                 'email_verified_at' => now(),
+            ]);
+
+            Wallet::create([
+                'user_id' => Auth::user()->id,
             ]);
         }
 
