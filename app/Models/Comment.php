@@ -50,4 +50,8 @@ class Comment extends Model
     {
         return verta($this->created_at)->format('Y/m/d');
     }
+
+    public function is_approved(){
+        return $this->is_approved ? 'تایید شده' : 'تایید نشده';
+    }
 }
