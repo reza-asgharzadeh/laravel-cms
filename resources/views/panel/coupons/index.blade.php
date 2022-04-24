@@ -53,11 +53,15 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>کد تخفیف</th>
-                                        <th>نوع (درصد/مقدار)</th>
-                                        <th>ارزش</th>
+                                        <th>نوع تخفیف (درصد/مقدار)</th>
+                                        <th>ارزش کد</th>
+                                        <th>حداقل مبلغ کارت</th>
+                                        <th>تعداد موجود</th>
+                                        <th>تعداد استفاده شده</th>
                                         <th>تاریخ انقضا</th>
                                         <th>تاریخ ایجاد</th>
                                         <th>تاریخ آپدیت</th>
+                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -68,16 +72,43 @@
                                             <td>{{$coupon->code}}</td>
                                             <td>{{$coupon->type}}</td>
                                             <td>{{$coupon->value}}</td>
+                                            <td>{{$coupon->cart_value}}</td>
+                                            <td>{{$coupon->quantity}}</td>
+                                            <td>{{$coupon->used}}</td>
                                             <td>{{$coupon->expiry_date}}</td>
                                             <td>{{$coupon->created_at}}</td>
                                             <td>{{$coupon->updated_at}}</td>
+                                            <td class="{{$coupon->is_approved ? 'text-success' : 'text-danger'}}">{{$coupon->is_approved()}}</td>
                                             <td>
-                                                <a href="{{route('coupons.edit',$coupon->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
-                                                <a href="{{route('coupons.destroy',$coupon->id)}}" onclick="destroyCoupon(event, {{ $coupon->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
-                                                <form action="{{route('coupons.destroy',$coupon->id)}}" method="post" id="destroy-coupon-{{ $coupon->id }}">
-                                                    @csrf
-                                                    @method('delete')
-                                                </form>
+                                                <div style="display: flex; justify-content: space-evenly">
+                                                    <div>
+                                                        @if($coupon->is_approved)
+                                                            <div>
+                                                                <a href="{{route('coupons.status',$coupon->id)}}" onclick="updateIsApproved(event, {{ $coupon->id }})"><i class="fa-x fa-times" title="عدم تایید"></i></a>
+                                                                <form action="{{route('coupons.status',$coupon->id)}}" method="post" id="update-isApproved-{{ $coupon->id }}">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                </form>
+                                                            </div>
+                                                        @else
+                                                            <div>
+                                                                <a href="{{route('coupons.status',$coupon->id)}}" onclick="updateIsApproved(event, {{ $coupon->id }})"><i class="fa-x fa-check" title="تایید"></i></a>
+                                                                <form action="{{route('coupons.status',$coupon->id)}}" method="post" id="update-isApproved-{{ $coupon->id }}">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                </form>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                    <div><a href="{{route('coupons.edit',$coupon->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
+                                                    <div>
+                                                        <a href="{{route('coupons.destroy',$coupon->id)}}" onclick="destroyCoupon(event, {{ $coupon->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
+                                                        <form action="{{route('coupons.destroy',$coupon->id)}}" method="post" id="destroy-coupon-{{ $coupon->id }}">
+                                                            @csrf
+                                                            @method('delete')
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -114,6 +145,11 @@
                         document.getElementById(`destroy-coupon-${id}`).submit()
                     }
                 })
+            }
+
+            function updateIsApproved(event, id) {
+                event.preventDefault();
+                document.getElementById(`update-isApproved-${id}`).submit()
             }
         </script>
     </x-slot>

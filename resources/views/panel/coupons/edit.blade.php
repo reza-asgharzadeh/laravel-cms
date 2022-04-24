@@ -1,6 +1,6 @@
 <x-panel-layout>
     <x-slot name="links">
-        <link href="{{asset('assets/panel/css/tags.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/panel/css/datetimepicker.css')}}" rel="stylesheet">
     </x-slot>
     <div class="right_col" role="main">
         <div class="">
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="value">ارزش
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="value">ارزش کد
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -89,21 +89,46 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="expiry_date">تاریخ انقضاء
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="cart_value">حداقل مبلغ کارت
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="date" id="expiry_date" name="expiry_date"
-                                               class="form-control col-md-7 col-xs-12" value="{{$coupon->expiry_date}}">
+                                        <input type="text" id="cart_value" name="cart_value"
+                                               class="form-control col-md-7 col-xs-12" value="{{$coupon->cart_value}}">
+                                    </div>
+                                    @error('cart_value')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="quantity">تعداد موجود
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="quantity" name="quantity"
+                                               class="form-control col-md-7 col-xs-12" value="{{$coupon->quantity}}">
+                                    </div>
+                                    @error('quantity')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="result">تاریخ انقضاء
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div id="picker"></div>
+                                        <input type="hidden" id="result" name="expiry_date" class="form-control col-md-7 col-xs-12">
                                     </div>
                                     @error('expiry_date')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
+                                    {{$coupon->expiry_date}}
                                 </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <button class="btn btn-primary">ثبت</button>
+                                        <button class="btn btn-primary">ویرایش</button>
                                         <a href="{{route('coupons.index')}}" class="btn btn-danger">انصراف</a>
                                     </div>
                                 </div>
@@ -114,4 +139,14 @@
             </div>
         </div>
     </div>
+    <x-slot name="scripts">
+        <script src="{{asset('assets/panel/js/datetimepicker.js')}}"></script>
+        <script src="{{asset('assets/panel/js/moment-with-locales.min.js')}}"></script>
+        <script>
+            $(document).ready( function () {
+                $('#picker').dateTimePicker();
+                $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY', title: 'Select Date'});
+            })
+        </script>
+    </x-slot>
 </x-panel-layout>
