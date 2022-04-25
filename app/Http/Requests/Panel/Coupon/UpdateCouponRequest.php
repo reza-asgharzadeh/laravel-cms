@@ -29,7 +29,7 @@ class UpdateCouponRequest extends FormRequest
         return [
             'code' => ['required','string', 'max:255', Rule::unique('coupons')->ignore($coupon->id)],
             'type' => ['required','in:fixed,percent'],
-            'value' => ['required','integer'],
+            'value' => ['required','integer','between:1,100'],
             'cart_value' => ['required','integer'],
             'quantity' => ['required','integer'],
             'expiry_date' => ['required','date_format:Y-m-d H:i:s']
