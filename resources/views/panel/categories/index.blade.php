@@ -143,9 +143,11 @@
                                             <td>{{$parent->slug}}</td>
                                             <td>
                                                 <ul>
-                                                @foreach($parent->children as $child)
-                                                    <li>{{$child->name}}</li>
-                                                @endforeach
+                                                    @forelse($parent->children as $child)
+                                                        <li>{{$child->name}}</li>
+                                                    @empty
+                                                        <p>ندارد</p>
+                                                    @endforelse
                                                 </ul>
                                             </td>
                                             <td>

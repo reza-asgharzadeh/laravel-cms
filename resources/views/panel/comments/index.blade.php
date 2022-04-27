@@ -69,13 +69,15 @@
                                         <td>{!! \Illuminate\Support\Str::limit($comment->content, 20, $end='...') !!}</td>
                                         <td>
                                             <ul>
-                                                @foreach($comment->replies as $reply)
+                                                @forelse($comment->replies as $reply)
                                                     <li>{{$reply->id}}</li>
-                                                @endforeach
+                                                @empty
+                                                    <p>ندارد</p>
+                                                @endforelse
                                             </ul>
                                         </td>
                                         <td>{{$comment->user->name}}</td>
-                                        <td class="{{$comment->is_approved ? 'text-success' : 'text-danger'}}">{{$comment->is_approved ? 'تایید شده' : 'تاییده نشده'}}</td>
+                                        <td class="{{$comment->is_approved ? 'text-success' : 'text-danger'}}">{{$comment->is_approved()}}</td>
                                         <td>{{$comment->getCreatedAtInJalali()}}</td>
                                         <td>
                                             <div style="display: flex; justify-content: space-evenly">

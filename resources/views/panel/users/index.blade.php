@@ -70,9 +70,11 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->getRoleName()}}</td>
                                         <td>
-                                            @foreach($user->role->permissions as $permission)
-                                            {{$permission->name}}
-                                            @endforeach
+                                            @forelse($user->role->permissions as $permission)
+                                                {{$permission->name}}
+                                            @empty
+                                                <p>ندارد</p>
+                                            @endforelse
                                         </td>
                                         <td>{{$user->getCreatedAtInJalali()}}</td>
                                         <td>
