@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
-use App\Http\Controllers\Panel\PaymentController;
+use App\Http\Controllers\Panel\CouponController;
+use App\Http\Controllers\Panel\OfferController;
 use App\Http\Controllers\Panel\QuestionController;
 use App\Http\Controllers\Panel\TicketController;
+use App\Http\Controllers\Panel\TransactionController;
+use App\Http\Controllers\Panel\WalletController;
 use App\Http\Controllers\ShowCategoryCourseController;
 use App\Http\Controllers\ShowCourseController;
 use App\Http\Controllers\ShowCourseTagController;
@@ -72,6 +77,16 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/activities',ActivityLogController::class)->only(['index','destroy']);
     Route::resource('/questions',QuestionController::class)->except(['edit','update','destroy']);
     Route::post('/answers/{question}',[AnswerController::class,'store'])->name('answers.store');
+    //Order
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    //Coupon
+    Route::resource('/coupons',CouponController::class);
+    Route::put('/coupons/{coupon}/status',[CouponController::class,'isApproved'])->name('coupons.status');
+    //Offer
+    Route::resource('/offers',OfferController::class);
+    Route::put('/offers/{offer}/status',[OfferController::class,'isApproved'])->name('offers.status');
+    //Wallet
+    Route::resource('/wallets',WalletController::class);
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
@@ -83,10 +98,19 @@ Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
     Route::post('/episode/{episode}/comment/{comment}/store',[StoreCommentController::class,'ReplyEpisodeStore'])->name('reply.comment.episode.store');
 });
 
-//payment
-Route::middleware(['auth', 'verified'])->prefix('/payment')->group(function (){
-Route::post('/course/{course}',[PaymentController::class,'payment'])->name('payment');
-Route::get('/course/checker',[PaymentController::class,'checker'])->name('checker');
+//cart
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+    Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('/update-cart', [CartController::class, 'update'])->name('update.cart');
+    Route::patch('/update-wallet', [CartController::class, 'updateWallet'])->name('update.wallet');
+    Route::delete('/remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+});
+
+//Transaction
+Route::middleware(['auth', 'verified'])->prefix('/transaction')->group(function (){
+    Route::post('/request',[TransactionController::class,'request'])->name('request');
+    Route::get('/callback',[TransactionController::class,'callback'])->name('callback');
 });
 
 //Login Google
