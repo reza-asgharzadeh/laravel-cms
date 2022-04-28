@@ -34,7 +34,7 @@
                     <p><i class="fa fa-calendar"></i> تاریخ انتشار: {{$episode->getCreatedAtInJalali()}}</p>
                 </div>
                 @auth
-                    @if(!is_null($download_link))
+                    @if($downloadLink)
                         <video controls class="w-100">
                             <source src="{{$episode->downloadUrl}}"
                                     type="video/mp4">
@@ -49,14 +49,11 @@
                 <div class="d-flex justify-content-between">
                     <div class="btn-video"><a href="{{route('courses.show',$course->slug)}}"><i class="fa fa-eye"></i> مشاهده جزئیات این دوره</a></div>
                     @auth
-                        @if(!is_null($download_link))
+                        @if($downloadLink)
                             <div class="btn-video"><a href="{{$episode->downloadUrl}}" target="_blank"><i class="fa fa-download"></i> دانلود این جلسه</a></div>
                         @else
                             <div class="btn-video">
-                                <a href="{{route('payment',$course->id)}}" onclick="goToPayment(event, {{ $course->id }})"><i class="fa fa-money"></i> برای دانلود ابتدا باید در این دوره ثبت نام کنید</a>
-                                <form action="{{route('payment',$course->id)}}" method="post" id="go-to-payment-{{ $course->id }}">
-                                    @csrf
-                                </form>
+                                <a href="{{ route('add.to.cart', $course->id) }}"><i class="fa fa-money"></i> برای دانلود ابتدا باید در این دوره ثبت نام کنید</a>
                             </div>
                         @endif
                     @else
@@ -124,10 +121,11 @@
                     <p><i class="fa fa-level-up"></i> سطح دوره: {{$course->getLevel()}}</p>
                     <p><i class="fa fa-calendar"></i> تاریخ شروع: {{$course->getCreatedAtInJalali()}}</p>
                     <p><i class="fa fa-calendar"></i> آخرین بروزرسانی: {{$course->getUpdatedAtInJalali()}}</p>
-                    <form action="{{route('payment',$course->id)}}" method="post">
-                        @csrf
-                        <button style="width: 100%;padding: 10px" type="submit" class="btn btn-purple">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</button>
-                    </form>
+                    @if($display)
+                        <a href="{{ route('cart') }}" class="btn btn-purple w-100">نهایی سازی خرید</a>
+                    @else
+                        <a href="{{ route('add.to.cart', $course->id) }}" class="btn btn-purple w-100">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</a>
+                    @endif
                 </div>
 
             <!-- Blog Search Well -->
@@ -156,11 +154,5 @@
     <!-- /.container -->
     <x-slot name="scripts">
         <script src="{{asset('assets/landing/js/comment-replies.js')}}"></script>
-        <script>
-            function goToPayment(event, id) {
-                event.preventDefault();
-                document.getElementById(`go-to-payment-${id}`).submit()
-            }
-        </script>
     </x-slot>
 </x-landing-layout>
