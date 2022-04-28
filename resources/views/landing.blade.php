@@ -65,7 +65,15 @@
                 <div class="card-body text-center">
                     <a class="card-title text-xl" href="{{route('courses.show',$course->slug)}}">{{$course->name}}</a>
                     <p class="card-text">{!! \Illuminate\Support\Str::limit($course->content, 60, $end='...') !!}</p>
-                    <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more">{{$course->getPrice()}} {{$course->price == 0 ? '' : 'تومان'}}</a>
+                    @if($course->offer && $course->offer->type == 'percent' && $course->offer->expiry_date >= Carbon\Carbon::now() && $course->offer->is_approved == true)
+                        <p class="text-decoration-line-through text-danger">{{$course->price}}</p>
+                        <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more">{{$course->getPrice() - ($course->getPrice() * $course->offer->value / 100)}} {{$course->price == 0 ? '' : 'تومان'}}</a>
+                    @elseif($course->offer && $course->offer->type == 'fixed' && $course->offer->expiry_date >= Carbon\Carbon::now() && $course->offer->is_approved == true)
+                        <p class="text-decoration-line-through text-danger">{{$course->price}}</p>
+                        <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more">{{$course->getPrice() - ($course->offer->value)}} {{$course->price == 0 ? '' : 'تومان'}}</a>
+                    @else
+                        <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more">{{$course->getPrice()}} {{$course->price == 0 ? '' : 'تومان'}}</a>
+                    @endif
                 </div>
                 <div class="card-footer text-center">
                     <div class="d-flex justify-content-between">
