@@ -21,7 +21,8 @@ class Course extends Model
         'time',
         'course_status',
         'course_level',
-        'user_id'
+        'user_id',
+        'offer_id'
     ];
 
     public function categories()
@@ -82,7 +83,11 @@ class Course extends Model
         return $this->morphMany(Comment::class,'commentable');
     }
 
-    public function payments(){
-        return $this->hasMany(Payment::class,'course_id');
+    public function orders(){
+        return $this->belongsToMany(Order::class);
+    }
+
+    public function offer(){
+        return $this->belongsTo(Offer::class);
     }
 }
