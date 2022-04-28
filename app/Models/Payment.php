@@ -10,12 +10,9 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'course_id',
-        'amount',
+        'order_id',
         'authority',
         'RefID',
-        'order_code',
         'payment_type',
         'gateway_name',
         'status_code'
@@ -25,8 +22,8 @@ class Payment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function course(){
-        return $this->belongsTo(Course::class);
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 
     public function statusCode(){
@@ -57,9 +54,10 @@ class Payment extends Model
 
     public function paymentType(){
         $message = match ($this->payment_type) {
-            '0' => 'درگاه پرداخت',
-            '1' => 'کارت به کارت',
-            '2' => 'کیف پول',
+            'gateway' => 'درگاه پرداخت',
+            'card' => 'کارت به کارت',
+            'wallet' => 'کیف پول',
+            'cash' => 'نقدی',
         };
         return $message;
     }
