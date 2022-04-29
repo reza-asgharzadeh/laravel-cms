@@ -8,7 +8,6 @@ use App\Http\Requests\Panel\Post\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -76,15 +75,19 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
-
-        if(count($tag_id) < 1 ){
-            throw ValidationException::withMessages([
-                'tags' => ['برچسب یافت نشد']
-            ]);
-        }
-
         $data = $request->validated();
+
+        if ($request->tags){
+            $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
+
+            if(count($tag_id) < 1 ){
+                throw ValidationException::withMessages([
+                    'tags' => ['برچسب یافت نشد']
+                ]);
+            }
+        } else {
+            unset($data['tags']);
+        }
 
         if($request->hasFile('banner')){
             $file = $request->file('banner');
@@ -99,7 +102,10 @@ class PostController extends Controller
 
         $category_id = $request->categories;
         $post->categories()->sync($category_id);
-        $post->tags()->sync($tag_id);
+
+        if ($request->tags){
+            $post->tags()->sync($tag_id);
+        }
 
         $request->session()->flash('status','مقاله مورد نظر با موفقیت ویرایش شد !');
         return to_route('posts.index');
