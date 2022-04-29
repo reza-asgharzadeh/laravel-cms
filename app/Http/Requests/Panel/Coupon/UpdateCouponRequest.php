@@ -32,7 +32,7 @@ class UpdateCouponRequest extends FormRequest
             'value' => ['required','integer','between:1,100'],
             'cart_value' => ['required','integer'],
             'quantity' => ['required','integer'],
-            'expiry_date' => ['required','date_format:Y-m-d H:i:s']
+            'expiry_date' => ['nullable','date_format:Y-m-d H:i:s']
         ];
     }
 }
