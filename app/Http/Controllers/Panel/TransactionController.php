@@ -11,11 +11,11 @@ class TransactionController extends Controller
     {
         OrderController::store();
         $merchant_id = env('MERCHANT_ID');
-        $price = OrderController::$amount * 10;
+        $amount = OrderController::$amount * 10;
         $order_id = OrderController::$order->id;
 
         $data = array("merchant_id" => $merchant_id,
-            "amount" => $price,
+            "amount" => $amount,
             "callback_url" => route('callback'),
             "description" => "خرید دوره با شناسه سفارش $order_id",
             "metadata" => ["email" => auth()->user()->email, "mobile" => auth()->user()->mobile],
@@ -54,11 +54,11 @@ class TransactionController extends Controller
     public function callback()
     {
 
-        $price = OrderController::$amount * 10;
+        $amount = OrderController::$amount * 10;
         $merchant_id = env('MERCHANT_ID');
         $Authority = $_GET['Authority'];
 
-        $data = array("merchant_id" => $merchant_id, "authority" => $Authority, "amount" => $price);
+        $data = array("merchant_id" => $merchant_id, "authority" => $Authority, "amount" => $amount);
         $jsonData = json_encode($data);
         $ch = curl_init('https://api.zarinpal.com/pg/v4/payment/verify.json');
         curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v4');
