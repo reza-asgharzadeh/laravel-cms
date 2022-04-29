@@ -86,7 +86,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/offers',OfferController::class);
     Route::put('/offers/{offer}/status',[OfferController::class,'isApproved'])->name('offers.status');
     //Wallet
-    Route::resource('/wallets',WalletController::class);
+    Route::resource('/wallets',WalletController::class)->only(['index','update']);
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
