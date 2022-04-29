@@ -60,16 +60,16 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="subject" name="subject"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('subject')}}">
                                     </div>
                                     @error('subject')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="file">فایل PDF یا عکس</label>
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="file">عکس</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="file" id="file" name="file" accept="image/*,.pdf"
+                                        <input type="file" id="file" name="file" accept="image/*"
                                                class="form-control col-md-7 col-xs-12">
                                     </div>
                                     @error('file')
@@ -81,7 +81,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12"></textarea>
+                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12">{{old('content')}}</textarea>
                                     </div>
                                     @error('content')
                                     <p class="text-danger">{{$message}}</p>

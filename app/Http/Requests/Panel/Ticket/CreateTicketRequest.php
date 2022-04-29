@@ -25,7 +25,7 @@ class CreateTicketRequest extends FormRequest
     {
         return [
             'subject' => ['required', 'string', 'max:255'],
-            'file' =>  ['nullable', 'image', 'max:5120'],
+            'file' =>  ['nullable', 'image', 'max:2024'],
             'content' => ['required']
         ];
     }

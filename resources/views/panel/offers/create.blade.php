@@ -58,7 +58,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="code" name="code"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('code')}}">
                                     </div>
                                     @error('code')
                                     <p class="text-danger">{{$message}}</p>
@@ -81,7 +81,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="value" name="value"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('value')}}">
                                     </div>
                                     @error('value')
                                     <p class="text-danger">{{$message}}</p>

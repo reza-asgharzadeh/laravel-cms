@@ -55,7 +55,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="name" name="name"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('name')}}">
                                     </div>
                                     @error('name')
                                     <p class="text-danger">{{$message}}</p>
@@ -67,7 +67,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" id="email" name="email"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('email')}}">
                                     </div>
                                     @error('email')
                                     <p class="text-danger">{{$message}}</p>
@@ -79,7 +79,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="mobile" name="mobile"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('mobile')}}">
                                     </div>
                                     @error('mobile')
                                     <p class="text-danger">{{$message}}</p>

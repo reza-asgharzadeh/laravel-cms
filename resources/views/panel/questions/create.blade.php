@@ -60,7 +60,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="title" name="title"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('title')}}">
                                     </div>
                                     @error('title')
                                     <p class="text-danger">{{$message}}</p>
@@ -71,7 +71,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12"></textarea>
+                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12">{{old('content')}}</textarea>
                                     </div>
                                     @error('content')
                                     <p class="text-danger">{{$message}}</p>

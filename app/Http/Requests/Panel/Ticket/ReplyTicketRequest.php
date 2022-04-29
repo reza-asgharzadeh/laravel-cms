@@ -24,7 +24,7 @@ class ReplyTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' =>  ['nullable', 'image', 'max:5120'],
+            'file' =>  ['nullable', 'image', 'max:2024'],
             'content' => ['required']
         ];
     }

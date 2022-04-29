@@ -58,7 +58,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="code" name="code"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('code')}}">
                                     </div>
                                     @error('code')
                                     <p class="text-danger">{{$message}}</p>
@@ -81,7 +81,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="value" name="value"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('value')}}">
                                     </div>
                                     @error('value')
                                     <p class="text-danger">{{$message}}</p>
@@ -93,7 +93,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="cart_value" name="cart_value"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('cart_value')}}">
                                     </div>
                                     @error('cart_value')
                                     <p class="text-danger">{{$message}}</p>
@@ -105,7 +105,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="quantity" name="quantity"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('quantity')}}">
                                     </div>
                                     @error('quantity')
                                     <p class="text-danger">{{$message}}</p>

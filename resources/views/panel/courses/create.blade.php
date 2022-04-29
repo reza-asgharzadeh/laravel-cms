@@ -58,7 +58,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="name" name="name"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('name')}}">
                                     </div>
                                     @error('name')
                                     <p class="text-danger">{{$message}}</p>
@@ -70,7 +70,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="slug" name="slug"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('slug')}}">
                                     </div>
                                     @error('slug')
                                     <p class="text-danger">{{$message}}</p>
@@ -81,7 +81,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea id="meta_description" name="meta_description" class="form-control col-md-7 col-xs-12"></textarea>
+                                        <textarea id="meta_description" name="meta_description" class="form-control col-md-7 col-xs-12">{{old('meta_description')}}</textarea>
                                     </div>
                                     @error('meta_description')
                                     <p class="text-danger">{{$message}}</p>
@@ -140,7 +140,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="img_alt" name="img_alt"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('img_alt')}}">
                                     </div>
                                     @error('img_alt')
                                     <p class="text-danger">{{$message}}</p>
@@ -152,7 +152,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="price" name="price"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('price')}}">
                                     </div>
                                     @error('price')
                                     <p class="text-danger">{{$message}}</p>
@@ -164,7 +164,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="pre_course" name="pre_course"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('pre_course')}}">
                                     </div>
                                     @error('pre_course')
                                     <p class="text-danger">{{$message}}</p>
@@ -176,7 +176,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="time" name="time"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('time')}}">
                                     </div>
                                     @error('time')
                                     <p class="text-danger">{{$message}}</p>
@@ -223,7 +223,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-10 col-sm-10 col-xs-12">
-                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12"></textarea>
+                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12">{{old('content')}}</textarea>
                                     </div>
                                     @error('content')
                                     <p class="text-danger">{{$message}}</p>
