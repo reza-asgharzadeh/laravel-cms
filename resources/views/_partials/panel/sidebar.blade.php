@@ -5,6 +5,7 @@
             <li><a href="{{route('landing')}}" target="_blank"><i class="fa fa-eye"></i> مشاهده سایت</a></li>
             <li><a href="{{route('profiles.index')}}"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
             <li><a href="{{route('activities.index')}}"><i class="fa fa-calendar"></i> فعالیت های من</a></li>
+            <li><a href="{{route('wallets.index')}}"><i class="fa fa-shopping-bag"></i> کیف پول</a></li>
             <li><a><i class="fa fa-user-circle"></i> کاربران <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('users.index')}}">مدیریت کاربران</a></li>
@@ -63,7 +64,25 @@
                     <li><a href="{{route('comments.index')}}">مدیریت نظرات</a></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-money"></i> امور مالی <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-percent"></i> کد تخفیف <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('coupons.create')}}">ایجاد کد تخفیف</a></li>
+                    <li><a href="{{route('coupons.index')}}">مدیریت کد تخفیف ها</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-gift"></i> تخفیف پیشنهادی <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('offers.create')}}">ایجاد تخفیف پیشنهادی</a></li>
+                    <li><a href="{{route('offers.index')}}">مدیریت تخفیف پیشنهادی</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-shopping-basket"></i> لیست سفارشات <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('comments.index')}}">پرداخت های موفق</a></li>
+                    <li><a href="{{route('comments.index')}}">پرداخت های ناموفق</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-money"></i> لیست پرداخت ها <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('comments.index')}}">پرداخت های موفق</a></li>
                     <li><a href="{{route('comments.index')}}">پرداخت های ناموفق</a></li>
