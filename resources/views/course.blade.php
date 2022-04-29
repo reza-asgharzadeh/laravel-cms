@@ -3,19 +3,6 @@
         <link rel="stylesheet" href="{{asset('assets/landing/css/post-course.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comments.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comment-avatar.css')}}">
-        <style>
-            .circle-number{
-                height: 25px;
-                width: 25px;
-                background-color: #9400EA;
-                color: #fff;
-                border-radius: 50%;
-                display: inline-block;
-                text-align: center;
-                font-size: 0.8em;
-                padding: 4px;
-            }
-        </style>
     </x-slot>
 <!-- Page Content -->
     <div id="app" class="container mb-5">
