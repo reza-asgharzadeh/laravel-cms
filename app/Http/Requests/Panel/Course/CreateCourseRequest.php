@@ -38,6 +38,7 @@ class CreateCourseRequest extends FormRequest
             'time' => ['required', 'string', 'max:255'],
             'course_status' => ['required', 'boolean'],
             'course_level' => ['required', 'integer'],
+            'offer_id' => ['nullable', 'integer'],
             'content' => ['required']
         ];
     }

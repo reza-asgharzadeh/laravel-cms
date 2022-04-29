@@ -29,8 +29,8 @@ class UpdateCourseRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', Rule::unique('courses')->ignore($course->id)],
             'meta_description' => ['required', 'string', 'max:255'],
-            'tags' => ['required', 'array'],
-            'tags.*' => ['required', 'string'],
+            'tags' => ['nullable', 'array'],
+            'tags.*' => ['nullable', 'string'],
             'categories' => ['required', 'array'],
             'categories.*' => ['required', 'string'],
             'banner' => ['nullable', 'image', 'max:2024'],
@@ -40,6 +40,7 @@ class UpdateCourseRequest extends FormRequest
             'time' => ['required', 'string', 'max:255'],
             'course_status' => ['required', 'boolean'],
             'course_level' => ['required', 'integer'],
+            'offer_id' => ['nullable', 'integer'],
             'content' => ['required']
         ];
     }
