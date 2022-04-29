@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Panel\Offer;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateOfferRequest extends FormRequest
 {
@@ -23,12 +24,13 @@ class UpdateOfferRequest extends FormRequest
      */
     public function rules()
     {
+        $offer = $this->route('offer');
+
         return [
+            'code' => ['required','string', 'max:255', Rule::unique('offers')->ignore($offer->id)],
             'type' => ['required','in:fixed,percent'],
             'value' => ['required','integer','between:1,100'],
-            'course_id' => ['required', 'array'],
-            'course_id.*' => ['required', 'integer'],
-            'expiry_date' => ['required','date_format:Y-m-d H:i:s']
+            'expiry_date' => ['nullable','date_format:Y-m-d H:i:s']
         ];
     }
 }

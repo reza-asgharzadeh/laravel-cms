@@ -24,10 +24,9 @@ class CreateOfferRequest extends FormRequest
     public function rules()
     {
         return [
+            'code' => ['required','string', 'max:255', 'unique:offers'],
             'type' => ['required','in:fixed,percent'],
             'value' => ['required','integer','between:1,100'],
-            'course_id' => ['required', 'array'],
-            'course_id.*' => ['required', 'integer'],
             'expiry_date' => ['required','date_format:Y-m-d H:i:s']
         ];
     }
