@@ -6,7 +6,7 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="">
+                <li>
                     <a href="javascript:" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
                             <img class="navigation-pic" src="{{auth()->user()->getProfile()}}" alt="">{{auth()->user()->name}}
