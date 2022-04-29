@@ -206,6 +206,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">پیشنهاد تخفیف
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control" name="offer_id">
+                                            <option value="">ندارد</option>
+                                            @foreach($offers as $offer)
+                                                <option value="{{$offer->id}}">{{$offer->value}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12" for="content">توضیحات دوره
                                         <span class="required">*</span>
                                     </label>
