@@ -7,6 +7,7 @@ use App\Http\Requests\Panel\Course\CreateCourseRequest;
 use App\Http\Requests\Panel\Course\UpdateCourseRequest;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Offer;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -27,12 +28,13 @@ class CourseController extends Controller
     {
         $categories = category::all();
         $tags = Tag::all();
-        return view('panel.courses.create',compact(['categories','tags']));
+        $offers = Offer::all();
+        return view('panel.courses.create',compact(['categories','tags','offers']));
     }
 
     public function store(CreateCourseRequest $request)
     {
-        $tag_id = Tag::whereIn('name',$request->tags)->get()->pluck('id')->toArray();
+        $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
 
         if(count($tag_id) < 1 ){
             throw ValidationException::withMessages([
@@ -69,20 +71,26 @@ class CourseController extends Controller
         $courseCategories = $course->categories()->pluck('id')->toArray();
         $categories = Category::all();
 
-        return view('panel.courses.edit',compact('course','courseTags','tags','courseCategories','categories'));
+        $offers = Offer::all();
+
+        return view('panel.courses.edit',compact('course','courseTags','tags','courseCategories','categories','offers'));
     }
 
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        $tag_id = Tag::whereIn('name',$request->tags)->get()->pluck('id')->toArray();
-
-        if(count($tag_id) < 1 ){
-            throw ValidationException::withMessages([
-                'tags' => ['برچسب یافت نشد']
-            ]);
-        }
-
         $data = $request->validated();
+
+        if ($request->tags){
+            $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
+
+            if(count($tag_id) < 1 ){
+                throw ValidationException::withMessages([
+                    'tags' => ['برچسب یافت نشد']
+                ]);
+            }
+        } else {
+            unset($data['tags']);
+        }
 
         if ($request->hasFile('banner')){
             $file = $request->file('banner');
@@ -97,7 +105,10 @@ class CourseController extends Controller
 
         $category_id = $request->categories;
         $course->categories()->sync($category_id);
-        $course->tags()->sync($tag_id);
+
+        if ($request->tags){
+            $course->tags()->sync($tag_id);
+        }
 
         $request->session()->flash('status','دوره مورد نظر با موفقیت ویرایش شد !');
         return redirect()->route('courses.index');
