@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Role\CreateRoleRequest;
 use App\Http\Requests\Panel\Role\UpdateRoleRequest;
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,6 +31,22 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         return view('panel.roles.edit',compact('role'));
+    }
+
+    public function show(Role $role)
+    {
+        $permissions = Permission::all();
+        $rolePermissions = $role->permissions()->pluck('id')->toArray();
+
+        return view('panel.roles.show',compact('role','permissions','rolePermissions'));
+    }
+
+    public function setPermissions(Request $request,Role $role)
+    {
+        $permission_id = $request->permission_id;
+        $role->permissions()->sync($permission_id);
+        $request->session()->flash('status','دسترسی به نقش مورد نظر اختصاص داده شد !');
+        return back();
     }
 
     public function update(UpdateRoleRequest $request, Role $role)
