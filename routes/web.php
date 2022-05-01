@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
 use App\Http\Controllers\Panel\CouponController;
@@ -11,28 +11,27 @@ use App\Http\Controllers\Panel\QuestionController;
 use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\Panel\TransactionController;
 use App\Http\Controllers\Panel\WalletController;
-use App\Http\Controllers\ShowCategoryCourseController;
-use App\Http\Controllers\ShowCourseController;
-use App\Http\Controllers\ShowCourseTagController;
-use App\Http\Controllers\ShowEpisodeController;
-use App\Http\Controllers\ShowPostController;
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\Client\ShowCategoryCourseController;
+use App\Http\Controllers\Client\ShowCourseController;
+use App\Http\Controllers\Client\ShowCourseTagController;
+use App\Http\Controllers\Client\ShowEpisodeController;
+use App\Http\Controllers\Client\ShowPostController;
+use App\Http\Controllers\Client\LandingController;
 use App\Http\Controllers\Panel\CategoryController;
 use App\Http\Controllers\Panel\CommentController;
-use App\Http\Controllers\CommentController as StoreCommentController;
+use App\Http\Controllers\Client\CommentController as StoreCommentController;
 use App\Http\Controllers\Panel\CourseController;
 use App\Http\Controllers\Panel\EditorUploadController;
 use App\Http\Controllers\Panel\EditProfileController;
 use App\Http\Controllers\Panel\EpisodeController;
 use App\Http\Controllers\Panel\PermissionController;
 use App\Http\Controllers\Panel\RoleController;
-use App\Http\Controllers\Panel\SetPermissionController;
 use App\Http\Controllers\Panel\TagController;
 use App\Http\Controllers\Panel\UserController;
-use App\Http\Controllers\PanelController;
+use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\PostController;
-use App\Http\Controllers\ShowCategoryPostController;
-use App\Http\Controllers\ShowPostTagController;
+use App\Http\Controllers\Client\ShowCategoryPostController;
+use App\Http\Controllers\Client\ShowPostTagController;
 use Illuminate\Support\Facades\Route;
 
 /*
