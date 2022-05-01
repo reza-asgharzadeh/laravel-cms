@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Episode;
 use App\Models\Order;
@@ -33,6 +34,6 @@ class ShowEpisodeController extends Controller
             return $query->where('comment_id',null)->where('is_approved',true);
         }])->loadCount('comments');
 
-        return view('episode',compact(['course','episode','most_student','downloadLink','display']));
+        return view('client.episode',compact(['course','episode','most_student','downloadLink','display']));
     }
 }

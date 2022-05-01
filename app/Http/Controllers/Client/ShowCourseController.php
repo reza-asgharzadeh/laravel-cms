@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Models\Course;
 
 class ShowCourseController extends Controller
@@ -25,6 +26,6 @@ class ShowCourseController extends Controller
             }
         }
 
-        return view('course',compact(['course','most_student','display']));
+        return view('client.course',compact(['course','most_student','display']));
     }
 }

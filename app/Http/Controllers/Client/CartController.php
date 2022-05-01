@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Course;
 use Carbon\Carbon;
@@ -11,7 +12,7 @@ class CartController extends Controller
 {
     public function cart()
     {
-        return view('cart');
+        return view('client.cart');
     }
 
     public function addToCart($id)

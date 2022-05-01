@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 
 class ShowCategoryCourseController extends Controller
@@ -9,6 +10,6 @@ class ShowCategoryCourseController extends Controller
     public function show(Category $category)
     {
         $courses = $category->courses()->paginate();
-        return view('category',compact('courses'));
+        return view('client.category',compact('courses'));
     }
 }
