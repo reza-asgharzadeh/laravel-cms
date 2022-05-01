@@ -1,6 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Panel;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Course;
@@ -29,6 +30,6 @@ class PanelController extends Controller
         $tickets_count = Ticket::count();
         $questions_count = Question::count();
 
-        return view('panel',compact(['users_count', 'comments_count', 'posts_count', 'courses_count', 'episodes_count', 'categories_count', 'tags_count', 'roles_count', 'permissions_count','tickets_count','questions_count']));
+        return view('panel.panel',compact(['users_count', 'comments_count', 'posts_count', 'courses_count', 'episodes_count', 'categories_count', 'tags_count', 'roles_count', 'permissions_count','tickets_count','questions_count']));
     }
 }
