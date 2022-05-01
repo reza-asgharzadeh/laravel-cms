@@ -22,8 +22,18 @@ class RoleSeeder extends Seeder
 
         $superAdmin->permissions()->sync(Permission::all());
 
-        Role::create([
+        $admin = Role::create([
+            'name' => 'admin'
+        ]);
+
+        $admin->permissions()->sync(Permission::all());
+
+        $user = Role::create([
            'name' => 'user'
+        ]);
+
+        $user->permissions()->sync([
+            1,2,3,4,5,11,12,13,14,15,16,17,18,76,77,78
         ]);
     }
 }
