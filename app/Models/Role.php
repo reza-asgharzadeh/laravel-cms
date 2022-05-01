@@ -17,4 +17,19 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class);
     }
+
+    public function getRoleName()
+    {
+        $message = match ($this->name) {
+            'super-admin' => 'مدیر اصلی',
+            'admin' => 'مدیر',
+            'user' => 'کاربر عادی',
+        };
+        return $message;
+    }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions()->where('name',$permission)->exists();
+    }
 }
