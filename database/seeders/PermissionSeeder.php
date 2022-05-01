@@ -15,7 +15,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create([
+        Permission::insert([
            [
                'name' => 'view-dashboard'
            ],
@@ -41,7 +41,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-users'
+                'name' => 'create-user'
             ],
 
             [
@@ -61,7 +61,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-tickets'
+                'name' => 'create-ticket'
             ],
 
             [
@@ -93,7 +93,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-roles'
+                'name' => 'create-role'
             ],
 
             [
@@ -113,7 +113,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-permissions'
+                'name' => 'create-permission'
             ],
 
             [
@@ -141,7 +141,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-posts'
+                'name' => 'create-post'
             ],
 
             [
@@ -161,7 +161,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-courses'
+                'name' => 'create-course'
             ],
 
             [
@@ -181,7 +181,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-episodes'
+                'name' => 'create-episode'
             ],
 
             [
@@ -201,7 +201,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-categories'
+                'name' => 'create-category'
             ],
 
             [
@@ -221,7 +221,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-tags'
+                'name' => 'create-tag'
             ],
 
             [
@@ -241,7 +241,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-comments'
+                'name' => 'create-comment'
             ],
 
             [
@@ -273,7 +273,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-coupons'
+                'name' => 'create-coupon'
             ],
 
             [
@@ -297,7 +297,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-offers'
+                'name' => 'create-offer'
             ],
 
             [
