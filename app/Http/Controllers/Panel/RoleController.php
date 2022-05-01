@@ -9,18 +9,23 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
 
     public function index()
     {
+        Gate::authorize('view-roles');
+
         $roles = Role::paginate(5);
         return view('panel.roles.index',compact('roles'));
     }
 
     public function store(CreateRoleRequest $request)
     {
+        Gate::authorize('store-role');
+
         Role::create(
             $request->validated()
         );
@@ -30,11 +35,15 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
+        Gate::authorize('edit-roles');
+
         return view('panel.roles.edit',compact('role'));
     }
 
     public function show(Role $role)
     {
+        Gate::authorize('view-permission-role');
+
         $permissions = Permission::all();
         $rolePermissions = $role->permissions()->pluck('id')->toArray();
 
@@ -43,6 +52,8 @@ class RoleController extends Controller
 
     public function setPermissions(Request $request,Role $role)
     {
+        Gate::authorize('set-permission-role');
+
         $permission_id = $request->permission_id;
         $role->permissions()->sync($permission_id);
         $request->session()->flash('status','دسترسی به نقش مورد نظر اختصاص داده شد !');
@@ -51,6 +62,8 @@ class RoleController extends Controller
 
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        Gate::authorize('update-roles');
+
         $role->update(
             $request->validated()
         );
@@ -60,6 +73,8 @@ class RoleController extends Controller
 
     public function destroy(Request $request, Role $role)
     {
+        Gate::authorize('delete-roles');
+
         $users = User::where('role_id', '=', $role->id)->pluck('id');
 
         if($users->isEmpty()) {

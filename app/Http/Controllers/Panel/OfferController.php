@@ -8,23 +8,30 @@ use App\Http\Requests\Panel\Offer\UpdateOfferRequest;
 use App\Models\Course;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class OfferController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-offers');
+
         $offers = Offer::orderByDesc('id')->paginate(5);
         return view('panel.offers.index',compact('offers'));
     }
 
     public function create()
     {
+        Gate::authorize('create-offer');
+
         $courses = Course::all();
         return view('panel.offers.create',compact('courses'));
     }
 
     public function store(CreateOfferRequest $request)
     {
+        Gate::authorize('store-offer');
+
         $data = $request->validated();
         Offer::create(
             $data
@@ -41,12 +48,16 @@ class OfferController extends Controller
 
     public function edit(Offer $offer)
     {
+        Gate::authorize('edit-offers');
+
         $courses = Course::all();
         return view('panel.offers.edit',compact('offer','courses'));
     }
 
     public function isApproved(Request $request, Offer $offer)
     {
+        Gate::authorize('is-approved-offers');
+
         $offer->update([
             'is_approved' => ! $offer->is_approved
         ]);
@@ -57,6 +68,8 @@ class OfferController extends Controller
 
     public function update(UpdateOfferRequest $request, Offer $offer)
     {
+        Gate::authorize('update-offers');
+
         $data = $request->validated();
 
         if (!$request->expiry_date){
@@ -73,6 +86,8 @@ class OfferController extends Controller
 
     public function destroy(Request $request, Offer $offer)
     {
+        Gate::authorize('delete-offers');
+
         $offer->delete();
         $request->session()->flash('status','پیشنهاد تخفیف مورد نظر با موفقیت حذف شد !');
         return back();

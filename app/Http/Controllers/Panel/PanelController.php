@@ -13,11 +13,14 @@ use App\Models\Role;
 use App\Models\Tag;
 use App\Models\Ticket;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class PanelController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-dashboard');
+
         $users_count = User::count();
         $comments_count = Comment::count();
         $posts_count = Post::count();

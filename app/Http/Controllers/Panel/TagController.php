@@ -7,18 +7,23 @@ use App\Http\Requests\Panel\Tag\CreateTagRequest;
 use App\Http\Requests\Panel\Tag\UpdateTagRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TagController extends Controller
 {
 
     public function index()
     {
+        Gate::authorize('view-tags');
+
         $tags = Tag::paginate(5);
         return view('panel.tags.index',compact('tags'));
     }
 
     public function store(CreateTagRequest $request)
     {
+        Gate::authorize('store-tag');
+
         Tag::create(
             $request->validated()
         );
@@ -28,11 +33,15 @@ class TagController extends Controller
 
     public function edit(Tag $tag)
     {
+        Gate::authorize('edit-tags');
+
         return view('panel.tags.edit',compact('tag'));
     }
 
     public function update(UpdateTagRequest $request, Tag $tag)
     {
+        Gate::authorize('update-tags');
+
         $tag->update(
             $request->validated()
         );
@@ -42,6 +51,8 @@ class TagController extends Controller
 
     public function destroy(Request $request,Tag $tag)
     {
+        Gate::authorize('delete-tags');
+
         $tag->delete();
         $request->session()->flash('status','برچسب مورد نظر با موفقیت حذف شد !');
         return back();

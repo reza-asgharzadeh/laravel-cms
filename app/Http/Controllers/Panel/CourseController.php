@@ -10,12 +10,15 @@ use App\Models\Course;
 use App\Models\Offer;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
 class CourseController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-courses');
+
         if (auth()->user()->role_id === 1){
             $courses = Course::orderByDesc('id')->paginate(5);
         } else {
@@ -26,6 +29,8 @@ class CourseController extends Controller
 
     public function create()
     {
+        Gate::authorize('create-course');
+
         $categories = category::all();
         $tags = Tag::all();
         $offers = Offer::all();
@@ -34,6 +39,8 @@ class CourseController extends Controller
 
     public function store(CreateCourseRequest $request)
     {
+        Gate::authorize('store-course');
+
         $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
 
         if(count($tag_id) < 1 ){
@@ -64,6 +71,8 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
+        Gate::authorize('edit-courses');
+
         $this->authorize('view', $course);
         $courseTags = $course->tags()->pluck('id')->toArray();
         $tags = Tag::all();
@@ -78,6 +87,8 @@ class CourseController extends Controller
 
     public function update(UpdateCourseRequest $request, Course $course)
     {
+        Gate::authorize('update-courses');
+
         $data = $request->validated();
 
         if ($request->tags){
@@ -116,6 +127,8 @@ class CourseController extends Controller
 
     public function destroy(Request $request, Course $course)
     {
+        Gate::authorize('delete-courses');
+
         $course->delete();
         $request->session()->flash('status','دوره مورد نظر با موفقیت حذف شد !');
         return back();

@@ -8,13 +8,15 @@ use App\Http\Requests\Panel\User\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-users');
+
         $this->authorize('viewAny',auth()->user());
         $users = User::paginate(5);
         return view('panel.users.index',compact('users'));
@@ -22,6 +24,8 @@ class UserController extends Controller
 
     public function create()
     {
+        Gate::authorize('create-user');
+
         $this->authorize('create', auth()->user());
         $roles = Role::all();
         return view('panel.users.create',compact('roles'));
@@ -29,6 +33,8 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
+        Gate::authorize('store-user');
+
         $data = $request->validated();
         $data['password'] = Hash::make($request->password);
         User::create(
@@ -41,6 +47,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        Gate::authorize('edit-users');
+
         $this->authorize('view', $user);
         $roles = Role::all();
         return view('panel.users.edit',compact(['user','roles']));
@@ -48,6 +56,8 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        Gate::authorize('update-users');
+
         $this->authorize('update', $user);
         $data = $request->validated();
         if ($request->password){
@@ -64,6 +74,8 @@ class UserController extends Controller
 
     public function destroy(Request $request,User $user)
     {
+        Gate::authorize('delete-users');
+
         $this->authorize('delete', $user);
         $user->delete();
         $request->session()->flash('status','کاربر مورد نظر با موفقیت حذف شد !');

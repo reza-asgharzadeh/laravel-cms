@@ -7,12 +7,15 @@ use App\Http\RandomUniqueCode;
 use App\Http\Requests\Panel\Ticket\CreateTicketRequest;
 use App\Http\Requests\Panel\Ticket\ReplyTicketRequest;
 use App\Models\Ticket;
+use Illuminate\Support\Facades\Gate;
 
 class TicketController extends Controller
 {
 
     public function index()
     {
+        Gate::authorize('view-tickets');
+
         if (auth()->user()->role_id == 1){
             $tickets = Ticket::where('ticket_id',null)->orderByDesc('id')->paginate(5);
         } else {
@@ -24,11 +27,15 @@ class TicketController extends Controller
 
     public function create()
     {
+        Gate::authorize('create-ticket');
+
         return view('panel.tickets.create');
     }
 
     public function store(CreateTicketRequest $request)
     {
+        Gate::authorize('store-ticket');
+
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
         $data['code'] = RandomUniqueCode::randomString(6);
@@ -41,6 +48,8 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket)
     {
+        Gate::authorize('read-tickets');
+
         $this->authorize('view', $ticket);
         $tickets = $ticket->children()->get();
         return view('panel.tickets.show',compact(['ticket','tickets']));
@@ -48,6 +57,8 @@ class TicketController extends Controller
 
     public function reply(ReplyTicketRequest $request,Ticket $ticket)
     {
+        Gate::authorize('reply-tickets');
+
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
         $data['ticket_id'] = $ticket->id;

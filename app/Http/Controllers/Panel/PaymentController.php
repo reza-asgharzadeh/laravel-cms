@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\OrderController;
 use App\Models\Payment;
 
 class PaymentController extends Controller

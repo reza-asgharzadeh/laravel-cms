@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Answer\CreateAnswerRequest;
 use App\Models\Answer;
 use App\Models\Question;
+use Illuminate\Support\Facades\Gate;
 
 class AnswerController extends Controller
 {
     public function store(CreateAnswerRequest $request,Question $question)
     {
+        Gate::authorize('answer-questions');
+
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
         $data['question_id'] = $question->id;

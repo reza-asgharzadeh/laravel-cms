@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\RandomUniqueCode;
 use App\Models\Order;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
@@ -13,6 +14,8 @@ class OrderController extends Controller
 
     public function index()
     {
+        Gate::authorize('view-orders');
+
         $orders = Order::paginate(5);
         return view('panel.orders.index',compact('orders'));
     }

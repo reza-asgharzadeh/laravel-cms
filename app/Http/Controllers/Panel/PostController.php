@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
@@ -16,6 +17,8 @@ class PostController extends Controller
 
     public function index()
     {
+        Gate::authorize('view-posts');
+
         if (auth()->user()->role_id === 1){
             $posts = Post::orderByDesc('id')->paginate(5);
         } else {
@@ -26,6 +29,8 @@ class PostController extends Controller
 
     public function create()
     {
+        Gate::authorize('create-post');
+
         $categories = category::all();
         $tags = Tag::all();
         return view('panel.posts.create',compact(['categories', 'tags']));
@@ -33,6 +38,8 @@ class PostController extends Controller
 
     public function store(CreatePostRequest $request)
     {
+        Gate::authorize('store-post');
+
         $tag_id = Tag::whereIn('name',$request->tags)->pluck('id')->toArray();
 
         if(count($tag_id) < 1 ){
@@ -63,6 +70,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        Gate::authorize('edit-posts');
+
         $this->authorize('view', $post);
         $postTags = $post->tags()->pluck('id')->toArray();
         $tags = Tag::all();
@@ -75,6 +84,8 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
+        Gate::authorize('update-posts');
+
         $data = $request->validated();
 
         if ($request->tags){
@@ -113,6 +124,8 @@ class PostController extends Controller
 
     public function destroy(Request $request, Post $post)
     {
+        Gate::authorize('delete-posts');
+
         $post->delete();
         $request->session()->flash('status','مقاله مورد نظر با موفقیت حذف شد !');
         return back();

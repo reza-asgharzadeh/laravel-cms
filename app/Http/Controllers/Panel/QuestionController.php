@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Question\CreateQuestionRequest;
 use App\Models\Question;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class QuestionController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-questions');
+
         if (auth()->user()->role_id == 1){
             $questions = Question::orderByDesc('id')->paginate(5);
         } else {
@@ -21,11 +24,15 @@ class QuestionController extends Controller
 
     public function create()
     {
+        Gate::authorize('create-question');
+
         return view('panel.questions.create');
     }
 
     public function store(CreateQuestionRequest $request)
     {
+        Gate::authorize('store-question');
+
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
         Question::create(
@@ -37,6 +44,8 @@ class QuestionController extends Controller
 
     public function show(Question $question)
     {
+        Gate::authorize('read-questions');
+
         $this->authorize('view', $question);
         $questions = Question::where('id',$question->id)->get();
         return view('panel.questions.show',compact(['question','questions']));

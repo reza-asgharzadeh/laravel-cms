@@ -4,18 +4,23 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\User\UpdateProfileRequest;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class EditProfileController extends Controller
 {
     public function index()
     {
+        Gate::authorize('edit-profile');
+
         $user = auth()->user();
         return view('panel.users.profile',compact('user'));
     }
 
     public function update(UpdateProfileRequest $request)
     {
+        Gate::authorize('update-profile');
+
         $data = $request->validated();
 
         if($request->password){
