@@ -26,9 +26,8 @@
             </li>
             <li><a><i class="fa fa-lock"></i> سطح دسترسی <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="{{route('roles.index')}}">ایجاد نقش</a></li>
+                    <li><a href="{{route('roles.index')}}">ایجاد نقش و تعیین دسترسی</a></li>
                     <li><a href="{{route('permissions.index')}}">ایجاد دسترسی</a></li>
-                    <li><a href="{{route('setpermissions.index')}}">مدیریت نقش و دسترسی</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-edit"></i> مقالات <span class="fa fa-chevron-down"></span></a>
