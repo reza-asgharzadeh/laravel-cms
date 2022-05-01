@@ -55,7 +55,6 @@
                                     <th>نام و نام خانوادگی</th>
                                     <th>ایمیل</th>
                                     <th>نقش کاربری</th>
-                                    <th>سطح دسترسی</th>
                                     <th>ساعت و تاریخ عضویت</th>
                                     <th>آخرین ورود</th>
                                     <th>وضعیت حساب</th>
@@ -68,14 +67,7 @@
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->getRoleName()}}</td>
-                                        <td>
-                                            @forelse($user->role->permissions as $permission)
-                                                {{$permission->name}}
-                                            @empty
-                                                <p>ندارد</p>
-                                            @endforelse
-                                        </td>
+                                        <td>{{$user->getUserRoleName()}}</td>
                                         <td>{{$user->getCreatedAtInJalali()}}</td>
                                         <td>
                                             @forelse($user->lastLoginDateTime as $lastLogin)
