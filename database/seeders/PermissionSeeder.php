@@ -29,7 +29,15 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'update-profile'
+            ],
+
+            [
                 'name' => 'view-activities'
+            ],
+
+            [
+                'name' => 'delete-activities'
             ],
 
             [
@@ -42,6 +50,10 @@ class PermissionSeeder extends Seeder
 
             [
                 'name' => 'create-user'
+            ],
+
+            [
+                'name' => 'store-user'
             ],
 
             [
@@ -65,6 +77,10 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'store-ticket'
+            ],
+
+            [
                 'name' => 'read-tickets'
             ],
 
@@ -81,6 +97,10 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'store-question'
+            ],
+
+            [
                 'name' => 'read-questions'
             ],
 
@@ -93,7 +113,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-role'
+                'name' => 'store-role'
             ],
 
             [
@@ -109,11 +129,19 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'view-permission-role'
+            ],
+
+            [
+                'name' => 'set-permission-role'
+            ],
+
+            [
                 'name' => 'view-permissions'
             ],
 
             [
-                'name' => 'create-permission'
+                'name' => 'store-permission'
             ],
 
             [
@@ -129,19 +157,15 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'view-permission-role'
-            ],
-
-            [
-                'name' => 'set-permission-role'
-            ],
-
-            [
                 'name' => 'view-posts'
             ],
 
             [
                 'name' => 'create-post'
+            ],
+
+            [
+                'name' => 'store-post'
             ],
 
             [
@@ -165,6 +189,10 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'store-course'
+            ],
+
+            [
                 'name' => 'edit-courses'
             ],
 
@@ -185,6 +213,10 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'store-episode'
+            ],
+
+            [
                 'name' => 'edit-episodes'
             ],
 
@@ -201,7 +233,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-category'
+                'name' => 'store-category'
             ],
 
             [
@@ -221,7 +253,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-tag'
+                'name' => 'store-tag'
             ],
 
             [
@@ -241,7 +273,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'create-comment'
+                'name' => 'save-comment'
             ],
 
             [
@@ -249,11 +281,11 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'update-comments'
+                'name' => 'reply-comments'
             ],
 
             [
-                'name' => 'delete-comments'
+                'name' => 'update-comments'
             ],
 
             [
@@ -261,11 +293,7 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'reply-comments'
-            ],
-
-            [
-                'name' => 'save-comments'
+                'name' => 'delete-comments'
             ],
 
             [
@@ -277,7 +305,15 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'store-coupon'
+            ],
+
+            [
                 'name' => 'edit-coupons'
+            ],
+
+            [
+                'name' => 'is-approved-coupons'
             ],
 
             [
@@ -289,10 +325,6 @@ class PermissionSeeder extends Seeder
             ],
 
             [
-                'name' => 'is-approved-coupons'
-            ],
-
-            [
                 'name' => 'view-offers'
             ],
 
@@ -301,7 +333,15 @@ class PermissionSeeder extends Seeder
             ],
 
             [
+                'name' => 'store-offer'
+            ],
+
+            [
                 'name' => 'edit-offers'
+            ],
+
+            [
+                'name' => 'is-approved-offers'
             ],
 
             [
@@ -310,10 +350,6 @@ class PermissionSeeder extends Seeder
 
             [
                 'name' => 'delete-offers'
-            ],
-
-            [
-                'name' => 'is-approved-offers'
             ],
 
             [
