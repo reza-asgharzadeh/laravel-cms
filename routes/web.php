@@ -58,9 +58,9 @@ Route::get('/course/tag/{tag:slug}',[ShowCourseTagController::class,'show'])->na
 Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::get('/',[PanelController::class,'index'])->name('panel');
     Route::resource('/users',UserController::class)->except('show');
-    Route::resource('/roles',RoleController::class)->except(['create','show']);
+    Route::resource('/roles',RoleController::class)->except('create');
+    Route::post('/roles/{role}/set',[RoleController::class,'setPermissions'])->name('setpermissions.store');
     Route::resource('/permissions',PermissionController::class)->except(['create','show']);
-    Route::resource('/setpermissions',SetPermissionController::class)->only(['index','store']);
     Route::resource('/categories',CategoryController::class)->except(['create','show']);
     Route::resource('/tags',TagController::class)->except(['create','show']);
     Route::resource('/posts',PostController::class)->except('show');
