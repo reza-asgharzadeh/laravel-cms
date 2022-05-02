@@ -16,6 +16,82 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         Permission::insert([
+            [
+                'name' => 'display-dashboard'
+            ],
+
+            [
+                'name' => 'display-site'
+            ],
+
+            [
+                'name' => 'display-edit-profile'
+            ],
+
+            [
+                'name' => 'display-activities'
+            ],
+
+            [
+                'name' => 'display-wallet'
+            ],
+
+            [
+                'name' => 'display-users'
+            ],
+
+            [
+                'name' => 'display-tickets'
+            ],
+
+            [
+                'name' => 'display-questions-answers'
+            ],
+
+            [
+                'name' => 'display-roles-permissions'
+            ],
+
+            [
+                'name' => 'display-posts'
+            ],
+
+            [
+                'name' => 'display-courses'
+            ],
+
+            [
+                'name' => 'display-episodes'
+            ],
+
+            [
+                'name' => 'display-categories'
+            ],
+
+            [
+                'name' => 'display-tags'
+            ],
+
+            [
+                'name' => 'display-comments'
+            ],
+
+            [
+                'name' => 'display-coupons'
+            ],
+
+            [
+                'name' => 'display-offers'
+            ],
+
+            [
+                'name' => 'display-orders'
+            ],
+
+            [
+                'name' => 'display-payments'
+            ],
+
            [
                'name' => 'view-dashboard'
            ],
