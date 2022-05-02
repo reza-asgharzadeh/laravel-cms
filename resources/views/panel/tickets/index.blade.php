@@ -51,6 +51,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
+                                        <th>ردیف</th>
                                         <th>شناسه تیکت</th>
                                         <th>موضوع تیکت</th>
                                         <th>وضعیت پاسخ</th>
@@ -61,7 +62,8 @@
                                     <tbody>
                                     @foreach($tickets as $ticket)
                                         <tr>
-                                            <th scope="row">#{{$ticket->code}}</th>
+                                            <th scope="row">{{$loop->iteration}}</th>
+                                            <td>#{{$ticket->code}}</td>
                                             <td>{{$ticket->subject}}</td>
                                             <td><span class="btn {{$ticket->status ? 'btn-success' : 'btn-warning'}} btn-xs">{{$ticket->status ? 'پاسخ داده شد' : 'در انتظار پاسخ'}}</span></td>
                                             <td>{{$ticket->getCreatedAtInJalali()}}</td>

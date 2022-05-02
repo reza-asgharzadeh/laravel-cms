@@ -104,7 +104,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>شناسه دسترسی</th>
+                                    <th>ردیف</th>
                                     <th>سطح دسترسی</th>
                                     <th>عملیات</th>
                                 </tr>
@@ -112,7 +112,7 @@
                                 <tbody>
                                     @foreach($permissions as $permission)
                                     <tr>
-                                        <th scope="row">{{$permission->id}}</th>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$permission->name}}</td>
                                         <td>
                                             <a href="{{route('permissions.edit',$permission->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>

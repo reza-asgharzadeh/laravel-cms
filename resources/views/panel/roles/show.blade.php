@@ -4,7 +4,7 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>
-                        <small>نقش ها</small>
+                        <small>نقش ها و دسترسی ها</small>
                     </h3>
                 </div>
 

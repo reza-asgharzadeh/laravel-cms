@@ -115,7 +115,7 @@
                                         <th scope="row">{{$role->id}}</th>
                                         <td>{{$role->getRoleName()}}</td>
                                         <td>
-                                            <a href="{{route('roles.show',$role->id)}}"><i class="fa-x fa-plus text-primary" title="مشاهده"></i></a>
+                                            <a href="{{route('roles.show',$role->id)}}"><i class="fa-x fa-plus text-primary" title="افزودن سطح دسترسی به نقش"></i></a>
                                             <a href="{{route('roles.edit',$role->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
                                             <a href="{{route('roles.destroy',$role->id)}}" onclick="destroyRole(event, {{ $role->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
                                             <form action="{{route('roles.destroy',$role->id)}}" method="post" id="destroy-role-{{ $role->id }}">
