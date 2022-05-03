@@ -91,10 +91,14 @@
                     <p><i class="fa fa-level-up"></i> سطح دوره: {{$course->getLevel()}}</p>
                     <p><i class="fa fa-calendar"></i> تاریخ شروع: {{$course->getCreatedAtInJalali()}}</p>
                     <p><i class="fa fa-calendar"></i> آخرین بروزرسانی: {{$course->getUpdatedAtInJalali()}}</p>
-                    @if($display)
-                        <a href="{{ route('cart') }}" class="btn btn-purple w-100">نهایی سازی خرید</a>
+                    @if($registeredButton)
+                        <p class="btn btn-purple w-100">شما دانشجوی این دوره هستید.</p>
                     @else
-                        <a href="{{ route('add.to.cart', $course->id) }}" class="btn btn-purple w-100">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</a>
+                        @if($display)
+                            <a href="{{ route('cart') }}" class="btn btn-purple w-100">نهایی سازی خرید</a>
+                        @else
+                            <a href="{{ route('add.to.cart', $course->id) }}" class="btn btn-purple w-100">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</a>
+                        @endif
                     @endif
                 </div>
 
