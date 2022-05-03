@@ -87,12 +87,17 @@
                                             <td>{{$post->user->name}}</td>
                                             <td>{{$post->getCreatedAtInJalali()}}</td>
                                             <td>
-                                                <a href="{{route('posts.edit',$post->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
-                                                <a href="{{route('posts.destroy',$post->id)}}" onclick="destroyPost(event, {{ $post->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
-                                                <form action="{{route('posts.destroy',$post->id)}}" method="post" id="destroy-post-{{ $post->id }}">
-                                                    @csrf
-                                                    @method('delete')
-                                                </form>
+                                                <div style="display: flex; justify-content: space-evenly">
+                                                    <div><a href="{{route('posts.show',$post->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                    <div><a href="{{route('posts.edit',$post->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
+                                                    <div>
+                                                        <a href="{{route('posts.destroy',$post->id)}}" onclick="destroyPost(event, {{ $post->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
+                                                        <form action="{{route('posts.destroy',$post->id)}}" method="post" id="destroy-post-{{ $post->id }}">
+                                                            @csrf
+                                                            @method('delete')
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
