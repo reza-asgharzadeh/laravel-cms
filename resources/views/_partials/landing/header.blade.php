@@ -82,9 +82,27 @@
                     </div>
                 </div>
 
-
-                <a href="{{route('register')}}" class="btn btn-gray m-1">ثبت نام</a>
-                <a href="{{route('login')}}" class="btn btn-purple">ورود</a>
+                @auth
+                    <ul class="navbar-nav mx-2">
+                        <li>
+                            <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">
+                                {{auth()->user()->name}}
+                            </a>
+                            <ul class="dropdown-menu pull-right p-2 shadow-lg">
+                                <li><a class="h6" href="{{route('panel')}}"><i class="fa fa-dashboard"></i> پنل کاربری</a></li>
+                                <li><a class="h6" href="{{route('my.courses.index')}}"><i class="fa fa-graduation-cap"></i> دوره های من</a></li>
+                                <li><a class="h6" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> خروج</a></li>
+                                <form action="{{route('logout')}}" method="post" id="logout-form">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </li>
+                    </ul>
+                @else
+                    <a href="{{route('register')}}" class="btn btn-gray m-1">ثبت نام</a>
+                    <a href="{{route('login')}}" class="btn btn-purple">ورود</a>
+                @endauth
             </div>
         </div>
     </nav>
