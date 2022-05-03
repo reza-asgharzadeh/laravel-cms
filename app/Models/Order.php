@@ -17,6 +17,14 @@ class Order extends Model
         'order_status'
     ];
 
+    public function getOrderStatus(){
+        $message = match ($this->order_status) {
+            0 => 'ناموفق',
+            1 => 'موفق'
+        };
+        return $message;
+    }
+
     public function courses(){
         return $this->belongsToMany(Course::class);
     }
