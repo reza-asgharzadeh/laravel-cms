@@ -8,6 +8,7 @@ use App\Http\Requests\Panel\Course\UpdateCourseRequest;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Offer;
+use App\Models\Order;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -67,6 +68,12 @@ class CourseController extends Controller
 
         $request->session()->flash('status','دوره جدید با موفقیت ایجاد شد !');
         return redirect()->route('courses.index');
+    }
+
+    public function myCourses()
+    {
+        $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->paginate(10);
+        return view('panel.courses.my_courses',compact('orders'));
     }
 
     public function edit(Course $course)
