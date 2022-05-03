@@ -48,7 +48,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form action="{{route('setpermissions.store',$role->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <form action="{{route('set.permissions.store',$role->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                 @csrf
                                 <div style="display: flex; justify-content: space-evenly">
                                     <div>
