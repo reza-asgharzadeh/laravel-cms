@@ -86,12 +86,17 @@
                                         <td>{{$course->created_at}}</td>
                                         <td>{{$course->updated_at}}</td>
                                         <td>
-                                            <a href="{{route('courses.edit',$course->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
-                                            <a href="{{route('courses.destroy',$course->id)}}" onclick="destroyCourse(event, {{ $course->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
-                                            <form action="{{route('courses.destroy',$course->id)}}" method="post" id="destroy-course-{{ $course->id }}">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
+                                            <div style="display: flex; justify-content: space-evenly">
+                                                <div><a href="{{route('courses.show',$course->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('courses.edit',$course->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
+                                                <div>
+                                                    <a href="{{route('courses.destroy',$course->id)}}" onclick="destroyCourse(event, {{ $course->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
+                                                    <form action="{{route('courses.destroy',$course->id)}}" method="post" id="destroy-course-{{ $course->id }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
