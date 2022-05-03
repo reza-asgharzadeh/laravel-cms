@@ -7,6 +7,7 @@ use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
 use App\Http\Controllers\Panel\CouponController;
 use App\Http\Controllers\Panel\OfferController;
+use App\Http\Controllers\Panel\PaymentController;
 use App\Http\Controllers\Panel\QuestionController;
 use App\Http\Controllers\Panel\TicketController;
 use App\Http\Controllers\Panel\TransactionController;
@@ -58,7 +59,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::get('/',[PanelController::class,'index'])->name('panel');
     Route::resource('/users',UserController::class)->except('show');
     Route::resource('/roles',RoleController::class)->except('create');
-    Route::post('/roles/{role}/set',[RoleController::class,'setPermissions'])->name('setpermissions.store');
+    Route::post('/roles/{role}/set',[RoleController::class,'setPermissions'])->name('set.permissions.store');
     Route::resource('/permissions',PermissionController::class)->except(['create','show']);
     Route::resource('/categories',CategoryController::class)->except(['create','show']);
     Route::resource('/tags',TagController::class)->except(['create','show']);
@@ -70,6 +71,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::post('/editor/upload',[EditorUploadController::class,'upload'])->name('editor.upload');
     Route::resource('/profiles',EditProfileController::class)->only(['index','update']);
     Route::resource('/courses',CourseController::class)->except('show');
+    Route::get('/my/courses',[CourseController::class,'myCourses'])->name('my.courses.index');
     Route::resource('/episodes',EpisodeController::class)->except('show');
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
@@ -78,6 +80,8 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::post('/answers/{question}',[AnswerController::class,'store'])->name('answers.store');
     //Order
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    //Payment
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     //Coupon
     Route::resource('/coupons',CouponController::class);
     Route::put('/coupons/{coupon}/status',[CouponController::class,'isApproved'])->name('coupons.status');
@@ -108,6 +112,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 //Transaction
 Route::middleware(['auth', 'verified'])->prefix('/transaction')->group(function (){
+    Route::post('/order/{order}',[TransactionController::class,'unpaidOrders'])->name('unpaid.order.request');
+    Route::post('/order',[TransactionController::class,'newOrders'])->name('new.order.request');
     Route::post('/request',[TransactionController::class,'request'])->name('request');
     Route::get('/callback',[TransactionController::class,'callback'])->name('callback');
 });
