@@ -3,15 +3,33 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class TransactionController extends Controller
 {
-    public function request()
+    public int $amount;
+    public int $order_id;
+
+    public function unpaidOrders(Order $order)
+    {
+        $this->amount = $order->amount;
+        $this->order_id = $order->id;
+        return $this->request();
+    }
+
+    public function newOrders()
     {
         OrderController::store();
+        $this->amount = OrderController::$order->amount;
+        $this->order_id = OrderController::$order->id;
+        return $this->request();
+    }
+
+    public function request()
+    {
         $merchant_id = env('MERCHANT_ID');
-        $amount = OrderController::$amount * 10;
-        $order_id = OrderController::$order->id;
+        $amount = $this->amount * 10;
+        $order_id = $this->order_id;
 
         $data = array("merchant_id" => $merchant_id,
             "amount" => $amount,
@@ -52,8 +70,7 @@ class TransactionController extends Controller
 
     public function callback()
     {
-
-        $amount = OrderController::$amount * 10;
+        $amount = $this->amount * 10;
         $merchant_id = env('MERCHANT_ID');
         $Authority = $_GET['Authority'];
 
@@ -77,6 +94,7 @@ class TransactionController extends Controller
             echo "cURL Error #:" . $err;
         } else {
             if ($result['data']['code'] == 100) {
+                session()->forget(['coupon','coupon_id','discount','payable','wallet','newWalletValue']);
                 OrderController::update();
                 PaymentController::storeSuccessCallBack($result,$Authority);
             } else {
