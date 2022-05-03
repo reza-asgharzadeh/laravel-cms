@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Order;
 
 class ShowCourseController extends Controller
 {
@@ -26,6 +27,16 @@ class ShowCourseController extends Controller
             }
         }
 
-        return view('client.course',compact(['course','most_student','display']));
+        $registeredButton = false;
+        $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->get();
+        foreach ($orders as $order){
+            foreach ($order->courses as $myCourse){
+                if ($myCourse->id == $course->id){
+                    $registeredButton = true;
+                }
+            }
+        }
+
+        return view('client.course',compact(['course','most_student','display','orders','registeredButton']));
     }
 }
