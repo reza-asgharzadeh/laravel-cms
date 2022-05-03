@@ -13,6 +13,9 @@
             @can('display-activities')
                 <li><a href="{{route('activities.index')}}"><i class="fa fa-calendar"></i> فعالیت های من</a></li>
             @endcan
+
+                <li><a href="{{route('my.courses.index')}}"><i class="fa fa-graduation-cap"></i> دوره های من</a></li>
+
             @can('display-wallet')
                 <li><a href="{{route('wallets.index')}}"><i class="fa fa-shopping-bag"></i> کیف پول</a></li>
             @endcan
@@ -112,16 +115,18 @@
             @can('display-orders')
                 <li><a><i class="fa fa-shopping-basket"></i> لیست سفارشات <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="{{route('comments.index')}}">پرداخت های موفق</a></li>
-                        <li><a href="{{route('comments.index')}}">پرداخت های ناموفق</a></li>
+                        <li><a href="{{route('orders.index')}}">همه سفارشات</a></li>
+                        <li><a href="{{route('orders.index',['order_status'=>1])}}">سفارشات موفق</a></li>
+                        <li><a href="{{route('orders.index',['order_status'=>0])}}">سفارشات ناموفق</a></li>
                     </ul>
                 </li>
             @endcan
             @can('display-payments')
                 <li><a><i class="fa fa-money"></i> لیست پرداخت ها <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="{{route('comments.index')}}">پرداخت های موفق</a></li>
-                        <li><a href="{{route('comments.index')}}">پرداخت های ناموفق</a></li>
+                        <li><a href="{{route('payments.index')}}">همه پرداخت ها</a></li>
+                        <li><a href="{{route('payments.index',['status_code'=>true])}}">پرداخت های موفق</a></li>
+                        <li><a href="{{route('payments.index',['status_code'=>false])}}">پرداخت های ناموفق</a></li>
                     </ul>
                 </li>
             @endcan
