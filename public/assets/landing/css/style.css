@@ -116,7 +116,7 @@ ul.catalogue li a{
 
 .card-txt{
     font-weight: 600 !important;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .main-color{
@@ -366,6 +366,12 @@ p,button{
     font-weight: 400 !important;
 }
 
+section p{
+    line-height: 2.1;
+    font-size: 1.25rem;
+    text-align: justify;
+}
+
 p.h6,p.h5,p.h4,p.h3,p.h2,p.h1{
     font-family:iranyekanBakh !important;
     font-weight: 600 !important;
@@ -457,3 +463,26 @@ p.h6,p.h5,p.h4,p.h3,p.h2,p.h1{
     color: #000;
 }
 /*end services card*/
+
+/*Start Sliding Back to Top Button*/
+.top {
+    --offset: 50px;
+    position: sticky;
+    bottom: 20px;
+    place-self: start;
+    margin-top: calc(100vh + var(--offset));
+
+    /* visual styling */
+    text-decoration: none;
+    padding: 10px;
+    color: #C5C5C5;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.top:hover{
+    color: #9a9a9a;
+}
+/*End Sliding Back to Top Button*/
