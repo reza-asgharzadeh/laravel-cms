@@ -16,6 +16,7 @@ class ShowCourseController extends Controller
            return $query->where('comment_id',null)->where('is_approved',true);
         }])->loadCount('comments');
 
+        $courseTime = $course->episodes()->sum('time');
 
         $display = false;
 
@@ -37,6 +38,6 @@ class ShowCourseController extends Controller
             }
         }
 
-        return view('client.course',compact(['course','most_student','display','orders','registeredButton']));
+        return view('client.course',compact(['course','most_student','courseTime','display','orders','registeredButton']));
     }
 }
