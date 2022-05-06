@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\Composers\AlertComposer;
 use App\View\Composers\CategoryComposer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -26,5 +27,6 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts.landing',CategoryComposer::class);
+        View::composer('layouts.landing',AlertComposer::class);
     }
 }
