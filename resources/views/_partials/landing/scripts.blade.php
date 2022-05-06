@@ -5,3 +5,6 @@
 {{--Cart and Episode Toggle--}}
 <script src="{{asset('assets/landing/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/landing/js/bootstrap.min.js')}}"></script>
+@if($alert)
+    <script src="{{asset('/assets/landing/js/countdown.js')}}"></script>
+@endif
