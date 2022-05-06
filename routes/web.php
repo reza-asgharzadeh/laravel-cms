@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Panel\AlertController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
@@ -90,6 +91,9 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::put('/offers/{offer}/status',[OfferController::class,'isApproved'])->name('offers.status');
     //Wallet
     Route::resource('/wallets',WalletController::class)->only(['index','update']);
+    //Alert Bar
+    Route::resource('/alerts',AlertController::class)->except('show');
+    Route::put('/alerts/{alert}/status',[AlertController::class,'isApproved'])->name('alerts.status');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
