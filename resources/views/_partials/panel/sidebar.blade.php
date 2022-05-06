@@ -96,6 +96,12 @@
                     </ul>
                 </li>
             @endcan
+                <li><a><i class="fa fa-percent"></i> نوار اطلاع رسانی <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{route('alerts.create')}}">ایجاد نوار اطلاع رسانی</a></li>
+                        <li><a href="{{route('alerts.index')}}">مدیریت نوارهای اطلاع رسانی</a></li>
+                    </ul>
+                </li>
             @can('display-coupons')
                 <li><a><i class="fa fa-percent"></i> کد تخفیف <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
