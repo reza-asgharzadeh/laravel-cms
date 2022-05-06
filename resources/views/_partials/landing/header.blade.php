@@ -1,3 +1,4 @@
+@include('client.offer_alert')
 <header>
     <nav class="navbar navbar-expand-lg shadow p-3 mb-5 bg-body rounded">
         <div class="container">
