@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Offer\CreateOfferRequest;
 use App\Http\Requests\Panel\Offer\UpdateOfferRequest;
-use App\Models\Course;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -24,8 +23,7 @@ class OfferController extends Controller
     {
         Gate::authorize('create-offer');
 
-        $courses = Course::all();
-        return view('panel.offers.create',compact('courses'));
+        return view('panel.offers.create');
     }
 
     public function store(CreateOfferRequest $request)
@@ -50,8 +48,7 @@ class OfferController extends Controller
     {
         Gate::authorize('edit-offers');
 
-        $courses = Course::all();
-        return view('panel.offers.edit',compact('offer','courses'));
+        return view('panel.offers.edit',compact('offer'));
     }
 
     public function isApproved(Request $request, Offer $offer)
