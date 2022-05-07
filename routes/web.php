@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\CoursesController;
+use App\Http\Controllers\Client\ShowOfferPageController;
 use App\Http\Controllers\Panel\AlertController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
@@ -55,6 +58,9 @@ Route::get('/category/post/{category:slug}',[ShowCategoryPostController::class,'
 Route::get('/category/course/{category:slug}',[ShowCategoryCourseController::class,'show'])->name('category.course.show');
 Route::get('/post/tag/{tag:slug}',[ShowPostTagController::class,'show'])->name('post.tag.show');
 Route::get('/course/tag/{tag:slug}',[ShowCourseTagController::class,'show'])->name('course.tag.show');
+Route::get('/courses/offer',[ShowOfferPageController::class,'show']);
+Route::get('/blog',[BlogController::class,'index'])->name('blog');
+Route::get('/courses',[CoursesController::class,'index'])->name('courses');
 
 Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::get('/',[PanelController::class,'index'])->name('panel');
