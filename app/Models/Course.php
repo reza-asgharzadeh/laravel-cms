@@ -55,7 +55,7 @@ class Course extends Model
 
     public function getBanner()
     {
-        return asset('courses/banner/' . $this->banner);
+        return asset('course/banner/' . $this->banner);
     }
 
     public function episodes()
