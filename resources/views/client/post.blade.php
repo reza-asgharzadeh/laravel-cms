@@ -1,11 +1,11 @@
-<x-landing-layout>
+<x-landing-layout title="{{$post->title}}" description="{{$post->meta_description}}" keywords="salam,khubi" imageUrl="{{$post->getBanner()}}" pageUrl="{{$post->slug}}">
     <x-slot name="links">
         <link rel="stylesheet" href="{{asset('assets/landing/css/post-course.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comments.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comment-avatar.css')}}">
     </x-slot>
 <!-- Page Content -->
-    <div id="app" class="container mb-5">
+    <div id="app" class="container mt-2">
 
         <div class="row">
             <!-- Blog Post Content Column -->
@@ -27,7 +27,12 @@
                 <img src="{{$post->getBanner()}}" class="img-fluid" alt="...">
                 <hr>
                 <!-- Post Content -->
-                {!! $post->content !!}
+                <article>
+                    {!! $post->content !!}
+                </article>
+                <hr>
+                <p class="text-center h5 mb-4">میخوای این مقاله رو به دوستاتم بفرستی؟</p>
+                @include('_partials.landing.social_share')
                 <hr>
                 <!-- Blog Comments -->
                 <div class="comments" id="comments">
