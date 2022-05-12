@@ -51,6 +51,12 @@
                     </ul>
                 </li>
             @endcan
+                <li><a><i class="fa fa-file"></i> صفحات تکی <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{route('pages.create')}}">ایجاد صفحه تکی جدید</a></li>
+                        <li><a href="{{route('pages.index')}}">مدیریت صفحات تکی</a></li>
+                    </ul>
+                </li>
             @can('display-posts')
                 <li><a><i class="fa fa-edit"></i> مقالات <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
