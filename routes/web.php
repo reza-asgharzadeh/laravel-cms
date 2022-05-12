@@ -5,12 +5,14 @@ use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CoursesController;
 use App\Http\Controllers\Client\ShowOfferPageController;
+use App\Http\Controllers\Client\SitemapController;
 use App\Http\Controllers\Panel\AlertController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
 use App\Http\Controllers\Panel\CouponController;
 use App\Http\Controllers\Panel\OfferController;
+use App\Http\Controllers\Panel\PageController;
 use App\Http\Controllers\Panel\PaymentController;
 use App\Http\Controllers\Panel\QuestionController;
 use App\Http\Controllers\Panel\TicketController;
@@ -49,6 +51,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Site Map XML
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/',[LandingController::class,'index'])->name('landing');
 Route::get('/post/{post:slug}',[ShowPostController::class,'show'])->name('posts.show');
@@ -100,6 +105,9 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     //Alert Bar
     Route::resource('/alerts',AlertController::class)->except('show');
     Route::put('/alerts/{alert}/status',[AlertController::class,'isApproved'])->name('alerts.status');
+    //Single Page
+    Route::resource('/pages',PageController::class);
+    Route::put('/pages/{page}/status',[PageController::class,'isApproved'])->name('pages.status');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
@@ -135,3 +143,6 @@ Route::prefix('/auth')->group(function (){
 });
 
 require __DIR__.'/auth.php';
+
+//Get Single Page
+Route::get('/{page:slug}',[PageController::class,'show'])->name('single.page.show');
