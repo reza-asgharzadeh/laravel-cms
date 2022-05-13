@@ -40,7 +40,10 @@ class PageController extends Controller
 
     public function show(Page $page)
     {
-        return view('client.page',compact('page'));
+        if($page->is_approved){
+            return view('client.page',compact('page'));
+        }
+        abort(404);
     }
 
     public function edit(Page $page)
