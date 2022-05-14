@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: http://localhost:8000//login
+Disallow: http://localhost:8000//register
+Disallow: http://localhost:8000//forget-password
+Disallow: http://localhost:8000//cart
+
+Sitemap: http://localhost:8000/sitemap.xml
