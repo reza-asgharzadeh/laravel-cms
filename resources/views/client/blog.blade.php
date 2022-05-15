@@ -1,8 +1,11 @@
-<x-landing-layout>
+<x-landing-layout title="همه مقالات"
+                  description="در این قسمت می‌توانید تمامی مقالات منشتر شده در سایت را مشاهده کنید."
+                  keywords="مقالات"
+                  pageUrl="{{route('blog')}}">
 <div class="container mt-5">
-    <h3 class="text-center main-color h2 mb-4">تمامی مقالات</h3>
+    <h3 class="text-center main-color h2 mb-4">همه مقالات</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($posts as $post)
+        @forelse($posts as $post)
             <div class="col-xs-12 col-sm-6 col-lg-3">
                 <div class="card h-100 custom-box-shadow">
                     <a href="{{route('posts.show',$post->slug)}}"><img src="{{$post->getBanner()}}" class="card-img-top" alt="..." height="170"></a>
@@ -22,10 +25,16 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div style="width: 100%; min-height: 500px" class="text-center">
+                <p class="mt-5 text-danger h5">در حال حاضر هیچ مقاله ای وجود ندارد !</p>
+            </div>
+        @endforelse
     </div>
-    <div class="d-flex justify-content-center mt-5">
-        {!! $posts->links() !!}
-    </div>
+    @if(!$posts->isEmpty())
+        <div class="d-flex justify-content-center mt-5">
+            {!! $posts->links() !!}
+        </div>
+    @endif
 </div>
 </x-landing-layout>
