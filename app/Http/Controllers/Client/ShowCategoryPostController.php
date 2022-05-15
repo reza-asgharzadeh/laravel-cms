@@ -9,7 +9,7 @@ class ShowCategoryPostController extends Controller
 {
     public function show(Category $category)
     {
-        $posts = $category->posts()->paginate();
-        return view('client.category',compact('posts'));
+        $posts = $category->posts()->paginate(9);
+        return view('client.post_category',compact('category','posts'));
     }
 }
