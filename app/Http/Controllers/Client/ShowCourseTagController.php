@@ -9,7 +9,7 @@ class ShowCourseTagController extends Controller
 {
     public function show(Tag $tag)
     {
-        $courses = $tag->courses()->paginate();
-        return view('client.tag',compact('courses'));
+        $courses = $tag->courses()->paginate(9);
+        return view('client.course_tag',compact('tag','courses'));
     }
 }
