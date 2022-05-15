@@ -1,4 +1,7 @@
-<x-landing-layout>
+<x-landing-layout title="{{env('APP_NAME')}}"
+                  description="صفحه اصلی سایت {{env('APP_NAME')}}"
+                  keywords="صفحه اصلی"
+                  pageUrl="{{route('landing')}}">
 
 {{--  Header  --}}
 <div class="container mt-5">
