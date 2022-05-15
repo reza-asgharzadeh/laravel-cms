@@ -4,7 +4,7 @@ use App\Models\Category;
 use Illuminate\View\View;
 
 class CategoryComposer{
-    protected $categories;
+    protected object $categories;
 
     public function __construct()
     {
