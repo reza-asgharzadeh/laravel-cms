@@ -1,8 +1,11 @@
-<x-landing-layout>
+<x-landing-layout title="همه دوره‌ها"
+                  description="در این قسمت می‌توانید تمامی دوره‌های منشتر شده در سایت را مشاهده کنید."
+                  keywords="دوره‌ها"
+                  pageUrl="{{route('courses')}}">
 <div class="container mt-5">
-    <h3 class="text-center main-color h2 mb-4">تمامی دوره ها</h3>
+    <h3 class="text-center main-color h2 mb-3">همه دوره ها</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($courses as $course)
+        @forelse($courses as $course)
             <div class="col-xs-12 col-sm-6 col-lg-3">
                 <div class="card h-100 custom-box-shadow">
                     <a href="{{route('courses.show',$course->slug)}}"><img src="{{$course->getBanner()}}" class="card-img-top" alt="..." height="170"></a>
@@ -31,10 +34,16 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div style="width: 100%; min-height: 500px" class="text-center">
+                <p class="mt-5 text-danger h5">در حال حاضر هیچ دوره ای وجود ندارد !</p>
+            </div>
+        @endforelse
     </div>
-    <div class="d-flex justify-content-center mt-5">
-        {!! $courses->links() !!}
-    </div>
+    @if(!$courses->isEmpty())
+        <div class="d-flex justify-content-center mt-5">
+            {!! $courses->links() !!}
+        </div>
+    @endif
 </div>
 </x-landing-layout>
