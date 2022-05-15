@@ -63,7 +63,7 @@ Route::get('/category/post/{category:slug}',[ShowCategoryPostController::class,'
 Route::get('/category/course/{category:slug}',[ShowCategoryCourseController::class,'show'])->name('category.course.show');
 Route::get('/post/tag/{tag:slug}',[ShowPostTagController::class,'show'])->name('post.tag.show');
 Route::get('/course/tag/{tag:slug}',[ShowCourseTagController::class,'show'])->name('course.tag.show');
-Route::get('/courses/offer',[ShowOfferPageController::class,'show']);
+Route::get('/courses/offer',[ShowOfferPageController::class,'show'])->name('courses.offer');
 Route::get('/blog',[BlogController::class,'index'])->name('blog');
 Route::get('/courses',[CoursesController::class,'index'])->name('courses');
 
