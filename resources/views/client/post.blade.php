@@ -1,4 +1,7 @@
-<x-landing-layout title="{{$post->title}}" description="{{$post->meta_description}}" keywords="salam,khubi" imageUrl="{{$post->getBanner()}}" pageUrl="{{$post->slug}}">
+<x-landing-layout title="{{$post->title}}"
+                  description="{{$post->description}}"
+                  keywords="{{$post->keywords}}"
+                  pageUrl="{{route('posts.show',$post->slug)}}">
     <x-slot name="links">
         <link rel="stylesheet" href="{{asset('assets/landing/css/post-course.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comments.css')}}">
