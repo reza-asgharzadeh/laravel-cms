@@ -25,3 +25,33 @@
 .text-purple{
     color: #8757E8;
 }
+
+.rounded-4{
+    border-radius: 0.8rem;
+}
+
+.whatsapp-txt-color{
+    color: #64F772 !important;
+}
+.telegram-txt-color{
+    color: #36AEE2 !important;
+}
+.linkedin-txt-color{
+    color: #0077B5 !important;
+}
+.twitter-txt-color{
+    color: #1D9BF0 !important;
+}
+
+.whatsapp-txt-color:hover{
+    color: #4ad752 !important;
+}
+.telegram-txt-color:hover{
+    color: #33a1d2 !important;
+}
+.linkedin-txt-color:hover{
+    color: #035e8a !important;
+}
+.twitter-txt-color:hover{
+    color: #1a8fde !important;
+}
