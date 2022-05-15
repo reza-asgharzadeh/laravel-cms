@@ -1,7 +1,4 @@
 <x-panel-layout>
-    <x-slot name="links">
-        <link href="{{asset('assets/panel/css/tags.css')}}" rel="stylesheet">
-    </x-slot>
     <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
@@ -174,6 +171,5 @@
                 filebrowserUploadMethod:'form'
             });
         </script>
-        <script src="{{asset('assets/panel/js/tagsInput.js')}}"></script>
     </x-slot>
 </x-panel-layout>
