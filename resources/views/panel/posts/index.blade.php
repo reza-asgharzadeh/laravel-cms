@@ -60,6 +60,7 @@
                                         <th>تعداد بازدید</th>
                                         <th>نام نویسنده</th>
                                         <th>تاریخ ایجاد</th>
+                                        <th>تاریخ بروزرسانی</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -86,6 +87,7 @@
                                             <td>{{$post->view_count}}</td>
                                             <td>{{$post->user->name}}</td>
                                             <td>{{$post->getCreatedAtInJalali()}}</td>
+                                            <td>{{$post->getUpdatedAtInJalali()}}</td>
                                             <td>
                                                 <div style="display: flex; justify-content: space-evenly">
                                                     <div><a href="{{route('posts.show',$post->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
