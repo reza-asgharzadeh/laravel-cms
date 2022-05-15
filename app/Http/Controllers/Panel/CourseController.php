@@ -55,7 +55,7 @@ class CourseController extends Controller
 
         $file = $request->file('banner');
         $file_name = $file->getClientOriginalName();
-        $file->storeAs('courses/banner',$file_name,'public_files');
+        $file->storeAs('course/banner',$file_name,'public_files');
         $data['banner'] = $file_name;
 
         $course = Course::create(
@@ -113,7 +113,7 @@ class CourseController extends Controller
         if ($request->hasFile('banner')){
             $file = $request->file('banner');
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('courses/banner',$file_name,'public_files');
+            $file->storeAs('course/banner',$file_name,'public_files');
             $data['banner'] = $file_name;
         }
 
