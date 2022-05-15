@@ -64,7 +64,7 @@
                                     <th>وضعیت</th>
                                     <th>سطح</th>
                                     <th>تاریخ شروع</th>
-                                    <th>تاریخ آخرین آپدیت</th>
+                                    <th>تاریخ بروزرسانی</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -83,8 +83,8 @@
                                         <td>{{$course->time}}</td>
                                         <td>{{$course->getStatus()}}</td>
                                         <td>{{$course->getLevel()}}</td>
-                                        <td>{{$course->created_at}}</td>
-                                        <td>{{$course->updated_at}}</td>
+                                        <td>{{$course->getCreatedAtInJalali()}}</td>
+                                        <td>{{$course->getUpdatedAtInJalali()}}</td>
                                         <td>
                                             <div style="display: flex; justify-content: space-evenly">
                                                 <div><a href="{{route('courses.show',$course->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
