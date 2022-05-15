@@ -1,4 +1,7 @@
-<x-landing-layout>
+<x-landing-layout title="{{$episode->name}}"
+                  description="{{$episode->description}}"
+                  keywords="{{$episode->keywords}}"
+                  pageUrl="{{route('episodes.show',[$course->slug,$episode->slug])}}">
     <x-slot name="links">
         <link rel="stylesheet" href="{{asset('assets/landing/css/post-course.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comments.css')}}">
