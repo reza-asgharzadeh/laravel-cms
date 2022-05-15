@@ -1,8 +1,11 @@
-<x-landing-layout>
+<x-landing-layout title="سبد خرید"
+                  description="لیست خریدهای شما"
+                  keywords="سبد خرید"
+                  pageUrl="{{route('cart')}}">
     <div class="container">
         <div class="row">
             @if(session('cart'))
-                <div class="col-md-8">
+                <div class="col-md-8 p-3 mt-4">
                     <div class="table-responsive">
                         <table id="cart" class="table table-hover">
                             <thead class="bg-light">
@@ -41,8 +44,8 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 bg-light p-2">
-                    <p class="h4 text-center">اطلاعات پرداخت</p>
+                <div class="col-md-4 bg-light p-5 mt-5">
+                    <h3 class="text-center">اطلاعات پرداخت</h3>
                     <hr>
                     <div data-id="coupon">
                         <p class="h5">کد تخفیف:</p>
@@ -79,7 +82,10 @@
                     </div>
                 </div>
             @else
-                <p class="text-center h3">سبد خرید شما خالی است.</p>
+                <div style="width: 100%; min-height: 500px" class="text-center">
+                    <h3 class="mt-5 text-danger h2">سبد خرید شما خالی است !</h3>
+                    <a class="mt-2 btn btn-video" href="{{route('courses')}}">مشاهده دوره ها</a>
+                </div>
             @endif
         </div>
     </div>
