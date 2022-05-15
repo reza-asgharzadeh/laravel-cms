@@ -29,15 +29,18 @@ class ShowCourseController extends Controller
         }
 
         $registeredButton = false;
-        $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->get();
-        foreach ($orders as $order){
-            foreach ($order->courses as $myCourse){
-                if ($myCourse->id == $course->id){
-                    $registeredButton = true;
+
+        if (auth()->user()){
+            $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->get();
+            foreach ($orders as $order){
+                foreach ($order->courses as $myCourse){
+                    if ($myCourse->id == $course->id){
+                        $registeredButton = true;
+                    }
                 }
             }
         }
 
-        return view('client.course',compact(['course','most_student','courseTime','display','orders','registeredButton']));
+        return view('client.course',compact(['course','most_student','courseTime','display','registeredButton']));
     }
 }
