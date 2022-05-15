@@ -9,7 +9,7 @@ class ShowCategoryCourseController extends Controller
 {
     public function show(Category $category)
     {
-        $courses = $category->courses()->paginate();
-        return view('client.category',compact('courses'));
+        $courses = $category->courses()->paginate(9);
+        return view('client.course_category',compact('category','courses'));
     }
 }
