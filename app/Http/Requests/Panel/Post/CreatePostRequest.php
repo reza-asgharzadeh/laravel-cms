@@ -33,7 +33,8 @@ class CreatePostRequest extends FormRequest
             'categories.*' => ['required', 'string'],
             'banner' => ['required', 'image', 'max:2024'],
             'img_alt' => ['required', 'string', 'max:255'],
-            'content' => ['required']
+            'content' => ['required'],
+            'is_approved' => ['required','boolean']
         ];
     }
 }
