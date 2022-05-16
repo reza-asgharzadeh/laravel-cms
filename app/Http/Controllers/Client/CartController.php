@@ -17,7 +17,7 @@ class CartController extends Controller
 
     public function addToCart($id)
     {
-        $course = Course::findOrFail($id);
+        $course = Course::where('is_approved',true)->findOrFail($id);
         $price = $course->price;
 
         if ($course->offer && $course->offer->expiry_date >= Carbon::now() && $course->offer->is_approved){
