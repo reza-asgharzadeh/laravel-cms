@@ -9,8 +9,8 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $courses = Course::orderByDesc('id')->take(4)->get();
-        $posts = Post::orderByDesc('id')->take(4)->get();
+        $courses = Course::where('is_approved',true)->orderByDesc('id')->take(4)->get();
+        $posts = Post::where('is_approved',true)->orderByDesc('id')->take(4)->get();
         return view('client.landing',compact(['courses','posts']));
     }
 }
