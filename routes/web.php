@@ -76,6 +76,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/categories',CategoryController::class)->except(['create','show']);
     Route::resource('/tags',TagController::class)->except(['create','show']);
     Route::resource('/posts',PostController::class)->except('show');
+    Route::put('/posts/{post}/status',[PostController::class,'isApproved'])->name('posts.status');
     Route::resource('/comments',CommentController::class)->except(['create','show']);
     Route::get('/comments/{comment}/reply',[CommentController::class,'reply'])->name('comments.reply');
     Route::post('/comments/{comment}/save',[CommentController::class,'save'])->name('comments.save');
@@ -83,6 +84,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::post('/editor/upload',[EditorUploadController::class,'upload'])->name('editor.upload');
     Route::resource('/profiles',EditProfileController::class)->only(['index','update']);
     Route::resource('/courses',CourseController::class)->except('show');
+    Route::put('/courses/{course}/status',[CourseController::class,'isApproved'])->name('courses.status');
     Route::get('/my/courses',[CourseController::class,'myCourses'])->name('my.courses.index');
     Route::resource('/episodes',EpisodeController::class)->except('show');
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
