@@ -29,7 +29,9 @@ class ShowOfferPageController extends Controller
         $courses = [];
         foreach($offers as $offer) {
             foreach ($offer->courses as $course){
-                $courses[] = $course;
+                if ($course->is_approved){
+                    $courses[] = $course;
+                }
             }
         }
 
