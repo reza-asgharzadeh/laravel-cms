@@ -61,6 +61,7 @@
                                         <th>نام نویسنده</th>
                                         <th>تاریخ ایجاد</th>
                                         <th>تاریخ بروزرسانی</th>
+                                        <th>وضعیت انتشار</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -88,8 +89,28 @@
                                             <td>{{$post->user->name}}</td>
                                             <td>{{$post->getCreatedAtInJalali()}}</td>
                                             <td>{{$post->getUpdatedAtInJalali()}}</td>
+                                            <td class="{{$post->is_approved ? 'text-success' : 'text-danger'}}">{{$post->is_approved()}}</td>
                                             <td>
                                                 <div style="display: flex; justify-content: space-evenly">
+                                                    <div>
+                                                        @if($post->is_approved)
+                                                            <div>
+                                                                <a href="{{route('posts.status',$post->id)}}" onclick="updateIsApproved(event, {{ $post->id }})"><i class="fa-x fa-times" title="عدم تایید"></i></a>
+                                                                <form action="{{route('posts.status',$post->id)}}" method="post" id="update-isApproved-{{ $post->id }}">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                </form>
+                                                            </div>
+                                                        @else
+                                                            <div>
+                                                                <a href="{{route('posts.status',$post->id)}}" onclick="updateIsApproved(event, {{ $post->id }})"><i class="fa-x fa-check" title="تایید"></i></a>
+                                                                <form action="{{route('posts.status',$post->id)}}" method="post" id="update-isApproved-{{ $post->id }}">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                </form>
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                     <div><a href="{{route('posts.show',$post->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
                                                     <div><a href="{{route('posts.edit',$post->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                     <div>
@@ -136,6 +157,11 @@
                         document.getElementById(`destroy-post-${id}`).submit()
                     }
                 })
+            }
+
+            function updateIsApproved(event, id) {
+                event.preventDefault();
+                document.getElementById(`update-isApproved-${id}`).submit()
             }
         </script>
     </x-slot>
