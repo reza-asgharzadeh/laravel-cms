@@ -9,7 +9,7 @@ class CoursesController extends Controller
 {
     public function index()
     {
-        $courses = Course::paginate(9);
+        $courses = Course::where('is_approved',true)->paginate(9);
         return view('client.courses',compact('courses'));
     }
 }
