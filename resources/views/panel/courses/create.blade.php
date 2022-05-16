@@ -53,6 +53,17 @@
                             <form action="{{route('courses.store')}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">حالت نمایش
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control" name="is_approved">
+                                            <option value="0">پیش نویس</option>
+                                            <option value="1">انتشار</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">نام دوره
                                         <span class="required">*</span>
                                     </label>

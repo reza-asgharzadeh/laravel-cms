@@ -54,6 +54,17 @@
                                 @csrf
                                 @method('put')
                                 <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">حالت نمایش
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control" name="is_approved">
+                                            <option value="0" {{!$course->is_approved ? 'selected' : ''}}>پیش نویس</option>
+                                            <option value="1" {{$course->is_approved ? 'selected' : ''}}>انتشار</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">نام دوره
                                         <span class="required">*</span>
                                     </label>

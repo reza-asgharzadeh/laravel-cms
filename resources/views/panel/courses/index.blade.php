@@ -65,6 +65,7 @@
                                     <th>سطح</th>
                                     <th>تاریخ شروع</th>
                                     <th>تاریخ بروزرسانی</th>
+                                    <th>وضعیت انتشار</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -85,8 +86,28 @@
                                         <td>{{$course->getLevel()}}</td>
                                         <td>{{$course->getCreatedAtInJalali()}}</td>
                                         <td>{{$course->getUpdatedAtInJalali()}}</td>
+                                        <td class="{{$course->is_approved ? 'text-success' : 'text-danger'}}">{{$course->is_approved()}}</td>
                                         <td>
                                             <div style="display: flex; justify-content: space-evenly">
+                                                <div>
+                                                    @if($course->is_approved)
+                                                        <div>
+                                                            <a href="{{route('courses.status',$course->id)}}" onclick="updateIsApproved(event, {{ $course->id }})"><i class="fa-x fa-times" title="عدم تایید"></i></a>
+                                                            <form action="{{route('courses.status',$course->id)}}" method="post" id="update-isApproved-{{ $course->id }}">
+                                                                @csrf
+                                                                @method('put')
+                                                            </form>
+                                                        </div>
+                                                    @else
+                                                        <div>
+                                                            <a href="{{route('courses.status',$course->id)}}" onclick="updateIsApproved(event, {{ $course->id }})"><i class="fa-x fa-check" title="تایید"></i></a>
+                                                            <form action="{{route('courses.status',$course->id)}}" method="post" id="update-isApproved-{{ $course->id }}">
+                                                                @csrf
+                                                                @method('put')
+                                                            </form>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                                 <div><a href="{{route('courses.show',$course->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
                                                 <div><a href="{{route('courses.edit',$course->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                 <div>
@@ -131,6 +152,11 @@
                         document.getElementById(`destroy-course-${id}`).submit()
                     }
                 })
+            }
+
+            function updateIsApproved(event, id) {
+                event.preventDefault();
+                document.getElementById(`update-isApproved-${id}`).submit()
             }
         </script>
     </x-slot>
