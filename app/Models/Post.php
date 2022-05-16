@@ -16,8 +16,18 @@ class Post extends Model
         'banner',
         'img_alt',
         'content',
-        'user_id'
+        'user_id',
+        'is_approved'
     ];
+
+    public function is_approved()
+    {
+        $message = match ($this->is_approved) {
+            0 => 'پیش نویس',
+            1 => 'منتشر شده',
+        };
+        return $message;
+    }
 
     public function categories()
     {

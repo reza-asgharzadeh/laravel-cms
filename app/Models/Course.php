@@ -22,8 +22,18 @@ class Course extends Model
         'course_status',
         'course_level',
         'user_id',
-        'offer_id'
+        'offer_id',
+        'is_approved',
     ];
+
+    public function is_approved()
+    {
+        $message = match ($this->is_approved) {
+            0 => 'پیش نویس',
+            1 => 'منتشر شده',
+        };
+        return $message;
+    }
 
     public function categories()
     {
