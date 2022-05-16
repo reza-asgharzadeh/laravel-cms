@@ -9,7 +9,7 @@ class ShowPostTagController extends Controller
 {
     public function show(Tag $tag)
     {
-        $posts = $tag->posts()->paginate(9);
+        $posts = $tag->posts()->where('is_approved',true)->paginate(9);
         return view('client.post_tag',compact('tag','posts'));
     }
 }
