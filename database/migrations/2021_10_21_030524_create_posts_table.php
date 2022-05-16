@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('img_alt');
             $table->longText('content');
             $table->integer('view_count')->default(0);
+            $table->boolean('is_approved');
             $table->timestamps();
         });
     }

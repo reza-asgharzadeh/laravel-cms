@@ -28,6 +28,7 @@ class CreateCoursesTable extends Migration
             $table->string('time');
             $table->boolean('course_status');
             $table->integer('course_level');
+            $table->boolean('is_approved');
             $table->timestamps();
         });
     }
