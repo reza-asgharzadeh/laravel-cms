@@ -41,7 +41,8 @@ class UpdateCourseRequest extends FormRequest
             'course_status' => ['required', 'boolean'],
             'course_level' => ['required', 'integer'],
             'offer_id' => ['nullable', 'integer'],
-            'content' => ['required']
+            'content' => ['required'],
+            'is_approved' => ['required','boolean']
         ];
     }
 }
