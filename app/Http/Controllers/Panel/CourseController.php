@@ -92,6 +92,16 @@ class CourseController extends Controller
         return view('panel.courses.edit',compact('course','courseTags','tags','courseCategories','categories','offers'));
     }
 
+    public function isApproved(Request $request, Course $course)
+    {
+        $course->update([
+            'is_approved' => ! $course->is_approved
+        ]);
+
+        $request->session()->flash('status','وضعیت انتشار دوره با موفقیت تغییر کرد !');
+        return to_route('courses.index');
+    }
+
     public function update(UpdateCourseRequest $request, Course $course)
     {
         Gate::authorize('update-courses');
