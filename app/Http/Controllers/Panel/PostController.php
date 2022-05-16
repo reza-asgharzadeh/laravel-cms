@@ -82,6 +82,16 @@ class PostController extends Controller
         return view('panel.posts.edit',compact('post','postTags','tags','postCategories','categories'));
     }
 
+    public function isApproved(Request $request, Post $post)
+    {
+        $post->update([
+            'is_approved' => ! $post->is_approved
+        ]);
+
+        $request->session()->flash('status','وضعیت انتشار مقاله با موفقیت تغییر کرد !');
+        return to_route('posts.index');
+    }
+
     public function update(UpdatePostRequest $request, Post $post)
     {
         Gate::authorize('update-posts');
