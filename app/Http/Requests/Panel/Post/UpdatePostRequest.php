@@ -28,7 +28,8 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', Rule::unique('posts')->ignore($post->id)],
-            'meta_description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:255'],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['nullable', 'string'],
             'categories' => ['required', 'array'],

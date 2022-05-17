@@ -26,7 +26,8 @@ class CreatePostRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:posts'],
-            'meta_description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:255'],
             'tags' => ['required', 'array'],
             'tags.*' => ['required', 'string'],
             'categories' => ['required', 'array'],
