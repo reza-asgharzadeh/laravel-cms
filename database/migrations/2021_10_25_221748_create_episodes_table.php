@@ -18,8 +18,8 @@ class CreateEpisodesTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('downloadUrl')->unique();
-            $table->text('description');
-            $table->longText('content');
+            $table->string('description');
+            $table->string('keywords');
             $table->string('time');
             $table->boolean('display');
             $table->timestamps();
