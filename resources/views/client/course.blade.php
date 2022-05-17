@@ -38,14 +38,14 @@
                         @foreach($course->episodes as $episode)
                         <div class="card-header">
                             <div class="d-flex bd-highlight mb-3">
-                                <div class="p-2 bd-highlight"><a class="collapsed card-link" data-toggle="collapse" href="#{{$episode->slug}}"><span class="circle-number">{{$loop->iteration}}</span> {{$episode->name}}</a></div>
+                                <div class="p-2 bd-highlight"><a class="collapsed card-link" data-toggle="collapse" href="#{{$episode->slug}}"><span class="circle-number">{{$loop->iteration}}</span> {{$episode->name}} <i class="fa fa-chevron-down"></i></a></div>
                                 <div class="ms-auto p-2 bd-highlight">{{$episode->time}} دقیقه</div>
                                 <div class="bd-highlight btn-video"><small><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}" target="_blank"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
                             </div>
                         </div>
                         <div id="{{$episode->slug}}" class="collapse" data-parent="#accordion">
                             <div class="card-body">
-                                {!! $episode->content !!}
+                                {{$episode->description}}
                             </div>
                         </div>
                         @endforeach
@@ -107,7 +107,8 @@
                     <p class="h6"><i class="fa fa-eye text-purple"></i> تعداد بازدید: {{$course->view_count}}</p>
                     <p class="h6"><i class="fa fa-users text-purple"></i> تعداد دانشجویان: {{$course->student_count}}</p>
                     <p class="h6"><i class="fa fa-calendar text-purple"></i> تعداد قسمت: {{count($course->episodes)}} جلسه</p>
-                    <p class="h6"><i class="fa fa-clock-o text-purple"></i> مدت زمان دوره: {{$courseTime}} {{$courseTime > 60 ? 'ساعت' : 'دقیقه'}}</p>
+                    <p class="h6"><i class="fa fa-clock-o text-purple"></i> مدت زمان حدودی دوره: {{$course->time}} ساعت</p>
+                    <p class="h6"><i class="fa fa-clock-o text-purple"></i> مدت زمان دوره تا این لحظه: {{$courseTime}} {{$courseTime > 60 ? 'ساعت' : 'دقیقه'}}</p>
                     <p class="h6"><i class="fa fa-info text-purple"></i> وضعیت دوره: {{$course->getStatus()}}</p>
                     <p class="h6"><i class="fa fa-level-up text-purple"></i> سطح دوره: {{$course->getLevel()}}</p>
                     <p class="h6"><i class="fa fa-asterisk text-purple"></i> پیش نیاز دوره: {{$course->pre_course}}</p>
