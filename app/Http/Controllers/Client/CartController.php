@@ -37,7 +37,8 @@ class CartController extends Controller
             ];
         }
         session()->put('cart', $cart);
-        return back()->with('success', 'دوره با موفقیت به سبد خرید افزوده شد');
+        session()->flash('add-remove-cart', 'دوره با موفقیت به سبد خرید افزوده شد');
+        return back();
     }
 
     public function update(Request $request){
@@ -157,13 +158,21 @@ class CartController extends Controller
         $cart = session()->get('cart');
         if(isset($cart[$request->id])) {
             $course = Course::find($request->id);
-            $total = collect(session("cart"))->sum("price") - $course->price;
+
+            $price = $course->price;
+            if ($course->offer && $course->offer->expiry_date >= Carbon::now() && $course->offer->is_approved){
+                $price = match ($course->offer->type) {
+                    'percent' => $price - ($price * $course->offer->value / 100),
+                    'fixed' => $price - $course->offer->value,
+                };
+            }
+            $total = collect(session("cart"))->sum("price") - $price;
+
             unset($cart[$request->id]);
             session()->put('cart', $cart);
             $count = count((array) session('cart'));
-//                session()->flash('success', 'دوره با موفقیت از سبد خرید پاک شد');
             session()->forget(['coupon','coupon_id','discount','payable','wallet','newWalletValue']);
-            return response()->json(["total" => $total,"successs"=>"دوره با موفقیت از سبد خرید پاک شد","discount"=>0,"payable"=>$total,"coupon"=>"اگر کد تخفیف دارید مجددا اعمال کنید.","count"=>$count,"idCart"=>$request->id]);
+            return response()->json(["total" => $total,"discount"=>0,"payable"=>$total,"wallet"=>auth()->user()->wallet->value,"coupon"=>"اگر کد تخفیف دارید مجددا اعمال کنید.","count"=>$count,"idCart"=>$request->id]);
         }
     }
 }
