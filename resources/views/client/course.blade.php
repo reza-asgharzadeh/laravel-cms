@@ -114,15 +114,19 @@
                     <p class="h6"><i class="fa fa-asterisk text-purple"></i> پیش نیاز دوره: {{$course->pre_course}}</p>
                     <p class="h6"><i class="fa fa-calendar text-purple"></i> تاریخ شروع: {{$course->getCreatedAtInJalali()}}</p>
                     <p class="h6"><i class="fa fa-calendar text-purple"></i> آخرین بروزرسانی: {{$course->getUpdatedAtInJalali()}}</p>
-                    @if($registeredButton)
-                        <p class="btn btn-purple w-100">شما دانشجوی این دوره هستید.</p>
-                    @else
-                        @if($display)
-                            <a href="{{ route('cart') }}" class="btn btn-purple w-100">نهایی سازی خرید</a>
+                    @auth
+                        @if($registeredButton)
+                            <p class="btn btn-purple w-100">شما دانشجوی این دوره هستید.</p>
                         @else
-                            <a href="{{ route('add.to.cart', $course->id) }}" class="btn btn-purple w-100">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</a>
+                            @if($display)
+                                <a href="{{ route('cart') }}" class="btn btn-purple w-100">نهایی سازی خرید</a>
+                            @else
+                                <a href="{{ route('add.to.cart', $course->id) }}" class="btn btn-purple w-100">{{$course->price == 0 ? 'رایگان' : 'ثبت نام در دوره'}}</a>
+                            @endif
                         @endif
-                    @endif
+                    @else
+                        <a href="{{ route('login')}}" class="btn btn-purple w-100">برای ثبت نام ابتدا باید وارد سایت شوید.</a>
+                    @endauth
                 </div>
 
             <!-- Blog Search Well -->
