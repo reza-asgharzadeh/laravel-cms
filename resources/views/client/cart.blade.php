@@ -16,7 +16,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <p id="alert"></p>
                             @php $total = 0 @endphp
                             @if(session('cart'))
                                 @foreach(session('cart') as $id => $details)
@@ -71,13 +70,13 @@
                         <div><span id="payable" class="h5">{{ session()->get("payable") ?? $total}}</span><span class="h5"> تومان</span></div>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
-                        <a href="{{ url('/') }}" class="btn btn-primary"><i class="fa fa-angle-left"></i> افزودن دوره جدید</a>
+                        <a href="{{ route('courses') }}" class="btn btn-sm btn-primary"><i class="fa fa-angle-left"></i> افزودن دوره جدید</a>
                         @if(auth()->user()->wallet->value > 0)
-                            <button id="update-wallet" class="btn btn-warning">اعمال کیف</button>
+                            <button id="update-wallet" class="btn btn-sm btn-warning">اعمال کیف</button>
                         @endif
                         <form action="{{route('new.order.request')}}" method="post">
                             @csrf
-                            <button class="btn btn-success">پرداخت سفارش</button>
+                            <button class="btn btn-sm btn-success">پرداخت سفارش</button>
                         </form>
                     </div>
                 </div>
@@ -90,6 +89,7 @@
         </div>
     </div>
 <x-slot name="scripts">
+    <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
     <script type="text/javascript">
         $("#update-wallet").on('click', function (e) {
             e.preventDefault();
@@ -152,10 +152,17 @@
                     $("#count-basket").html(response.count);
                     $("#badge-total").html(response.count);
                     $("#basket-total").html(response.total);
-                    $("#alert").html('<p id="alert" class="alert alert-success">' + response.successs + '</p>');
                     $("#coupon").html(response.coupon);
                     $("#discount").html(response.discount);
                     $("#payable").html(response.payable);
+                    $("#wallet-value").html(response.wallet);
+                    Swal.fire({
+                        title: "دوره با موفقیت از سبد خرید پاک شد",
+                        icon: "success",
+                        button: "باشه",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             });
         });
