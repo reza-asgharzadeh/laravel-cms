@@ -27,8 +27,8 @@ class CreateEpisodeRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:episodes'],
             'downloadUrl' => ['required', 'string', 'max:255', 'unique:episodes'],
-            'description' => ['required'],
-            'content' => ['required'],
+            'description' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:255'],
             'time' => ['required', 'string', 'max:255'],
             'display' => ['required', 'boolean'],
             'course_id' => ['required','integer']
