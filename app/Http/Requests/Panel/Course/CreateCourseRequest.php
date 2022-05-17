@@ -26,7 +26,8 @@ class CreateCourseRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', 'unique:courses'],
-            'meta_description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:255'],
             'tags' => ['required', 'array'],
             'tags.*' => ['required', 'string'],
             'categories' => ['required', 'array'],

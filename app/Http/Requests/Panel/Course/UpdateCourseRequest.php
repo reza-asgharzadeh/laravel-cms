@@ -28,7 +28,8 @@ class UpdateCourseRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', Rule::unique('courses')->ignore($course->id)],
-            'meta_description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:255'],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['nullable', 'string'],
             'categories' => ['required', 'array'],
