@@ -28,6 +28,7 @@ class UpdatePageRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', Rule::unique('pages')->ignore($page->id)],
             'banner' => ['nullable', 'image', 'max:2024'],
             'img_alt' => ['required', 'string', 'max:255'],
