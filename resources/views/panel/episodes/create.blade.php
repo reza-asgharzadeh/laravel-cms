@@ -138,13 +138,14 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="content">توضیحات جلسه
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="keywords">کلمات کلیدی
                                         <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-10 col-sm-10 col-xs-12">
-                                        <textarea id="content" name="content" class="form-control col-md-7 col-xs-12">{{old('content')}}</textarea>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="keywords" name="keywords"
+                                               class="form-control col-md-7 col-xs-12" value="{{old('keywords')}}">
                                     </div>
-                                    @error('content')
+                                    @error('keywords')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
