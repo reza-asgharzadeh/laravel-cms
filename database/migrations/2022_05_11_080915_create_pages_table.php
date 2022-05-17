@@ -17,6 +17,7 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
+            $table->string('keywords');
             $table->string('slug')->unique();
             $table->string('banner');
             $table->string('img_alt');
