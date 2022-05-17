@@ -53,7 +53,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                {!! $episode->content !!}
+                {{$episode->description}}
                 <hr>
                 <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید این دوره را خریداری کنید</div>
 
