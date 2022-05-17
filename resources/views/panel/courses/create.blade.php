@@ -88,13 +88,25 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="meta_description">توضیحات متا
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="description">توضیحات کوتاه
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea id="meta_description" name="meta_description" class="form-control col-md-7 col-xs-12">{{old('meta_description')}}</textarea>
+                                        <textarea id="description" name="description" class="form-control col-md-7 col-xs-12">{{old('description')}}</textarea>
                                     </div>
-                                    @error('meta_description')
+                                    @error('description')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="keywords">کلمات کلیدی
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="keywords" name="keywords"
+                                               class="form-control col-md-7 col-xs-12" value="{{old('keywords')}}">
+                                    </div>
+                                    @error('keywords')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -146,7 +158,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="img_alt">آلت تصویر شاخص
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="img_alt">متن تصویر شاخص
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -182,7 +194,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="time">مدت زمان
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="time">مدت زمان حدودی دوره
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
