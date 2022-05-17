@@ -144,5 +144,17 @@
     <!-- /.container -->
     <x-slot name="scripts">
         <script src="{{asset('assets/landing/js/comment-replies.js')}}"></script>
+        @if(Session::has('add-remove-cart'))
+            <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
+            <script>
+                Swal.fire({
+                    title: "{{Session::get('add-remove-cart')}}",
+                    icon: "success",
+                    button: "باشه",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+        @endif
     </x-slot>
 </x-landing-layout>
