@@ -17,7 +17,8 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('meta_description');
+            $table->string('description');
+            $table->string('keywords');
             $table->string('banner');
             $table->string('img_alt');
             $table->longText('content');
