@@ -92,6 +92,7 @@
                                                             </div>
                                                         @endif
                                                     </div>
+                                                    <div><a href="{{route('single.page.show',$page->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
                                                     <div><a href="{{route('pages.edit',$page->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                     <div>
                                                         <a href="{{route('pages.destroy',$page->id)}}" onclick="destroyPage(event, {{ $page->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
