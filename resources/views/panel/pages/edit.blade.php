@@ -78,10 +78,21 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="description" name="description"
-                                               class="form-control col-md-7 col-xs-12" value="{{$page->description}}">
+                                        <textarea id="description" name="description" class="form-control col-md-7 col-xs-12">{{$page->description}}</textarea>
                                     </div>
                                     @error('description')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="keywords">کلمات کلیدی
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="keywords" name="keywords"
+                                               class="form-control col-md-7 col-xs-12" value="{{$page->keywords}}">
+                                    </div>
+                                    @error('keywords')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
