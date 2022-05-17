@@ -14,7 +14,7 @@ class Episode extends Model
         'slug',
         'downloadUrl',
         'description',
-        'content',
+        'keywords',
         'time',
         'display',
         'course_id'
