@@ -51,29 +51,29 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center">ردیف</th>
+                                    <th>ردیف</th>
                                     <th>شناسه سفارش</th>
-                                    <th style="text-align: center">آتوریتی</th>
-                                    <th style="text-align: center">شناسه مرجع</th>
-                                    <th style="text-align: center">نوع پرداخت</th>
-                                    <th style="text-align: center">نام درگاه</th>
-                                    <th style="text-align: center">وضعیت پرداخت</th>
-                                    <th style="text-align: center">تاریخ ایجاد</th>
-                                    <th style="text-align: center">تاریخ آپدیت</th>
+                                    <th>آتوریتی</th>
+                                    <th>شناسه مرجع</th>
+                                    <th>نوع پرداخت</th>
+                                    <th>نام درگاه</th>
+                                    <th>وضعیت پرداخت</th>
+                                    <th>تاریخ ایجاد</th>
+                                    <th>تاریخ آپدیت</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($payments as $payment)
                                     <tr>
-                                        <th style="text-align: center;vertical-align: middle" scope="row">{{$loop->iteration}}</th>
+                                        <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$payment->order_id}}</td>
                                         <td>{{$payment->authority}}</td>
-                                        <td style="text-align: center;vertical-align: middle">{{$payment->RefID}}</td>
-                                        <td style="text-align: center;vertical-align: middle">{{$payment->payment_type}}</td>
-                                        <td style="text-align: center;vertical-align: middle">{{$payment->gateway_name}}</td>
-                                        <td style="text-align: center;vertical-align: middle" class="{{$payment->status_code == 100 ? 'text-success' : 'text-danger'}}">{{$payment->statusCode()}}</td>
-                                        <td style="text-align: center;vertical-align: middle">{{$payment->created_at}}</td>
-                                        <td style="text-align: center;vertical-align: middle">{{$payment->updated_at}}</td>
+                                        <td>{{$payment->RefID}}</td>
+                                        <td>{{$payment->payment_type}}</td>
+                                        <td>{{$payment->gateway_name}}</td>
+                                        <td class="{{$payment->status_code == 100 ? 'text-success' : 'text-danger'}}">{{$payment->statusCode()}}</td>
+                                        <td>{{$payment->created_at}}</td>
+                                        <td>{{$payment->updated_at}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
