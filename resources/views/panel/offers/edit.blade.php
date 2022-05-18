@@ -71,8 +71,8 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" name="type">
-                                            <option value="percent">درصدی</option>
-                                            <option value="fixed">نقدی</option>
+                                            <option value="percent" {{$offer->type == 'percent' ? 'selected' : ''}}>درصدی</option>
+                                            <option value="fixed" {{$offer->type == 'fixed' ? 'selected' : ''}}>نقدی</option>
                                         </select>
                                     </div>
                                 </div>
