@@ -69,7 +69,7 @@
                             <form action="{{route('tickets.reply',$ticket->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="file">فایل PDF یا عکس</label>
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="file">عکس</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="file" id="file" name="file" accept="image/*,.pdf"
                                                class="form-control col-md-7 col-xs-12">
