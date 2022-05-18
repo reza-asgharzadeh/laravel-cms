@@ -31,11 +31,24 @@ class ShowEpisodeController extends Controller
                 }
             }
 
+            $registeredButton = false;
+
+            if (auth()->user()){
+                $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->get();
+                foreach ($orders as $order){
+                    foreach ($order->courses as $myCourse){
+                        if ($myCourse->id == $course->id){
+                            $registeredButton = true;
+                        }
+                    }
+                }
+            }
+
             $episode->load(['comments' => function($query){
                 return $query->where('comment_id',null)->where('is_approved',true);
             }])->loadCount('comments');
 
-            return view('client.episode',compact(['course','episode','most_student','downloadLink','display']));
+            return view('client.episode',compact(['course','episode','most_student','downloadLink','display','registeredButton']));
         }
         abort(404);
     }
