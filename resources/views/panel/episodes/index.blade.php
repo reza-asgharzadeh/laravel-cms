@@ -78,12 +78,17 @@
                                         <td>{{$episode->getCreatedAtInJalali()}}</td>
                                         <td>{{$episode->getUpdatedAtInJalali()}}</td>
                                         <td>
-                                            <a href="{{route('episodes.edit',$episode->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
-                                            <a href="{{route('episodes.destroy',$episode->id)}}" onclick="destroyEpisode(event, {{ $episode->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
-                                            <form action="{{route('episodes.destroy',$episode->id)}}" method="post" id="destroy-episode-{{ $episode->id }}">
-                                                @csrf
-                                                @method('delete')
-                                            </form>
+                                            <div style="display: flex; justify-content: space-evenly">
+                                                <div><a href="{{route('episodes.show',[$episode->course->slug,$episode->slug])}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('episodes.edit',$episode->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
+                                                <div>
+                                                    <a href="{{route('episodes.destroy',$episode->id)}}" onclick="destroyEpisode(event, {{ $episode->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
+                                                    <form action="{{route('episodes.destroy',$episode->id)}}" method="post" id="destroy-episode-{{ $episode->id }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
