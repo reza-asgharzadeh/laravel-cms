@@ -51,35 +51,35 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center">ردیف</th>
+                                    <th>ردیف</th>
                                     <th>دوره های این سفارش</th>
-                                    <th style="text-align: center">کد سفارش</th>
-                                    <th style="text-align: center">وضعیت سفارش</th>
-                                    <th style="text-align: center">مبلغ سفارش</th>
-                                    <th style="text-align: center">عملیات</th>
+                                    <th>کد سفارش</th>
+                                    <th>وضعیت سفارش</th>
+                                    <th>مبلغ سفارش</th>
+                                    <th>عملیات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($orders as $order)
                                         <tr>
-                                            <th style="text-align: center;vertical-align: middle" scope="row">{{$loop->iteration}}</th>
+                                            <th style="vertical-align: middle" scope="row">{{$loop->iteration}}</th>
                                             <td>
                                                 @foreach($order->courses as $course)
-                                                    <div style="margin-top: 1rem"><img src="{{$course->getBanner()}}" alt="" width="52" height="52"> <span>{{$course->name}}</span></div>
+                                                    <div style="margin-top: 1rem;text-align: right"><img src="{{$course->getBanner()}}" alt="" width="52" height="52"> <span style="margin-right: 1rem">{{$course->name}}</span></div>
                                                 @endforeach
                                             </td>
-                                            <td style="text-align: center;vertical-align: middle">{{$order->order_code}}</td>
-                                            <td style="text-align: center;vertical-align: middle" class="{{$order->order_status ? 'text-success' : 'text-danger'}}">{{$order->getOrderStatus()}}</td>
-                                            <td style="text-align: center;vertical-align: middle">{{$order->amount}}</td>
+                                            <td style="vertical-align: middle">{{$order->order_code}}</td>
+                                            <td style="vertical-align: middle" class="{{$order->order_status ? 'text-success' : 'text-danger'}}">{{$order->getOrderStatus()}}</td>
+                                            <td style="vertical-align: middle">{{$order->amount}}</td>
                                             @if($order->order_status == 0)
-                                            <td style="text-align: center;vertical-align: middle">
+                                            <td style="vertical-align: middle">
                                                 <form action="{{route('unpaid.order.request',$order->id)}}" method="post">
                                                     @csrf
                                                     <button class="btn btn-success "><i class="fa fa-shopping-bag"></i> پرداخت سفارش</button>
                                                 </form>
                                             </td>
                                             @else
-                                                <td style="text-align: center;vertical-align: middle">
+                                                <td style="vertical-align: middle">
                                                     <i class="fa fa-check text-success"></i><span> پرداخت شده</span>
                                                 </td>
                                             @endif
