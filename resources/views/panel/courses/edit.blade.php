@@ -212,8 +212,8 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" name="course_status">
-                                            <option value="0">در حال برگزاری</option>
-                                            <option value="1">اتمام دوره</option>
+                                            <option value="0" {{!$course->course_status ? 'selected' : ''}}>در حال برگزاری</option>
+                                            <option value="1" {{$course->course_status ? 'selected' : ''}}>اتمام دوره</option>
                                         </select>
                                     </div>
                                 </div>
@@ -223,9 +223,9 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" name="course_level">
-                                            <option value="0">مقدماتی</option>
-                                            <option value="1">پیشرفته</option>
-                                            <option value="2">مقدماتی تا پیشرفته</option>
+                                            <option value="0" {{$course->course_level == 0 ? 'selected' : ''}}>مقدماتی</option>
+                                            <option value="1" {{$course->course_level == 1 ? 'selected' : ''}}>پیشرفته</option>
+                                            <option value="2" {{$course->course_level == 2 ? 'selected' : ''}}>مقدماتی تا پیشرفته</option>
                                         </select>
                                     </div>
                                 </div>
