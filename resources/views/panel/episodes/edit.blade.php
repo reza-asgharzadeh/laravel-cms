@@ -104,7 +104,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" name="display">
-                                            <option value="0" {{$episode->display ? '' : 'selected'}}>نمایش در صورت خرید دوره</option>
+                                            <option value="0" {{!$episode->display ? 'selected' : ''}}>نمایش در صورت خرید دوره</option>
                                             <option value="1" {{$episode->display ? 'selected' : ''}}>نمایش برای همه</option>
                                         </select>
                                     </div>
@@ -119,7 +119,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" name="course_id">
                                             @foreach($courses as $course)
-                                            <option value="{{$course->id}}">{{$course->name}}</option>
+                                            <option value="{{$course->id}}" {{$course->id == $episode->course_id ? 'selected' : ''}}>{{$course->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
