@@ -12,7 +12,7 @@ class ShowCourseController extends Controller
     {
         if($course->is_approved){
             $course->increment('view_count');
-            $most_student = $course->where('is_approved',true)->orderByDesc('student_count')->take(6)->get();
+            $most_student = Course::where('is_approved',true)->orderByDesc('student_count')->take(6)->get();
             $course->load(['comments' => function($query){
                 return $query->where('comment_id',null)->where('is_approved',true);
             }])->loadCount('comments');
