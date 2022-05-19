@@ -1,9 +1,9 @@
 /*footer bottom start*/
 body{
-    min-height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    /*min-height: 100vh;*/
+    /*margin: 0;*/
+    /*display: grid;*/
+    /*grid-template-rows: auto 1fr auto;*/
 }
 
 header{
@@ -76,6 +76,11 @@ a.text-xl:hover{
     font-size: 1.25rem;
     font-weight: 800;
     color: #333030;
+}
+
+.small-txt{
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 /*landing card profile start*/
@@ -489,5 +494,20 @@ button,p.h6,p.h5,p.h4,p.h3,p.h2,p.h1{
 article.page img{
     max-width: 100% !important;
     height: auto !important;
+}
+
+article{
+    text-align: justify;
+}
+
+.tags{
+    background: #F5F5F5;
+    color: #323232 !important;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.tags:hover{
+    background: #EAEAEA;
 }
 /*End Single Page Image*/
