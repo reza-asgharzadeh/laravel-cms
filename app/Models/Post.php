@@ -52,12 +52,12 @@ class Post extends Model
 
     public function getCreatedAtInJalali()
     {
-        return verta($this->created_at)->format('h:i:s - Y/m/d');
+        return verta($this->created_at)->format('Y/m/d');
     }
 
     public function getUpdatedAtInJalali()
     {
-        return verta($this->updated_at)->format('h:i:s - Y/m/d');
+        return verta($this->updated_at)->format('Y/m/d');
     }
 
     public function comments()
