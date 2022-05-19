@@ -6,37 +6,85 @@
         <link rel="stylesheet" href="{{asset('assets/landing/css/post-course.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comments.css')}}">
         <link rel="stylesheet" href="{{asset('assets/landing/css/comment-avatar.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/landing/css/related-posts-carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/landing/css/owl.carousel.min.css')}}">
     </x-slot>
 <!-- Page Content -->
-    <div id="app" class="container mt-2">
+    <div id="app" class="container mt-3">
 
         <div class="row">
             <!-- Blog Post Content Column -->
-            <div class="col-md-8 shadow-lg">
+            <div class="col-md-8 shadow-lg rounded-4">
 
+                <article class="mt-3">
                 <!-- Blog Post -->
-
-                <!-- Title -->
-                <h1 class="mt-2 mb-3 h2">{{$post->title}}</h1>
+                <img src="{{$post->getBanner()}}" class="img-fluid" alt="banner">
 
                 <!-- Author -->
-                <div class="d-flex justify-content-between">
-                    <p><i class="fa fa-user"></i> نویسنده: <a href="#">{{$post->user->name}}</a></p>
-                    <p><i class="fa fa-calendar"></i> تاریخ انتشار: {{$post->getCreatedAtInJalali()}}</p>
-                    <p><i class="fa fa-eye"></i> تعداد بازدید: {{$post->view_count}}</p>
+                <div class="d-flex justify-content-evenly mt-2">
+                    <div class="d-flex flex-column flex-xxl-row">
+                        <span class="mx-3 h6"><i class="fa fa-clock-o"></i> زمان مطالعه: {{round(App\Http\phpCountWordPersian::string(htmlspecialchars(trim(strip_tags($post->content)))) / 215)}} دقیقه</span>
+                        <span class="h6"><i class="fa fa-eye"></i> تعداد بازدید: {{$post->view_count}}</span>
+                    </div>
+
+                    <div class="d-flex flex-column flex-xxl-row">
+                        <span class="mx-3 h6"><i class="fa fa-calendar"></i> انتشار: {{$post->getCreatedAtInJalali()}}</span>
+                        <span class="h6"><i class="fa fa-calendar"></i> بروزرسانی: {{$post->getUpdatedAtInJalali()}}</span>
+                    </div>
                 </div>
                 <!-- Date/Time -->
 
-                <img src="{{$post->getBanner()}}" class="img-fluid" alt="...">
-                <hr>
+                <!-- Title -->
+                <h2 class="mt-3 mb-3 h2">{{$post->title}}</h2>
+
                 <!-- Post Content -->
-                <article>
-                    {!! $post->content !!}
-                </article>
-                <hr>
-                <p class="text-center h5 mb-4">میخوای این مقاله رو به دوستاتم بفرستی؟</p>
+                {!! $post->content !!}
+                <div class="d-flex mt-4">
+                    <span>برچسب‌ها:</span>
+                    @foreach($post->tags as $tag)
+                        <span><a class="tags mx-2" href="{{route('post.tag.show',$tag->slug)}}">{{$tag->name}}</a></span>
+                    @endforeach
+                </div>
+                <p class="text-center h5 mt-4 mb-4">میخوای این مقاله رو به دوستاتم بفرستی؟</p>
                 @include('_partials.landing.social_share')
                 <hr>
+                <div class="d-flex align-items-center mb-4">
+                    <img class="border rounded-circle" src="{{$post->user->getProfile()}}" width="80px" height="80px" alt="{{$post->user->name}}">
+                    <div class="d-flex flex-column mx-2">
+                        <div>
+                            <span><strong>{{$post->user->name}}</strong></span>
+                            <span>{{$post->user->role_id == 1 ? '(مدیر سایت)' : ''}}</span>
+                        </div>
+                        <span>برنامه نویس و توسعه دهنده وب</span>
+                    </div>
+                </div>
+                </article>
+
+                <!-- Related Posts -->
+                <h4 class="text-center">مقالات مرتبط</h4>
+                <section class="user-blog">
+                    <div id="demo1">
+                        <div class="span12">
+                            <div id="owl-demo1" class="owl-carousel">
+                                @foreach($relatedPosts as $post)
+                                <div class="item">
+                                    <div class="blog-grid">
+                                        <div class="img-date">
+                                            <img src="{{$post->getBanner()}}" height="120px">
+                                        </div>
+                                        <div class="discretion-blog">
+                                            <h5>{{$post->title}}</h5>
+                                            <a class="btn btn-outline-primary" href="{{route('posts.show',$post->slug)}}">خواندن</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
                 <!-- Blog Comments -->
                 <div class="comments" id="comments">
                     @auth
@@ -70,36 +118,41 @@
             <!-- Blog Sidebar Widgets Column -->
 
             <div class="col-md-4">
-            <!-- Blog Search Well -->
-                <div class="well shadow">
-                    <hp>جستجو در سایت</hp>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="fa-x fa-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
+                <!-- Side Widget Well -->
+                <div class="well shadow rounded-4">
+                    <h4 class="text-center">دوره‌های محبوب</h4>
+                    <hr>
+                    @foreach($most_student as $course)
+                        <div class="bg-light p-2 border-start border-primary mb-3">
+                            <div class="d-flex mb-2">
+                                <a class="text-dark" href="{{route('courses.show',$course->slug)}}">{{$course->name}}</a>
+                            </div>
+
+                            <div class="d-flex justify-content-evenly">
+                                <span class="text-muted small-txt"><i class="fa fa-users"></i> تعداد دانشجو: {{$course->student_count}}</span>
+                                <span class="text-muted small-txt"><i class="fa fa-user"></i> مدرس: {{$course->user->name}}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                    <a class="btn btn-outline-primary d-block w-50 m-auto" href="{{route('courses')}}">مشاهده همه دوره‌ها</a>
                 </div>
 
-                <!-- Side Widget Well -->
-                <div class="well shadow">
-                    <p>مقالات پر بازدید</p>
-                    @foreach($most_visited as $visit)
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <p>{{$visit->title}}</p>
-                            <p>{{$visit->user->name}}</p>
-                            <p>{{$visit->getCreatedAtInJalali()}}</p>
-                        </div>
-                        <div class="flex-grow-1 ms-5">
-                            <img src="{{$visit->getBanner()}}" alt="banner" class="rounded" height="82">
-                        </div>
-                    </div><br>
-                    @endforeach
+                <div class="well shadow rounded-4">
+                    <h4 class="text-center">مقالات پر بازدید</h4>
+                    <hr>
+                    @foreach($most_visited as $post)
+                        <div class="bg-light p-2 border-start border-primary mb-3">
+                            <div class="d-flex mb-2">
+                                <a class="text-dark" href="{{route('posts.show',$post->slug)}}">{{$post->title}}</a>
+                            </div>
 
+                            <div class="d-flex justify-content-evenly">
+                                <span class="text-muted small-txt"><i class="fa fa-eye"></i> تعداد بازدید: {{$post->view_count}}</span>
+                                <span class="text-muted small-txt"><i class="fa fa-clock-o"></i> زمان مطالعه: {{round(App\Http\phpCountWordPersian::string(htmlspecialchars(trim(strip_tags($post->content)))) / 215)}} دقیقه</span>
+                            </div>
+                        </div>
+                    @endforeach
+                    <a class="btn btn-outline-primary d-block w-50 m-auto" href="{{route('blog')}}">مشاهده همه مقالات</a>
                 </div>
 
             </div>
@@ -109,5 +162,7 @@
     <!-- /.container -->
     <x-slot name="scripts">
         <script src="{{asset('assets/landing/js/comment-replies.js')}}"></script>
+        <script src="{{asset('assets/landing/js/owl.carousel.min.js')}}"></script>
+        <script src="{{asset('assets/landing/js/carousel-jquery.js')}}"></script>
     </x-slot>
 </x-landing-layout>
