@@ -118,43 +118,43 @@
             <!-- Blog Sidebar Widgets Column -->
 
             <div class="col-md-4">
-                <!-- Side Widget Well -->
-                <div class="well shadow rounded-4">
-                    <h4 class="text-center">دوره‌های محبوب</h4>
-                    <hr>
-                    @foreach($most_student as $course)
-                        <div class="bg-light p-2 border-start border-primary mb-3">
-                            <div class="d-flex mb-2">
-                                <a class="text-dark" href="{{route('courses.show',$course->slug)}}">{{$course->name}}</a>
-                            </div>
+                <div class="sticky-top">
+                    <div class="well shadow rounded-4">
+                        <h4 class="text-center">دوره‌های محبوب</h4>
+                        <hr>
+                        @foreach($most_student as $course)
+                            <div class="bg-light p-2 border-start border-primary mb-3">
+                                <div class="d-flex mb-2">
+                                    <a class="text-dark" href="{{route('courses.show',$course->slug)}}">{{$course->name}}</a>
+                                </div>
 
-                            <div class="d-flex justify-content-evenly">
-                                <span class="text-muted small-txt"><i class="fa fa-users"></i> تعداد دانشجو: {{$course->student_count}}</span>
-                                <span class="text-muted small-txt"><i class="fa fa-user"></i> مدرس: {{$course->user->name}}</span>
+                                <div class="d-flex justify-content-evenly">
+                                    <span class="text-muted small-txt"><i class="fa fa-users"></i> تعداد دانشجو: {{$course->student_count}}</span>
+                                    <span class="text-muted small-txt"><i class="fa fa-user"></i> مدرس: {{$course->user->name}}</span>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
-                    <a class="btn btn-outline-primary d-block w-50 m-auto" href="{{route('courses')}}">مشاهده همه دوره‌ها</a>
+                        @endforeach
+                        <a class="btn btn-outline-primary d-block w-50 m-auto" href="{{route('courses')}}">مشاهده همه دوره‌ها</a>
+                    </div>
+
+                    <div class="well shadow rounded-4">
+                        <h4 class="text-center">مقالات پر بازدید</h4>
+                        <hr>
+                        @foreach($most_visited as $post)
+                            <div class="bg-light p-2 border-start border-primary mb-3">
+                                <div class="d-flex mb-2">
+                                    <a class="text-dark" href="{{route('posts.show',$post->slug)}}">{{$post->title}}</a>
+                                </div>
+
+                                <div class="d-flex justify-content-evenly">
+                                    <span class="text-muted small-txt"><i class="fa fa-eye"></i> تعداد بازدید: {{$post->view_count}}</span>
+                                    <span class="text-muted small-txt"><i class="fa fa-clock-o"></i> زمان مطالعه: {{round(App\Http\phpCountWordPersian::string(htmlspecialchars(trim(strip_tags($post->content)))) / 215)}} دقیقه</span>
+                                </div>
+                            </div>
+                        @endforeach
+                        <a class="btn btn-outline-primary d-block w-50 m-auto" href="{{route('blog')}}">مشاهده همه مقالات</a>
+                    </div>
                 </div>
-
-                <div class="well shadow rounded-4">
-                    <h4 class="text-center">مقالات پر بازدید</h4>
-                    <hr>
-                    @foreach($most_visited as $post)
-                        <div class="bg-light p-2 border-start border-primary mb-3">
-                            <div class="d-flex mb-2">
-                                <a class="text-dark" href="{{route('posts.show',$post->slug)}}">{{$post->title}}</a>
-                            </div>
-
-                            <div class="d-flex justify-content-evenly">
-                                <span class="text-muted small-txt"><i class="fa fa-eye"></i> تعداد بازدید: {{$post->view_count}}</span>
-                                <span class="text-muted small-txt"><i class="fa fa-clock-o"></i> زمان مطالعه: {{round(App\Http\phpCountWordPersian::string(htmlspecialchars(trim(strip_tags($post->content)))) / 215)}} دقیقه</span>
-                            </div>
-                        </div>
-                    @endforeach
-                    <a class="btn btn-outline-primary d-block w-50 m-auto" href="{{route('blog')}}">مشاهده همه مقالات</a>
-                </div>
-
             </div>
         </div>
 
