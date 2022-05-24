@@ -104,7 +104,9 @@
                             </form>
                         </div>
                     @else
-                        <p class="text-danger">برای ارسال نظر، اول باید وارد سایت شوید.</p>
+                        <div class="alert alert-danger" role="alert">
+                            برای ارسال نظر، اول باید وارد سایت شوید.
+                        </div>
                     @endauth
                     <div class="comments__list">
                         @foreach($post->comments as $comment)
