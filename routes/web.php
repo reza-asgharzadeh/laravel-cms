@@ -4,9 +4,11 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CoursesController;
+use App\Http\Controllers\Client\SearchController;
 use App\Http\Controllers\Client\ShowOfferPageController;
 use App\Http\Controllers\Client\SitemapController;
 use App\Http\Controllers\Panel\AlertController;
+use App\Http\Controllers\Panel\NewsLetterController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
 use App\Http\Controllers\Panel\AnswerController;
@@ -66,6 +68,7 @@ Route::get('/course/tag/{tag:slug}',[ShowCourseTagController::class,'show'])->na
 Route::get('/courses/offer',[ShowOfferPageController::class,'show'])->name('courses.offer');
 Route::get('/blog',[BlogController::class,'index'])->name('blog');
 Route::get('/courses',[CoursesController::class,'index'])->name('courses');
+Route::post('/newsletters',[NewsLetterController::class,'store'])->name('newsletters.store');
 
 Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::get('/',[PanelController::class,'index'])->name('panel');
@@ -110,6 +113,9 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     //Single Page
     Route::resource('/pages',PageController::class);
     Route::put('/pages/{page}/status',[PageController::class,'isApproved'])->name('pages.status');
+    //Newsletter
+    Route::resource('/newsletters',NewsLetterController::class)->except(['create','show']);
+    Route::put('/newsletters/{newsletter}/status',[NewsLetterController::class,'status'])->name('newsletters.status');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
