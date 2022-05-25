@@ -102,6 +102,11 @@
                     </ul>
                 </li>
             @endcan
+                <li><a><i class="fa fa-comments"></i> خبرنامه‌ها <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{route('newsletters.index')}}">مدیریت خبرنامه‌ها</a></li>
+                    </ul>
+                </li>
                 <li><a><i class="fa fa-percent"></i> نوار اطلاع رسانی <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('alerts.create')}}">ایجاد نوار اطلاع رسانی</a></li>
