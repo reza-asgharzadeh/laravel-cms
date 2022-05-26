@@ -4,11 +4,7 @@
         <div class="d-flex justify-content-between">
             <img  class="mt-3" src="{{asset('assets/landing/img/logo.png')}}" alt="logo">
             <span class="mt-3">
-                <a class="h4 mx-2" href=""><i class="fa fa-instagram instagram-color social-icon-bg"></i></a>
-                <a class="h4 mx-3" href=""><i class="fa fa-telegram telegram-color social-icon-bg"></i></a>
-                <a class="h4 mx-3" href=""><i class="fa fa-youtube youtube-color social-icon-bg"></i></a>
-                <a class="h4 mx-3" href=""><i class="fa fa-linkedin linkedin-color social-icon-bg"></i></a>
-                <a class="h4 mx-3" href=""><i class="fa fa-twitter twitter-color social-icon-bg"></i></a>
+                @include('_partials.landing.social')
             </span>
         </div>
         <div class="row">
@@ -27,10 +23,8 @@
                 <div class="d-flex flex-column align-items-center">
                     <h4>بخش‌های سایت</h4>
                     <ul>
-                        <li><a class="footer-color" href="#">درباره ما</a></li>
-                        <li><a class="footer-color" href="#">تماس با ما</a></li>
-                        <li><a class="footer-color" href="#">تبلیغات</a></li>
-                        <li><a class="footer-color" href="#">سیاست و حریم خصوصی</a></li>
+                        <li><a class="footer-color" href="{{route('about')}}">درباره ما</a></li>
+                        <li><a class="footer-color" href="{{route('contact')}}">تماس با ما</a></li>
                     </ul>
                 </div>
             </div>
