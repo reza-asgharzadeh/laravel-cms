@@ -80,7 +80,7 @@
                     @endauth
                     <div class="comments__list">
                         @foreach($episode->comments as $comment)
-                            @include('panel.landing_comments.episode',['comment' => $comment,'episode_id' => $episode->id])
+                            @include('client.landing_comments.episode',['comment' => $comment,'episode_id' => $episode->id])
                         @endforeach
                     </div>
                 </div>

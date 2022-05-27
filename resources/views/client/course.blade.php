@@ -121,7 +121,7 @@
                     @endauth
                     <div class="comments__list">
                         @foreach($course->comments as $comment)
-                            @include('panel.landing_comments.course',['comment' => $comment,'course_id' => $course->id])
+                            @include('client.landing_comments.course',['comment' => $comment,'course_id' => $course->id])
                         @endforeach
                     </div>
                 </div>
