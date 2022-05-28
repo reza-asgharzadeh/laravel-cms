@@ -35,7 +35,7 @@
         @if($comment->approvedReplies->count() > 0)
             <div class="comments__subset">
                 @foreach($comment->approvedReplies as $reply)
-                    @include('panel.landing_comments.episode', ['comment' => $reply])
+                    @include('client.landing_comments.episode', ['comment' => $reply])
                 @endforeach
             </div>
         @endif
