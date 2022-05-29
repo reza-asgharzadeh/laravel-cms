@@ -78,15 +78,15 @@
                     <div id="demo1">
                         <div class="span12">
                             <div id="owl-demo1" class="owl-carousel">
-                                @foreach($relatedCourses as $course)
+                                @foreach($course->related_courses as $relatedCourse)
                                     <div class="item">
                                         <div class="blog-grid">
                                             <div class="img-date">
-                                                <img src="{{$course->getBanner()}}" height="120px">
+                                                <img src="{{$relatedCourse->getBanner()}}" height="120px">
                                             </div>
                                             <div class="discretion-blog">
-                                                <h5>{{$course->name}}</h5>
-                                                <a class="btn btn-outline-primary" href="{{route('courses.show',$course->slug)}}">مشاهده</a>
+                                                <h5>{{$relatedCourse->name}}</h5>
+                                                <a class="btn btn-outline-primary" href="{{route('courses.show',$relatedCourse->slug)}}">مشاهده</a>
                                             </div>
                                         </div>
                                     </div>
