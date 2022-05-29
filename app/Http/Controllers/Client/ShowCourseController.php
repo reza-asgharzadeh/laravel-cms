@@ -42,13 +42,7 @@ class ShowCourseController extends Controller
                 }
             }
 
-            $relatedCourses = $course->whereHas('tags', function ($q) use ($course) {
-                return $q->whereIn('name', $course->tags->pluck('name'));
-            })
-                ->where('id', '!=', $course->id) // So you won't fetch same post
-                ->get();
-
-            return view('client.course',compact(['course','most_student','courseTime','display','registeredButton','relatedCourses']));
+            return view('client.course',compact(['course','most_student','courseTime','display','registeredButton']));
         }
         abort(404);
     }
