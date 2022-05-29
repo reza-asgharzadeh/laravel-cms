@@ -64,4 +64,14 @@ class Post extends Model
     {
         return $this->morphMany(Comment::class,'commentable');
     }
+
+    public function getRelatedPostsAttribute()
+    {
+        $post = $this;
+        return $this->whereHas('tags', function ($q) use ($post) {
+            return $q->whereIn('name', $post->tags->pluck('name'));
+        })
+            ->where('id', '!=', $post->id) // So you won't fetch same post
+            ->get();
+    }
 }
