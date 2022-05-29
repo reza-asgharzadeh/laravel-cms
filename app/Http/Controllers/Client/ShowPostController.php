@@ -19,13 +19,7 @@ class ShowPostController extends Controller
                 return $query->where('comment_id',null)->where('is_approved',true);
             }])->loadCount('comments');
 
-            $relatedPosts = $post->whereHas('tags', function ($q) use ($post) {
-                return $q->whereIn('name', $post->tags->pluck('name'));
-            })
-                ->where('id', '!=', $post->id) // So you won't fetch same post
-                ->get();
-
-            return view('client.post',compact(['post','most_student','most_visited','relatedPosts']));
+            return view('client.post',compact(['post','most_student','most_visited']));
         }
         abort(404);
     }
