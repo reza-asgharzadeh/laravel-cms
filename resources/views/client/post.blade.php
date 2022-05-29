@@ -66,15 +66,15 @@
                     <div id="demo1">
                         <div class="span12">
                             <div id="owl-demo1" class="owl-carousel">
-                                @foreach($relatedPosts as $post)
+                                @foreach($post->related_posts as $relatedPost)
                                 <div class="item">
                                     <div class="blog-grid">
                                         <div class="img-date">
-                                            <img src="{{$post->getBanner()}}" height="120px">
+                                            <img src="{{$relatedPost->getBanner()}}" height="120px">
                                         </div>
                                         <div class="discretion-blog">
-                                            <h5>{{$post->title}}</h5>
-                                            <a class="btn btn-outline-primary" href="{{route('posts.show',$post->slug)}}">خواندن</a>
+                                            <h5>{{$relatedPost->title}}</h5>
+                                            <a class="btn btn-outline-primary" href="{{route('posts.show',$relatedPost->slug)}}">خواندن</a>
                                         </div>
                                     </div>
                                 </div>
