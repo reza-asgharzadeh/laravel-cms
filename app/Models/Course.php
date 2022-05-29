@@ -101,4 +101,14 @@ class Course extends Model
     public function offer(){
         return $this->belongsTo(Offer::class);
     }
+
+    public function getRelatedCoursesAttribute()
+    {
+        $course = $this;
+        return $this->whereHas('tags', function ($q) use ($course) {
+            return $q->whereIn('name', $course->tags->pluck('name'));
+        })
+            ->where('id', '!=', $course->id) // So you won't fetch same course
+            ->get();
+    }
 }
