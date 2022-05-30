@@ -176,8 +176,8 @@
                         <li class="has-children">
                             <a href="#" class="nav-link">لینک های مفید</a>
                             <ul class="dropdown">
-                                <li><a href="#" class="nav-link">درباره ما</a></li>
-                                <li><a href="#" class="nav-link">تماس با ما</a></li>
+                                <li><a href="{{route('about')}}" class="nav-link">درباره ما</a></li>
+                                <li><a href="{{route('contact')}}" class="nav-link">تماس با ما</a></li>
                             </ul>
                         </li>
 
