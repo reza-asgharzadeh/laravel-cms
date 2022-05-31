@@ -6,6 +6,18 @@
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>{{ route('about')}}</loc>
+        <lastmod>{{ \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>{{ route('contact')}}</loc>
+        <lastmod>{{ \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
     @foreach($pages as $page)
         <url>
             <loc>{{ route('single.page.show',$page->slug)}}</loc>
