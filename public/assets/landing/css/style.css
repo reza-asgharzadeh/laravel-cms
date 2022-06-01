@@ -511,3 +511,64 @@ article{
     background: #EAEAEA;
 }
 /*End Single Page Image*/
+
+
+/*start search input*/
+#search{
+    padding: 0.1rem 0.8rem;
+    width: 17rem;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:.25rem
+}
+
+.search-lists{
+    position:absolute;
+    z-index:1000;
+    display:none;
+    min-width:10rem;
+    padding:.5rem 0;
+    margin:0;
+    font-size:1rem;
+    color:#212529;
+    text-align:right;
+    list-style:none;
+    background-color:#fff;
+    background-clip:padding-box;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:.25rem
+}
+/*end search input*/
+
+.text-purple{
+    color: #8757E8 !important;
+}
+
+.rounded-4{
+    border-radius: 0.8rem;
+}
+
+.beauty-radius{
+    border-radius: 2rem 0 2rem 0;
+}
+
+/* start Bootstrap Card Hover Effect (Zoom) */
+.card {
+    transition: transform 0.5s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+/* end Bootstrap Card Hover Effect (Zoom) */
+
+.w-65{
+    width:65% !important;
+}
+
+.rounded-second-nav{
+    border-radius: 0 0 2rem 2rem;
+}
+
+.bg-second-nav{
+    background: #e5eef8;
+}
