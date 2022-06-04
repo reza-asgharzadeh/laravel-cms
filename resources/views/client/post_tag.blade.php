@@ -6,12 +6,12 @@
     <h3 class="text-center main-color h2 mb-3">تمامی مقالات با برچسب "{{$tag->name}}"</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @forelse($posts as $post)
-            <div class="col-xs-12 col-sm-6 col-lg-3">
-                <div class="card h-100 custom-box-shadow">
-                    <a href="{{route('posts.show',$post->slug)}}"><img src="{{$post->getBanner()}}" class="card-img-top" alt="..." height="170"></a>
+            <div class="col-xs-12 col-md-6 col-xl-4">
+                <div class="card h-100 custom-box-shadow beauty-radius">
+                    <a href="{{route('posts.show',$post->slug)}}"><img src="{{$post->getBanner()}}" class="card-img-top beauty-radius" alt="..." height="270"></a>
                     <div class="card-body text-center">
                         <a class="card-title text-xl" href="{{route('posts.show',$post->slug)}}">{{$post->title}}</a>
-                        <p class="card-text">{!! \Illuminate\Support\Str::limit($post->content, 60, $end='...') !!}</p>
+                        <p class="card-text">{!! \Illuminate\Support\Str::limit($post->content, 80, $end='...') !!}</p>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-between">
