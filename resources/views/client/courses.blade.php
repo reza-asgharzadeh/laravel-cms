@@ -1,17 +1,17 @@
 <x-landing-layout title="همه دوره‌ها"
-                  description="در این قسمت می‌توانید تمامی دوره‌های منشتر شده در سایت را مشاهده کنید."
+                  description="در این قسمت می‌توانید تمامی دوره‌های منتشر شده در سایت را مشاهده کنید."
                   keywords="دوره‌ها"
                   pageUrl="{{route('courses')}}">
 <div class="container mt-5">
     <h3 class="text-center main-color h2 mb-3">همه دوره ها</h3>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @forelse($courses as $course)
-            <div class="col-xs-12 col-sm-6 col-lg-3">
-                <div class="card h-100 custom-box-shadow">
-                    <a href="{{route('courses.show',$course->slug)}}"><img src="{{$course->getBanner()}}" class="card-img-top" alt="..." height="170"></a>
+            <div class="col-xs-12 col-md-6 col-xl-4">
+                <div class="card h-100 custom-box-shadow beauty-radius">
+                    <a href="{{route('courses.show',$course->slug)}}"><img src="{{$course->getBanner()}}" class="card-img-top beauty-radius" alt="..." height="270"></a>
                     <div class="card-body text-center">
                         <a class="card-title text-xl" href="{{route('courses.show',$course->slug)}}">{{$course->name}}</a>
-                        <p class="card-text">{!! \Illuminate\Support\Str::limit($course->content, 60, $end='...') !!}</p>
+                        <p class="card-text">{!! \Illuminate\Support\Str::limit($course->content, 80, $end='...') !!}</p>
                         <a href="{{route('courses.show',$course->slug)}}" class="btn btn-more mx-auto">مشاهده جزئیات دوره</a>
                     </div>
                     <div class="card-footer text-center">
