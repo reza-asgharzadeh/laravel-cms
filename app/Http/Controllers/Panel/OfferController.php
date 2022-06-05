@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Offer\CreateOfferRequest;
 use App\Http\Requests\Panel\Offer\UpdateOfferRequest;
+use App\Models\Course;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -85,8 +86,16 @@ class OfferController extends Controller
     {
         Gate::authorize('delete-offers');
 
-        $offer->delete();
-        $request->session()->flash('status','پیشنهاد تخفیف مورد نظر با موفقیت حذف شد !');
-        return back();
+        $courses = Course::where('offer_id',$offer->id)->pluck('id');
+
+        if($courses->isEmpty()) {
+            $offer->delete();
+            $request->session()->flash('status','پیشنهاد تخفیف مورد نظر با موفقیت حذف شد !');
+            return back();
+        }
+        else {
+            $request->session()->flash('status','پیشنهاد تخفیف فعال روی دوره قابل حذف نیست !');
+            return back();
+        }
     }
 }
