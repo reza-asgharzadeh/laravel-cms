@@ -75,7 +75,7 @@ class RoleController extends Controller
     {
         Gate::authorize('delete-roles');
 
-        $users = User::where('role_id', '=', $role->id)->pluck('id');
+        $users = User::where('role_id',$role->id)->pluck('id');
 
         if($users->isEmpty()) {
             $role->delete();
@@ -83,7 +83,7 @@ class RoleController extends Controller
             return back();
         }
         else {
-            $request->session()->flash('status','نقش no delete !');
+            $request->session()->flash('status','نقش فعال روی کاربر قابل حذف نیست !');
             return back();
         }
     }
