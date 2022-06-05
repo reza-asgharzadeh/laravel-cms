@@ -561,8 +561,13 @@ article{
 }
 /* end Bootstrap Card Hover Effect (Zoom) */
 
-.w-65{
-    width:65% !important;
+.w-93{
+    width:93% !important;
+}
+
+.active-search{
+    color: #FFFFFF !important;
+    background: #3B82F7 !important;
 }
 
 .rounded-second-nav{
