@@ -32,24 +32,7 @@
                 <!-- Post Content -->
                 {!! $course->content !!}
 
-                <div id="accordion">
-                    <div class="card mb-5">
-                        @foreach($course->episodes as $episode)
-                        <div class="card-header">
-                            <div class="d-flex">
-                                <div class="p-2"><a class="card-link" data-toggle="collapse" href="#{{$episode->slug}}"><span class="circle-number">{{$loop->iteration}}</span> {{$episode->name}} <i class="fa fa-chevron-down"></i></a></div>
-                                <div class="ms-auto p-2">{{$episode->time}} دقیقه</div>
-                                <div class="btn-video"><small><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}" target="_blank"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
-                            </div>
-                        </div>
-                        <div id="{{$episode->slug}}" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                {{$episode->description}}
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+                @include('_partials.landing.chapters')
 
                 <div class="d-flex mt-4">
                     <span>برچسب‌ها:</span>
