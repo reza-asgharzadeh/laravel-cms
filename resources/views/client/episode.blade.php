@@ -90,16 +90,6 @@
             <!-- Blog Sidebar Widgets Column -->
 
             <div class="col-md-4">
-
-                <div class="well shadow">
-                    <p class="h5">سر فصل ها:</p>
-                    <ul class="catalogue">
-                    @foreach($course->episodes as $episode)
-                        <li class="{{Request::path() == "course/" . $episode->course->slug . "/episode/" . $episode->slug ? 'bg-info bg-gradient p-2' : ''}}"><i class="fa fa-check mx-1"></i><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}">{{$episode->name}}</a></li>
-                    @endforeach
-                    </ul>
-                </div>
-
                 <div class="well bg shadow">
                     <p><i class="fa fa-money"></i> قیمت دوره: {{$course->price}} تومان</p>
                     <p><i class="fa fa-user"></i> مدرس: {{$course->user->name}}</p>
