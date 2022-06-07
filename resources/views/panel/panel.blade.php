@@ -19,6 +19,10 @@
                 <div class="count green">{{$courses_count}}</div>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12 tile_stats_count">
+                <span class="count_top"><i class="fa-x fa-plus"></i> تعداد فصل ها</span><br><br>
+                <div class="count green">{{$chapters_count}}</div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 tile_stats_count">
                 <span class="count_top"><i class="fa-x fa-television"></i> تعداد جلسات دوره</span><br><br>
                 <div class="count green">{{$episodes_count}}</div>
             </div>
