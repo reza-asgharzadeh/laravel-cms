@@ -17,12 +17,12 @@ class Episode extends Model
         'keywords',
         'time',
         'display',
-        'course_id'
+        'chapter_id'
     ];
 
-    public function course()
+    public function chapter()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Chapter::class);
     }
 
     public function display(){
