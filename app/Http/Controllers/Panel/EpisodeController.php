@@ -39,6 +39,12 @@ class EpisodeController extends Controller
         return to_route('episodes.index');
     }
 
+    public function showEpisodeChapter(Episode $episode)
+    {
+        $chapter = $episode->chapter()->first();
+        return view('panel.episodes.episode_chapter',compact('chapter'));
+    }
+
     public function edit(Episode $episode)
     {
         Gate::authorize('edit-episodes');
