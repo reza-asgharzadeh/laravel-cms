@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\CoursesController;
 use App\Http\Controllers\Client\SearchController;
 use App\Http\Controllers\Client\ShowOfferPageController;
@@ -69,6 +70,12 @@ Route::get('/courses/offer',[ShowOfferPageController::class,'show'])->name('cour
 Route::get('/blog',[BlogController::class,'index'])->name('blog');
 Route::get('/courses',[CoursesController::class,'index'])->name('courses');
 Route::post('/newsletters',[NewsLetterController::class,'store'])->name('newsletters.store');
+Route::get('/about-us', function(){return View('client.about');})->name('about');
+//contact us
+Route::get('/contact-us',[ContactController::class,'showPage'])->name('contact');
+Route::post('/contact-us',[ContactController::class,'store'])->name('contact.store');
+//Search
+Route::get('/search',[SearchController::class,'index'])->name('search');
 
 Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::get('/',[PanelController::class,'index'])->name('panel');
@@ -116,6 +123,10 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     //Newsletter
     Route::resource('/newsletters',NewsLetterController::class)->except(['create','show']);
     Route::put('/newsletters/{newsletter}/status',[NewsLetterController::class,'status'])->name('newsletters.status');
+    //contact us
+    Route::resource('/contact-us',ContactController::class)->except(['create','store','show']);
+    Route::post('/contact-us/{contact}/reply',[ContactController::class,'reply'])->name('contacts.reply');
+    Route::post('/contact-us/{contact}/save',[ContactController::class,'save'])->name('contacts.save');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('/comment')->group(function (){
