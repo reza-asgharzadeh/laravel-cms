@@ -31,7 +31,7 @@ class CreateEpisodeRequest extends FormRequest
             'keywords' => ['required', 'string', 'max:255'],
             'time' => ['required', 'string', 'max:255'],
             'display' => ['required', 'boolean'],
-            'course_id' => ['required','integer']
+            'chapter_id' => ['required','integer']
         ];
     }
 }
