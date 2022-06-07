@@ -94,6 +94,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::post('/editor/upload',[EditorUploadController::class,'upload'])->name('editor.upload');
     Route::resource('/profiles',EditProfileController::class)->only(['index','update']);
     Route::resource('/courses',CourseController::class)->except('show');
+    Route::get('/course/{course:slug}/chapters',[CourseController::class,'showCourseChapters'])->name('show.course.chapters');
     Route::put('/courses/{course}/status',[CourseController::class,'isApproved'])->name('courses.status');
     Route::get('/my/courses',[CourseController::class,'myCourses'])->name('my.courses.index');
     Route::resource('/episodes',EpisodeController::class)->except('show');
