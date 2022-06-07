@@ -9,6 +9,7 @@ use App\Http\Controllers\Client\SearchController;
 use App\Http\Controllers\Client\ShowOfferPageController;
 use App\Http\Controllers\Client\SitemapController;
 use App\Http\Controllers\Panel\AlertController;
+use App\Http\Controllers\Panel\ChapterController;
 use App\Http\Controllers\Panel\NewsLetterController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
@@ -93,12 +94,19 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::put('/comments/{comment}/display',[CommentController::class,'display'])->name('comments.display');
     Route::post('/editor/upload',[EditorUploadController::class,'upload'])->name('editor.upload');
     Route::resource('/profiles',EditProfileController::class)->only(['index','update']);
+    //course
     Route::resource('/courses',CourseController::class)->except('show');
     Route::get('/course/{course:slug}/chapters',[CourseController::class,'showCourseChapters'])->name('show.course.chapters');
     Route::put('/courses/{course}/status',[CourseController::class,'isApproved'])->name('courses.status');
     Route::get('/my/courses',[CourseController::class,'myCourses'])->name('my.courses.index');
+    //episode
     Route::resource('/episodes',EpisodeController::class)->except('show');
     Route::get('/episode/{episode:slug}/chapter',[EpisodeController::class,'showEpisodeChapter'])->name('show.episode.chapter');
+    //chapter
+    Route::resource('/chapters',ChapterController::class)->except('show');
+    Route::get('/chapter/{chapter}/episodes',[ChapterController::class,'showChapterEpisodes'])->name('show.chapter.episodes');
+    Route::get('/chapter/{chapter}/course',[ChapterController::class,'showChapterCourse'])->name('show.chapter.course');
+
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
     Route::resource('/activities',ActivityLogController::class)->only(['index','destroy']);
