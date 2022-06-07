@@ -242,5 +242,12 @@
     "Editor text": "متن با ادیتور",
     "Key": "کلید",
     "Add to setting": "افزودن به تنظیمات",
-    "Are you sure to remove?": "آیا برای حذف این مورد مطمئن هستید؟"
+    "Are you sure to remove?": "آیا برای حذف این مورد مطمئن هستید؟",
+    
+    "Verify Email Address": "تایید آدرس ایمیل",
+    "Hello!": "سلام",
+    "Please click the button below to verify your email address.": "لطفاً روی دکمه زیر کلیک کنید تا آدرس ایمیل خود را تأیید کنید.",
+    "If you did not create an account, no further action is required.": "اگر شما حساب کاربری ایجاد نکردید، روی دکمه بالا کلیک نکنید.",
+    "Regards": "با احترام",
+    "All rights reserved.": "تمامی حقوق محفوظ است."
 }
