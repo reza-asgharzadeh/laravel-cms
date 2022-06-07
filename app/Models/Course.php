@@ -69,9 +69,14 @@ class Course extends Model
         return asset('course/banner/' . $this->banner);
     }
 
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class);
+    }
+
     public function episodes()
     {
-        return $this->hasMany(Episode::class);
+        return $this->hasManyThrough(Episode::class, Chapter::class);
     }
 
     public function getCreatedAtInJalali()
