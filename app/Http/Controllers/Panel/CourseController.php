@@ -70,6 +70,12 @@ class CourseController extends Controller
         return redirect()->route('courses.index');
     }
 
+    public function showCourseChapters(Course $course)
+    {
+        $chapters = $course->chapters()->paginate();
+        return view('panel.courses.course_chapters',compact('chapters'));
+    }
+
     public function myCourses()
     {
         $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->paginate(10);
