@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Episode\CreateEpisodeRequest;
 use App\Http\Requests\Panel\Episode\UpdateEpisodeRequest;
-use App\Models\Course;
+use App\Models\Chapter;
 use App\Models\Episode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -24,8 +24,8 @@ class EpisodeController extends Controller
     {
         Gate::authorize('create-episode');
 
-        $courses = Course::all();
-        return view('panel.episodes.create',compact('courses'));
+        $chapters = Chapter::all();
+        return view('panel.episodes.create',compact('chapters'));
     }
 
     public function store(CreateEpisodeRequest $request)
@@ -36,15 +36,15 @@ class EpisodeController extends Controller
             $request->validated()
         );
         $request->session()->flash('status','جلسه جدید با موفقیت ایجاد شد !');
-        return redirect()->route('episodes.index');
+        return to_route('episodes.index');
     }
 
     public function edit(Episode $episode)
     {
         Gate::authorize('edit-episodes');
 
-        $courses = Course::all();
-        return view('panel.episodes.edit',compact(['episode','courses']));
+        $chapters = Chapter::all();
+        return view('panel.episodes.edit',compact(['episode','chapters']));
     }
 
     public function update(UpdateEpisodeRequest $request, Episode $episode)
@@ -55,7 +55,7 @@ class EpisodeController extends Controller
             $request->validated()
         );
         $request->session()->flash('status','جلسه مورد نظر با موفقیت ویرایش شد !');
-        return redirect()->route('episodes.index');
+        return to_route('episodes.index');
     }
 
     public function destroy(Request $request, Episode $episode)
