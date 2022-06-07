@@ -98,6 +98,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::put('/courses/{course}/status',[CourseController::class,'isApproved'])->name('courses.status');
     Route::get('/my/courses',[CourseController::class,'myCourses'])->name('my.courses.index');
     Route::resource('/episodes',EpisodeController::class)->except('show');
+    Route::get('/episode/{episode:slug}/chapter',[EpisodeController::class,'showEpisodeChapter'])->name('show.episode.chapter');
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
     Route::resource('/activities',ActivityLogController::class)->only(['index','destroy']);
