@@ -53,6 +53,7 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>نام جلسه</th>
+                                    <th>متعلق به فصل</th>
                                     <th>متعلق به دوره</th>
                                     <th>توضیحات کوتاه</th>
                                     <th>نمایش</th>
@@ -69,7 +70,8 @@
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$episode->name}}</td>
-                                        <td>{{$episode->course->name}}</td>
+                                        <td>{{$episode->chapter->name}}</td>
+                                        <td>{{$episode->chapter->course->name}}</td>
                                         <td>{{$episode->description}}</td>
                                         <td>{{$episode->display()}}</td>
                                         <td>{{$episode->slug}}</td>
@@ -79,7 +81,8 @@
                                         <td>{{$episode->getUpdatedAtInJalali()}}</td>
                                         <td>
                                             <div style="display: flex; justify-content: space-evenly">
-                                                <div><a href="{{route('episodes.show',[$episode->course->slug,$episode->slug])}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('episodes.show',[$episode->chapter->course->slug,$episode->slug])}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('show.episode.chapter',$episode->slug)}}"><i class="fa-x fa-plus text-primary" title="نمایش"></i></a></div>
                                                 <div><a href="{{route('episodes.edit',$episode->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                 <div>
                                                     <a href="{{route('episodes.destroy',$episode->id)}}" onclick="destroyEpisode(event, {{ $episode->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
