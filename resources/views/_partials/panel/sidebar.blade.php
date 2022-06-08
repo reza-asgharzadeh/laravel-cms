@@ -66,15 +66,21 @@
                 </li>
             @endcan
             @can('display-courses')
-            <li><a><i class="fa fa-graduation-cap"></i> دوره ها <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-graduation-cap"></i> دوره‌ها <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('courses.create')}}">ایجاد دوره جدید</a></li>
                     <li><a href="{{route('courses.index')}}">مدیریت دوره ها</a></li>
                 </ul>
             </li>
             @endcan
+            <li><a><i class="fa fa-plus"></i> فصل‌ها <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('chapters.create')}}">ایجاد فصل جدید</a></li>
+                    <li><a href="{{route('chapters.index')}}">مدیریت فصل‌ها</a></li>
+                </ul>
+            </li>
             @can('display-episodes')
-            <li><a><i class="fa fa-television"></i> جلسات دوره <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-television"></i> جلسات فصل <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{route('episodes.create')}}">ایجاد جلسه جدید</a></li>
                     <li><a href="{{route('episodes.index')}}">مدیریت جلسات</a></li>
@@ -82,7 +88,7 @@
             </li>
             @endcan
             @can('display-categories')
-                <li><a><i class="fa fa-list"></i> دسته بندی ها <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-list-alt"></i> دسته بندی ها <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('categories.index')}}">ایجاد و مدیریت دسته بندی</a></li>
                     </ul>
@@ -102,6 +108,11 @@
                     </ul>
                 </li>
             @endcan
+                <li><a><i class="fa fa-wpforms"></i> فرم تماس با ما <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{route('contact-us.index')}}">پاسخ و مدیریت تماس‌ها</a></li>
+                    </ul>
+                </li>
                 <li><a><i class="fa fa-comments"></i> خبرنامه‌ها <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('newsletters.index')}}">مدیریت خبرنامه‌ها</a></li>
