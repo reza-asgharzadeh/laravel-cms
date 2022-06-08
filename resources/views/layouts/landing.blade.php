@@ -16,6 +16,18 @@
 @include('_partials.landing.footer')
 @include('_partials.landing.scripts')
 {{$scripts ?? ''}}
+@if(Session::has('status'))
+    <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
+    <script>
+        Swal.fire({
+            title: "{{Session::get('status')}}",
+            icon: "success",
+            button: "باشه",
+            showConfirmButton: false,
+            timer: 5000
+        })
+    </script>
+@endif
 @if(Session::has('login-register'))
     <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
     <script>
