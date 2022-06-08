@@ -1,8 +1,7 @@
 {{--DropDown Header Navbar--}}
 <script src="{{asset('assets/landing/js/bootstrap.bundle.min.js')}}"></script>
-{{--<script src="{{asset('assets/landing/js/multidropdown.js')}}"></script>--}}
 
-{{--Cart, Panel and Episode Toggle--}}
+{{--Cart and Panel Toggle--}}
 <script src="{{asset('assets/landing/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/landing/js/popper.min.js')}}"></script>
 
