@@ -113,13 +113,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">نام دوره
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">نام فصل
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select class="form-control" name="course_id">
-                                            @foreach($courses as $course)
-                                            <option value="{{$course->id}}" {{$course->id == $episode->course_id ? 'selected' : ''}}>{{$course->name}}</option>
+                                        <select class="form-control" name="chapter_id">
+                                            @foreach($chapters as $chapter)
+                                            <option value="{{$chapter->id}}" {{$chapter->id == $episode->chapter_id ? 'selected' : ''}}>{{$chapter->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
