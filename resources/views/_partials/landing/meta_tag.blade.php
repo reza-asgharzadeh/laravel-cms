@@ -4,4 +4,6 @@
 <title>{{$title ?? env('APP_NAME')}}</title>
 <meta name="description" content="{{$description ?? ''}}"/>
 <meta name="keywords" content="{{$keywords}}" />
+@if($pageUrl)
 <link rel="canonical" href="{{$pageUrl}}" />
+@endif
