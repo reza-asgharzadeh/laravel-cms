@@ -14,7 +14,7 @@
                             <div class="d-flex">
                                 <div class="p-2"><span class="circle-number">{{$loop->iteration}}</span> {{$episode->name}}</div>
                                 <div class="ms-auto p-2">{{$episode->time}} دقیقه</div>
-                                <div class="btn-video"><small><a href="{{route('episodes.show',[$episode->course,$episode->slug])}}" target="_blank"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
+                                <div class="btn-video"><small><a href="{{route('episodes.show',[$episode->chapter->course->slug,$episode->slug])}}" target="_blank"><i class="fa fa-eye"></i> مشاهده و دانلود</a></small></div>
                             </div>
                         </div>
                     @empty
