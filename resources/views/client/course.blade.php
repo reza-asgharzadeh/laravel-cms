@@ -131,9 +131,10 @@
                         <p class="h6"><i class="fa fa-user text-purple"></i> مدرس: {{$course->user->name}}</p>
                         <p class="h6"><i class="fa fa-eye text-purple"></i> تعداد بازدید: {{$course->view_count}}</p>
                         <p class="h6"><i class="fa fa-users text-purple"></i> تعداد دانشجویان: {{$course->student_count}}</p>
-                        <p class="h6"><i class="fa fa-calendar text-purple"></i> تعداد قسمت: {{count($course->episodes)}} جلسه</p>
+                        <p class="h6"><i class="fa fa-calendar text-purple"></i> تعداد فصل‌ها: {{count($course->chapters)}}</p>
+                        <p class="h6"><i class="fa fa-calendar text-purple"></i> تعداد جلسات: {{count($course->episodes)}}</p>
                         <p class="h6"><i class="fa fa-clock-o text-purple"></i> مدت زمان حدودی دوره: {{$course->time}} ساعت</p>
-                        <p class="h6"><i class="fa fa-clock-o text-purple"></i> مدت زمان دوره تا این لحظه: {{$courseTime}} {{$courseTime > 60 ? 'ساعت' : 'دقیقه'}}</p>
+                        <p class="h6"><i class="fa fa-clock-o text-purple"></i> مدت زمان دوره تا این لحظه: {{$courseTime < 60 ? $courseTime : $courseTime/60}} {{$courseTime < 60 ? 'دقیقه' : 'ساعت'}}</p>
                         <p class="h6"><i class="fa fa-info text-purple"></i> وضعیت دوره: {{$course->getStatus()}}</p>
                         <p class="h6"><i class="fa fa-level-up text-purple"></i> سطح دوره: {{$course->getLevel()}}</p>
                         <p class="h6"><i class="fa fa-asterisk text-purple"></i> پیش نیاز دوره: {{$course->pre_course}}</p>
