@@ -53,16 +53,9 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>نام دوره</th>
-                                    <th>مدرس</th>
-                                    <th>لینک</th>
                                     <th>بنر</th>
                                     <th>قیمت</th>
-                                    <th>تعداد بازدید</th>
                                     <th>تعداد دانشجو</th>
-                                    <th>پیش نیاز</th>
-                                    <th>مدت زمان حدودی دوره</th>
-                                    <th>وضعیت</th>
-                                    <th>سطح</th>
                                     <th>تاریخ شروع</th>
                                     <th>تاریخ بروزرسانی</th>
                                     <th>وضعیت انتشار</th>
@@ -74,16 +67,9 @@
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$course->name}}</td>
-                                        <td>{{$course->user->name}}</td>
-                                        <td>{{$course->slug}}</td>
                                         <td class="text-center"><img src="{{$course->getBanner()}}" alt="" height="52"></td>
                                         <td>{{$course->price}}</td>
-                                        <td>{{$course->view_count}}</td>
                                         <td>{{$course->student_count}}</td>
-                                        <td>{{$course->pre_course}}</td>
-                                        <td>{{$course->time}}</td>
-                                        <td>{{$course->getStatus()}}</td>
-                                        <td>{{$course->getLevel()}}</td>
                                         <td>{{$course->getCreatedAtInJalali()}}</td>
                                         <td>{{$course->getUpdatedAtInJalali()}}</td>
                                         <td class="{{$course->is_approved ? 'text-success' : 'text-danger'}}">{{$course->is_approved()}}</td>
@@ -109,6 +95,7 @@
                                                     @endif
                                                 </div>
                                                 <div><a href="{{route('courses.show',$course->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('show.course.chapters',$course->slug)}}"><i class="fa-x fa-plus text-primary" title="فصل‌های دوره"></i></a></div>
                                                 <div><a href="{{route('courses.edit',$course->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                 <div>
                                                     <a href="{{route('courses.destroy',$course->id)}}" onclick="destroyCourse(event, {{ $course->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
