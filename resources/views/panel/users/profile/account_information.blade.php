@@ -24,7 +24,23 @@
             </div>
             <div class="clearfix"></div>
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <br/>
+                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4 active-tab" href=""><i class="fa fa-lg fa-user mx-3"></i>اطلاعات کاربر</a>
+                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4" href=""><i class="fa fa-lg fa-info mx-3"></i>اطلاعات فردی</a>
+                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4" href=""><i class="fa fa-lg fa-address-book-o mx-3"></i>راه‌های ارتباطی</a>
+                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4" href=""><i class="fa fa-lg fa-key mx-3"></i>تغییر رمز عبور</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-9 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>
@@ -61,13 +77,13 @@
                                         </div>
                                         <input class="file-upload" type="file" name="profile" accept="image/*">
                                     </div>
-                                    <p class="h5 text-center text-warning">برای تغییر تصویر روی آن کلیک کنید !</p>
+                                    <p class="h5 text-center text-success">برای تغییر تصویر روی آن کلیک کنید !</p>
                                     @error('profile')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام و نام خانوادگی
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> نام و نام خانوادگی (فارسی)
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -79,32 +95,21 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">ایمیل
-                                         <span class="required">*</span>
-                                    </label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">ایمیل</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" id="email" name="email"
-                                               class="form-control col-md-7 col-xs-12" value="{{$user->email}}">
+                                               class="form-control col-md-7 col-xs-12" value="{{$user->email}}" disabled>
                                     </div>
-                                    @error('email')
-                                    <p class="text-danger">{{$message}}</p>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mobile">شماره موبایل
-                                        <span class="required">*</span>
-                                    </label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mobile">شماره موبایل</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="mobile" name="mobile"
-                                               class="form-control col-md-7 col-xs-12" value="{{$user->mobile}}">
+                                               class="form-control col-md-7 col-xs-12" value="{{$user->mobile}}" disabled>
                                     </div>
-                                    @error('mobile')
-                                    <p class="text-danger">{{$message}}</p>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">رمز عبور
-                                        <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">رمز عبور جدید
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="password" id="password" name="password"

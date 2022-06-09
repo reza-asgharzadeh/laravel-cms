@@ -172,6 +172,14 @@ return [
         'status'=>'وضعیت',
         'slug' => 'لینک',
         'categories' => 'دسته بندی',
-        'downloadUrl' => 'لینک دانلود'
+        'downloadUrl' => 'لینک دانلود',
+        'keywords' => 'کلمات کلیدی',
+        'tags' => 'برچسب‌ها',
+        'banner' => 'بنر',
+        'img_alt' => 'متن تصویر شاخص',
+        'price' => 'قیمت',
+        'pre_course' => 'پیش نیاز دوره',
+        'old_password' => 'رمز عبور فعلی',
+        'new_password' => 'رمز عبور جدید',
     ],
 ];
