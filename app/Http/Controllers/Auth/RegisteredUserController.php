@@ -7,6 +7,7 @@ use App\Models\ActivityLog;
 use App\Models\User;
 use App\Models\Wallet;
 use App\Providers\RouteServiceProvider;
+use App\Rules\recaptcha;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile' => ['required', 'numeric', 'digits:11', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'g-recaptcha-response' => [new recaptcha()],
         ]);
 
         $user = User::create([
