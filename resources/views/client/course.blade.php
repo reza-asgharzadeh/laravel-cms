@@ -43,16 +43,7 @@
                 <p class="text-center h5 mt-4 mb-4">میخوای این دوره رو به دوستاتم بفرستی؟</p>
                 @include('_partials.landing.social_share')
                 <hr>
-                <div class="d-flex align-items-center mb-4">
-                    <img class="border rounded-circle" src="{{$course->user->getProfile()}}" width="80px" height="80px" alt="{{$course->user->name}}">
-                    <div class="d-flex flex-column mx-2">
-                        <div>
-                            <span><strong>{{$course->user->name}}</strong></span>
-                            <span>{{$course->user->role_id == 1 ? '(مدیر سایت)' : ''}}</span>
-                        </div>
-                        <span>برنامه نویس و توسعه دهنده وب</span>
-                    </div>
-                </div>
+                @include('_partials.landing.author_information.course_author')
                 </article>
 
                 <!-- Related Posts -->
