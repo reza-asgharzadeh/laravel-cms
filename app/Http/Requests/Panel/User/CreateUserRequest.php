@@ -25,9 +25,9 @@ class CreateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile' => ['required', 'numeric', 'digits:11', 'unique:users'],
+            'name' => ['required', 'string', 'max:40'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'mobile' => ['required', 'numeric', 'digits:11'],
             'password' => ['required', Rules\Password::defaults()],
             'role_id' => ['required', 'integer']
         ];
