@@ -4,7 +4,7 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>
-                        <small>لیست جلسات</small>
+                        <a class="btn btn-primary" href="{{route('episodes.create')}}"><i class="fa fa-plus"></i> ایجاد جلسه جدید</a>
                     </h3>
                 </div>
 
@@ -25,7 +25,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            <small>جلسات دوره</small>
+                            جلسات فصل
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
