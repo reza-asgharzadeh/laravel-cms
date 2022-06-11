@@ -24,23 +24,8 @@
             </div>
             <div class="clearfix"></div>
             <div class="row">
-
-
-
-                <div class="col-md-3 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_content">
-                            <br/>
-                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4 active-tab" href=""><i class="fa fa-lg fa-user mx-3"></i>اطلاعات کاربر</a>
-                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4" href=""><i class="fa fa-lg fa-info mx-3"></i>اطلاعات فردی</a>
-                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4" href=""><i class="fa fa-lg fa-address-book-o mx-3"></i>راه‌های ارتباطی</a>
-                            <a class="w-100 d-block border-light text-center p-1 mb-3 rounded-4" href=""><i class="fa fa-lg fa-key mx-3"></i>تغییر رمز عبور</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-9 col-sm-12 col-xs-12">
+                @include('_partials.panel.profile_tabs')
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>
@@ -66,7 +51,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form action="{{route('profiles.update',$user->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+                            <form action="{{route('account.information.update',$user->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div class="form-group">
@@ -108,22 +93,11 @@
                                                class="form-control col-md-7 col-xs-12" value="{{$user->mobile}}" disabled>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">رمز عبور جدید
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="password" id="password" name="password"
-                                               class="form-control col-md-7 col-xs-12">
-                                    </div>
-                                    @error('password')
-                                    <p class="text-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <button class="btn btn-primary">ویرایش</button>
-                                        <a href="{{route('users.index')}}" class="btn btn-danger">انصراف</a>
+                                        <a href="{{route('account.information')}}" class="btn btn-danger">انصراف</a>
                                     </div>
                                 </div>
                             </form>
