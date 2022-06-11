@@ -10,6 +10,8 @@ use App\Http\Controllers\Client\ShowOfferPageController;
 use App\Http\Controllers\Client\SitemapController;
 use App\Http\Controllers\Panel\AlertController;
 use App\Http\Controllers\Panel\ChapterController;
+use App\Http\Controllers\Panel\edit_profile\AccountInformationEditController;
+use App\Http\Controllers\Panel\edit_profile\UserInformationEditController;
 use App\Http\Controllers\Panel\NewsLetterController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
@@ -33,7 +35,6 @@ use App\Http\Controllers\Panel\CommentController;
 use App\Http\Controllers\Client\CommentController as StoreCommentController;
 use App\Http\Controllers\Panel\CourseController;
 use App\Http\Controllers\Panel\EditorUploadController;
-use App\Http\Controllers\Panel\EditProfileController;
 use App\Http\Controllers\Panel\EpisodeController;
 use App\Http\Controllers\Panel\PermissionController;
 use App\Http\Controllers\Panel\RoleController;
@@ -93,7 +94,15 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::post('/comments/{comment}/save',[CommentController::class,'save'])->name('comments.save');
     Route::put('/comments/{comment}/display',[CommentController::class,'display'])->name('comments.display');
     Route::post('/editor/upload',[EditorUploadController::class,'upload'])->name('editor.upload');
-    Route::resource('/profiles',EditProfileController::class)->only(['index','update']);
+    //Edit Profile
+    Route::get('/profile/user/account-information',[AccountInformationEditController::class,'accountInformation'])->name('account.information');
+    Route::put('/profile/user/{user}/account-information',[AccountInformationEditController::class,'accountInformationUpdate'])->name('account.information.update');
+    Route::get('/profile/user/user-information',[UserInformationEditController::class,'userInformation'])->name('user.information');
+    Route::put('/profile/user/{user}/user-information',[UserInformationEditController::class,'userInformationUpdate'])->name('user.information.update');
+    Route::get('/profile/user/user-communication',[UserInformationEditController::class,'userCommunication'])->name('user.communication');
+    Route::put('/profile/user/{user}/user-communication',[UserInformationEditController::class,'userCommunicationUpdate'])->name('user.communication.update');
+    Route::get('/profile/user/account-password',[AccountInformationEditController::class,'accountPassword'])->name('account.password');
+    Route::put('/profile/user/{user}/account-password',[AccountInformationEditController::class,'accountPasswordUpdate'])->name('account.password.update');
     //course
     Route::resource('/courses',CourseController::class)->except('show');
     Route::get('/course/{course:slug}/chapters',[CourseController::class,'showCourseChapters'])->name('show.course.chapters');
