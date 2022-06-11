@@ -1,4 +1,7 @@
 <x-panel-layout>
+    <x-slot name="links">
+        <link href="{{asset('assets/panel/css/profile.css')}}" rel="stylesheet">
+    </x-slot>
     <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
@@ -20,7 +23,7 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-
+            @include('_partials.panel.profile_tabs')
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
@@ -105,7 +108,6 @@
                                     <th>محیط</th>
                                     <th>دستگاه</th>
                                     <th>سیستم عامل</th>
-                                    <th>آخرین فعالیت</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -117,12 +119,15 @@
                                         <td>{{$session->platform}}</td>
                                         <td>{{$session->device}}</td>
                                         <td>{{$session->os}}</td>
-                                        <td>{{$session->last_activity}}</td>
-                                        <td><a class="btn btn-sm btn-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-user-{{$session->id}}').submit();"><i class="fa fa-sign-out pull-right"></i> پایان نشست</a></td>
-                                        <form action="{{route('activities.destroy',$session->id)}}" method="post" id="logout-user-{{$session->id}}">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
+                                        @if($session->id == session()->getId())
+                                            <td><span class="btn btn-sm btn-success"><i class="fa fa-check"></i> نشست فعلی</span></td>
+                                        @else
+                                            <td><a class="btn btn-sm btn-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-user-{{$session->id}}').submit();"><i class="fa fa-sign-out pull-right"></i> پایان نشست</a></td>
+                                            <form action="{{route('activities.destroy',$session->id)}}" method="post" id="logout-user-{{$session->id}}">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
