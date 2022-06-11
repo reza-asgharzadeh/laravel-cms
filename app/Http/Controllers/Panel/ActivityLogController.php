@@ -17,7 +17,7 @@ class ActivityLogController extends Controller
         $userId = auth()->user()->id;
         $sessions = DB::table('sessions')->where('user_id',$userId)->get();
         $activities = ActivityLog::where('user_id',$userId)->orderBy('id')->take(3)->get();
-        return view('panel.users.activity',compact(['sessions','activities']));
+        return view('panel.users.profile.activity',compact(['sessions','activities']));
     }
 
     public function destroy(Request $request)
