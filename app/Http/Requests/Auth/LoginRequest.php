@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:100'],
             'password' => ['required', 'string'],
             'g-recaptcha-response' => [new recaptcha()],
         ];
@@ -46,10 +46,9 @@ class LoginRequest extends FormRequest
     public function authenticate()
     {
         $this->ensureIsNotRateLimited();
-        $inputType = filter_var($this->email,FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
 
         if (! Auth::attempt([
-            $inputType => $this->email,
+            'email' => $this->email,
             'password' => $this->password
         ], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
