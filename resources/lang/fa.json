@@ -249,5 +249,13 @@
     "Please click the button below to verify your email address.": "لطفاً روی دکمه زیر کلیک کنید تا آدرس ایمیل خود را تأیید کنید.",
     "If you did not create an account, no further action is required.": "اگر شما حساب کاربری ایجاد نکردید، روی دکمه بالا کلیک نکنید.",
     "Regards": "با احترام",
-    "All rights reserved.": "تمامی حقوق محفوظ است."
+    "All rights reserved.": "تمامی حقوق محفوظ است.",
+
+    "Reset Password Notification": "بازیابی رمز عبور",
+    "You are receiving this email because we received a password reset request for your account.": "برای تغییر رمز عبور خود روی دکمه بازیابی گذرواژه کلیک کنید.",
+    "If you did not request a password reset, no further action is required.": "اگر شما درخواست تغییر رمز عبور نکردید، نیازی نیست روی دکمه بالا کلیک کنید.",
+
+    "passwords.sent": "لینک بازیابی رمز عبور به ایمیل شما ارسال شد.",
+    "passwords.reset": "رمز عبور شما با موفقیت تغییر کرد.",
+    "passwords.throttled": "تعداد دفعات بازیابی رمز عبور بیش از حد مجاز است."
 }
