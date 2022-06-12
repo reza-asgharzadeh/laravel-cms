@@ -1,113 +1,69 @@
-body, html {
-    background-color: #ebecf0;
-}
-
-form {
-  padding: 16px;
-  width: 320px;
-  margin: 0 auto;
-}
-
-.segment {
-  padding: 0 0 30px 0;
-  text-align: center;
-}
-
-button,input {
-    border: 0;
-    outline: 0;
-    font-size: 16px;
-    border-radius: 12px;
-    padding: 12px;
-    background-color: #ebecf0;
+/*body, html {*/
+/*    background-color: #ebecf0;*/
+/*}*/
+button.main,.input-group input{
+    font-size: 1rem;
+    padding: 0.75rem !important;
     font-weight: 500;
     text-shadow: 1px 1px 0 #fff;
 }
-
-input {
-    background-color: #f3f5f8;
+button.main {
+    border: 0;
+    outline: 0;
+    /*background-color: #ebecf0;*/
+    background-color: #F3F4F6;
+    /*box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;*/
+    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    display: block;
+    width: 100%;
+    color: #000;
 }
-
-label {
-  display: block;
-  margin-bottom: 24px;
-  width: 100%;
+button.main:hover {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 }
-
-input[type=text],input[type=password] {
-  margin-right: 8px;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-  width: 100%;
+button.main:active {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+.input-group input[name=name],input[name=email],input[name=mobile]{
+    border-radius: 0.75rem !important;
+}
+.input-group input[name=password],input[name=password_confirmation]{
+    border-radius: 0 0.75rem 0.75rem 0 !important;
+}
+.input-group input[type=text],input[type=password] {
+  /*box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;*/
+  box-shadow: inset 2px 2px 5px #e3e3ec, inset -5px -5px 10px #fff;
+  /*width: 100%;*/
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
   appearance: none;
   -webkit-appearance: none;
 }
-input:focus {
-  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+.input-group input:focus {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff !important;
 }
-
-button {
-  font-weight: bold;
-  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  font-weight: 600;
+.input-group span{
+    border: 1px solid #D0D4DD;
+    border-radius: 0.7rem 0 0 0.7rem;
+    border-right: 0;
 }
-button:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+.input-group span:hover{
+    background: #EBECF0;
 }
-button:active {
-  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+.input-group span i{
+    vertical-align: -50%;
 }
-button .icon {
-  margin-right: 8px;
-}
-button.unit {
-  border-radius: 8px;
-  line-height: 0;
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 8px;
-  font-size: 19.2px;
-}
-button.unit .icon {
-  margin-right: 0;
-}
-button.main {
-  display: block;
-  width: 100%;
-  color: #000;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.input-group label {
-  margin: 0;
-  flex: 1;
-}
-
-a{
-    text-decoration: none;
-    color: #475466;
-}
-
 .remember-color{
     color: #67676e;
     font-weight: 600;
 }
-
-.checkbox-xl{
-    width: 1.2rem;
-    height: 1.2rem;
-}
-
 .google-btn{
     font-weight: 500;
+}
+.h-400{
+    height: 400px;
 }
