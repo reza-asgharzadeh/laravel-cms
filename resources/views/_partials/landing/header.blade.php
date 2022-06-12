@@ -14,7 +14,7 @@
         <nav class="site-navigation position-relative bg-white shadow p-4 rounded-4" role="navigation">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <a class="navbar-brand m-0 text-dark" href="{{route('landing')}}"><img src="{{asset('assets/landing/img/logo.png')}}" alt="logo"></a>
+                    <a class="navbar-brand m-0 text-dark" href="{{route('landing')}}"><img src="{{env('APP_URL') . env('LOGO_PATH')}}" alt="logo"></a>
                 </div>
 
                 <div class="w-50 js-clone-nav d-none d-lg-inline-block">
