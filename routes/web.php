@@ -12,6 +12,7 @@ use App\Http\Controllers\Panel\AlertController;
 use App\Http\Controllers\Panel\ChapterController;
 use App\Http\Controllers\Panel\edit_profile\AccountInformationEditController;
 use App\Http\Controllers\Panel\edit_profile\UserInformationEditController;
+use App\Http\Controllers\Panel\FaqCourseController;
 use App\Http\Controllers\Panel\NewsLetterController;
 use App\Http\Controllers\Panel\OrderController;
 use App\Http\Controllers\Panel\ActivityLogController;
@@ -106,6 +107,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     //course
     Route::resource('/courses',CourseController::class)->except('show');
     Route::get('/course/{course:slug}/chapters',[CourseController::class,'showCourseChapters'])->name('show.course.chapters');
+    Route::get('/course/{course:slug}/faq-courses',[CourseController::class,'showCourseFaqs'])->name('show.course.faq');
     Route::put('/courses/{course}/status',[CourseController::class,'isApproved'])->name('courses.status');
     Route::get('/my/courses',[CourseController::class,'myCourses'])->name('my.courses.index');
     //episode
@@ -115,6 +117,9 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/chapters',ChapterController::class)->except('show');
     Route::get('/chapter/{chapter}/episodes',[ChapterController::class,'showChapterEpisodes'])->name('show.chapter.episodes');
     Route::get('/chapter/{chapter}/course',[ChapterController::class,'showChapterCourse'])->name('show.chapter.course');
+    //Faq Course
+    Route::resource('/faq-courses',FaqCourseController::class)->except('show');
+    Route::get('/faq/{faq_course}/course',[FaqCourseController::class,'showFaqCourse'])->name('show.faq.course');
 
     Route::resource('/tickets',TicketController::class)->except(['edit','update','destroy']);
     Route::post('/tickets/{ticket}/reply',[TicketController::class,'reply'])->name('tickets.reply');
