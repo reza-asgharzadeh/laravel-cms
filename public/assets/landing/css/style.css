@@ -62,7 +62,7 @@ a.footer-color:hover {
 
 a{
     text-decoration: none;
-    color: #441BA0;
+    color: #475466;
     font-weight: 600;
 }
 
@@ -489,6 +489,9 @@ article{
     background: #e5eef8;
 }
 
-.bg-sky{
-    background: #E5EEF8;
-}
+.bg-sky{background: #E5EEF8 !important;}
+.bg-sky:hover{background: #e1ecf8 !important;}
+.text-sky{color: #186ed0 !important;}
+.bg-pink{background: #fde0ef !important;}
+.bg-pink:hover{background: #fdd9eb !important;}
+.text-pink{color: #d71473 !important;}
