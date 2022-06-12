@@ -38,7 +38,7 @@ return [
     'google' => [
         'client_id' => env('AUTH_GOOGLE_CLIENT_ID'),
         'client_secret' => env('AUTH_GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'redirect' => env('APP_URL').'auth/google/callback',
     ],
 
 ];
