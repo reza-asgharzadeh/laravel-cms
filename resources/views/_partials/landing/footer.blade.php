@@ -2,7 +2,7 @@
 <footer class="shadow-lg">
     <div class="container">
         <div class="d-flex justify-content-between">
-            <img  class="mt-3" src="{{asset('assets/landing/img/logo.png')}}" alt="logo">
+            <img  class="mt-3" src="{{env('APP_URL') . env('LOGO_PATH')}}" alt="logo">
             <span class="mt-3">
                 @include('_partials.landing.social')
             </span>
@@ -13,7 +13,7 @@
                     <h4 class="text-center">هدف ما</h4>
                     <p class="text-justify">یکی از پرتلاش‌ترین و بروزترین وبسایت های آموزشی در سطح ایران است که همیشه تلاش کرده تا بتواند جدیدترین و بروزترین مقالات و دوره‌های آموزشی را در اختیار علاقه‌مندان ایرانی قرار دهد. تبدیل کردن برنامه نویسان ایرانی به بهترین برنامه نویسان جهان هدف ماست.</p>
                     <div class="d-flex">
-                        <input id="input-newsletter" type="email" class="form-control form-control-sm" name="email" placeholder="برای اطلاع از جدیدترین دوره‌ها و مقالات ایمیل خود را وارد کنید...">
+                        <input id="input-newsletter" type="email" class="form-control form-control-sm" placeholder="برای اطلاع از جدیدترین دوره‌ها و مقالات ایمیل خود را وارد کنید...">
                         <input id="btn-newsletter" type="submit" class="btn btn-sm btn-primary" value="ثبت ایمیل">
                     </div>
                     <span id="message"></span>
