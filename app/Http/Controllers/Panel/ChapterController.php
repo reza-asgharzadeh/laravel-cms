@@ -41,7 +41,7 @@ class ChapterController extends Controller
 
     public function showChapterEpisodes(Chapter $chapter)
     {
-        $episodes = $chapter->episodes()->paginate();
+        $episodes = $chapter->episodes()->paginate(5);
         return view('panel.chapters.chapter_episodes',compact('episodes'));
     }
 
