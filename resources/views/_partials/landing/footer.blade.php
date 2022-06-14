@@ -34,15 +34,15 @@
                     <ul class="list-group">
                         <li class="d-flex justify-content-between align-items-center mt-2 mb-2">
                             <span><i class="fa fa-lg fa-envelope text-muted mx-2"></i>ایمیل:</span>
-                            <span>info@podera.com</span>
+                            <span>{{env('EMAIL_ADDRESS')}}</span>
                         </li>
                         <li class="d-flex justify-content-between align-items-center mt-2 mb-2">
                             <span><i class="fa fa-lg fa-telegram text-muted mx-2"></i>آی‌دی تلگرام:</span>
-                            <span>podera@</span>
+                            <span>{{env('TELEGRAM_ID')}}</span>
                         </li>
                         <li class="d-flex justify-content-between align-items-center mt-2 mb-2">
                             <span><i class="fa fa-lg fa-phone text-muted mx-2"></i>شماره تماس:</span>
-                            <span>09141234567</span>
+                            <span>{{env('WHATSAPP_NUMBER')}}</span>
                         </li>
                     </ul>
                     <span class="mt-2">
