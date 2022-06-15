@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{asset('assets/landing/css/owl.carousel.min.css')}}">
     </x-slot>
 <!-- Page Content -->
-    <div id="app" class="container mt-3">
+    <div class="container mt-3">
 
         <div class="row">
             <!-- Blog Post Content Column -->
@@ -33,6 +33,7 @@
                 {!! $course->content !!}
 
                 @include('_partials.landing.chapters')
+                @include('_partials.landing.faqs_course')
 
                 <div class="d-flex mt-4">
                     <span>برچسب‌ها:</span>
