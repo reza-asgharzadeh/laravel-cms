@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{asset('assets/landing/css/owl.carousel.min.css')}}">
     </x-slot>
 <!-- Page Content -->
-    <div id="app" class="container mt-3">
+    <div class="container mt-3">
 
         <div class="row">
             <!-- Blog Post Content Column -->
