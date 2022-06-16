@@ -95,6 +95,7 @@
                                                     @endif
                                                 </div>
                                                 <div><a href="{{route('courses.show',$course->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('show.course.faq',$course->slug)}}"><i class="fa-x fa-question text-primary" title="سوالات متداول این دوره"></i></a></div>
                                                 <div><a href="{{route('show.course.chapters',$course->slug)}}"><i class="fa-x fa-plus text-primary" title="فصل‌های دوره"></i></a></div>
                                                 <div><a href="{{route('courses.edit',$course->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                 <div>
