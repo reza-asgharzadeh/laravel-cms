@@ -4,7 +4,7 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>
-                        <small>دوره‌ی فصل</small>
+                        <a class="btn btn-primary" href="{{route('courses.create')}}"><i class="fa fa-plus"></i> ایجاد دوره جدید</a>
                     </h3>
                 </div>
 
@@ -25,7 +25,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            <small>دوره‌ی فصل</small>
+                            دوره‌ی فصل
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -92,6 +92,7 @@
                                                 @endif
                                             </div>
                                             <div><a href="{{route('courses.show',$course->slug)}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
+                                            <div><a href="{{route('show.course.faq',$course->slug)}}"><i class="fa-x fa-question text-primary" title="سوالات متداول این دوره"></i></a></div>
                                             <div><a href="{{route('show.course.chapters',$course->slug)}}"><i class="fa-x fa-plus text-primary" title="فصل‌های دوره"></i></a></div>
                                             <div><a href="{{route('courses.edit',$course->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                             <div>
