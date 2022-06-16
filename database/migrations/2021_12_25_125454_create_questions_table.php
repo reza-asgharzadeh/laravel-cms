@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->longText('content');
+            $table->mediumText('content');
             $table->foreignId('user_id')->constrained()
                 ->onUpdate('CASCADE')
                 ->OnDelete('CASCADE');
