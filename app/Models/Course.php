@@ -79,6 +79,11 @@ class Course extends Model
         return $this->hasManyThrough(Episode::class, Chapter::class);
     }
 
+    public function fagCourses()
+    {
+        return $this->hasMany(FaqCourse::class);
+    }
+
     public function getCreatedAtInJalali()
     {
         return verta($this->created_at)->format('Y/m/d');
