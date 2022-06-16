@@ -144,6 +144,7 @@
                         <li><a href="{{route('contact')}}" class="nav-link">تماس با ما</a></li>
                     </ul>
                 </li>
+                <li><a href="{{route('discuss.index')}}" class="nav-link">پرسش و پاسخ برنامه نویسی</a></li>
             </ul>
         </nav>
     </div>
