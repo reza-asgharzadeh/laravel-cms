@@ -82,7 +82,7 @@
                                         <td>
                                             <div style="display: flex; justify-content: space-evenly">
                                                 <div><a href="{{route('episodes.show',[$episode->chapter->course->slug,$episode->slug])}}" target="_blank"><i class="fa-x fa-eye text-primary" title="نمایش"></i></a></div>
-                                                <div><a href="{{route('show.episode.chapter',$episode->slug)}}"><i class="fa-x fa-plus text-primary" title="نمایش"></i></a></div>
+                                                <div><a href="{{route('show.episode.chapter',$episode->slug)}}"><i class="fa-x fa-plus text-primary" title="فصل این جلسه"></i></a></div>
                                                 <div><a href="{{route('episodes.edit',$episode->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a></div>
                                                 <div>
                                                     <a href="{{route('episodes.destroy',$episode->id)}}" onclick="destroyEpisode(event, {{ $episode->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
