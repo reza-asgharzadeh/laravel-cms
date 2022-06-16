@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Post;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -21,6 +22,12 @@ class SearchController extends Controller
             $courses = Course::where('name','LIKE',"%{$request->search}%")->orWhere('content','LIKE',"%{$request->search}%")->paginate(9);
             $coursesCount = $courses->total();
             return view('client.search.search_courses',compact('courses','coursesCount'));
+        }
+
+        if ($request->type == 'discuss'){
+            $discuss = Question::where('title','LIKE',"%{$request->search}%")->orWhere('content','LIKE',"%{$request->search}%")->paginate(10);
+            $discussCount = $discuss->total();
+            return view('client.search.search_discuss',compact('discuss','discussCount'));
         }
     }
 }
