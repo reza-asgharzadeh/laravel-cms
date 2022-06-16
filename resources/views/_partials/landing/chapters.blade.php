@@ -1,5 +1,5 @@
 <div class="custom-box-shadow p-3">
-    <div class="h5 text-purple mb-2">سرفصل‌ها:</div>
+    <div class="h5 text-sky mb-2">سرفصل‌ها:</div>
     <div class="accordion" id="accordionExample">
         @forelse($course->chapters as $chapter)
             <div class="accordion-item mb-2 border-0">
@@ -18,14 +18,14 @@
                             </div>
                         </div>
                     @empty
-                        <div class="accordion-body bg-light">
-                            <div class="alert alert-danger" role="alert">در حال حاضر جلسه‌ای برای این فصل ایجاد نشده است.</div>
+                        <div class="accordion-body">
+                            <div class="alert alert-primary" role="alert">در حال حاضر جلسه‌ای برای این فصل ایجاد نشده است.</div>
                         </div>
                     @endforelse
                 </div>
             </div>
         @empty
-            <div class="alert alert-danger" role="alert">در حال حاضر سرفصلی برای این دوره ایجاد نشده است.</div>
+            <div class="alert alert-primary" role="alert">در حال حاضر سرفصلی برای این دوره ایجاد نشده است.</div>
         @endforelse
     </div>
 </div>
