@@ -5,7 +5,9 @@ use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\CoursesController;
+use App\Http\Controllers\Client\DiscussController;
 use App\Http\Controllers\Client\SearchController;
+use App\Http\Controllers\Client\ShowDiscussController;
 use App\Http\Controllers\Client\ShowOfferPageController;
 use App\Http\Controllers\Client\SitemapController;
 use App\Http\Controllers\Panel\AlertController;
@@ -79,6 +81,10 @@ Route::get('/contact-us',[ContactController::class,'showPage'])->name('contact')
 Route::post('/contact-us',[ContactController::class,'store'])->name('contact.store');
 //Search
 Route::get('/search',[SearchController::class,'index'])->name('search');
+//discuss
+Route::resource('/discuss',DiscussController::class)->except('show');
+Route::get('/discuss/{question:slug}',[DiscussController::class,'replyDiscussion'])->name('reply.discussion');
+Route::post('/discuss/{question:slug}/answer',[DiscussController::class,'answerDiscussion'])->name('answer.discussion');
 
 Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::get('/',[PanelController::class,'index'])->name('panel');
