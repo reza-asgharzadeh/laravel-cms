@@ -72,8 +72,14 @@ class CourseController extends Controller
 
     public function showCourseChapters(Course $course)
     {
-        $chapters = $course->chapters()->paginate();
+        $chapters = $course->chapters()->paginate(5);
         return view('panel.courses.course_chapters',compact('chapters'));
+    }
+
+    public function showCourseFaqs(Course $course)
+    {
+        $faqCourses = $course->fagCourses()->paginate(5);
+        return view('panel.courses.course_faqs',compact('faqCourses'));
     }
 
     public function myCourses()
