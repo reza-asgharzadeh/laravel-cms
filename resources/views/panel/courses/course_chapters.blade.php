@@ -4,7 +4,7 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>
-                        <small>لیست فصل‌های دوره</small>
+                        <a class="btn btn-primary" href="{{route('chapters.create')}}"><i class="fa fa-plus"></i> ایجاد فصل جدید</a>
                     </h3>
                 </div>
 
@@ -25,7 +25,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            <small>فصل‌های دوره</small>
+                            فصل‌های دوره
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -58,7 +58,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($chapters as $chapter)
+                                @forelse($chapters as $chapter)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$chapter->name}}</td>
@@ -79,7 +79,9 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <div class="text-center alert alert-danger" role="alert">در حال حاضر فصلی برای این دوره ایجاد نشده است.</div>
+                                @endforelse
                                 </tbody>
                             </table>
                             <div class="text-center">
