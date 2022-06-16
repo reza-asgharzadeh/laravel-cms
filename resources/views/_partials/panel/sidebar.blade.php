@@ -68,6 +68,7 @@
                     <li><a href="{{route('courses.index')}}">ایجاد و مدیریت دوره‌ها</a></li>
                     <li><a href="{{route('chapters.index')}}">ایجاد و مدیریت فصل‌های دوره</a></li>
                     <li><a href="{{route('episodes.index')}}">ایجاد و مدیریت جلسات فصل</a></li>
+                    <li><a href="{{route('faq-courses.index')}}">ایجاد و مدیریت سوالات متداول دوره</a></li>
                 </ul>
             </li>
             @endcan
