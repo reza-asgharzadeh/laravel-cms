@@ -4,7 +4,7 @@
             <div class="page-title">
                 <div class="title_left">
                     <h3>
-                        <small>لیست جلسات فصل</small>
+                        <a class="btn btn-primary" href="{{route('episodes.create')}}"><i class="fa fa-plus"></i> ایجاد جلسه جدید</a>
                     </h3>
                 </div>
 
@@ -25,7 +25,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            <small>جلسات فصل</small>
+                            جلسات فصل
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -59,7 +59,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($episodes as $episode)
+                                @forelse($episodes as $episode)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$episode->name}}</td>
@@ -80,7 +80,9 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <div class="text-center alert alert-danger" role="alert">در حال حاضر جلسه‌ای برای این فصل ایجاد نشده است.</div>
+                                @endforelse
                                 </tbody>
                             </table>
                             <div class="text-center">
