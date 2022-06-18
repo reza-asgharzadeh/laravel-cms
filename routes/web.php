@@ -137,7 +137,7 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     //Payment
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     //Coupon
-    Route::resource('/coupons',CouponController::class);
+    Route::resource('/coupons',CouponController::class)->except('show');
     Route::put('/coupons/{coupon}/status',[CouponController::class,'isApproved'])->name('coupons.status');
     //Offer
     Route::resource('/offers',OfferController::class);
