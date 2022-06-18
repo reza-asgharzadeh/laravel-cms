@@ -62,16 +62,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return asset('profiles/images/' . $this->profile);
     }
 
-    public function getUserRoleName()
-    {
-        $message = match ($this->role_id) {
-            1 => 'مدیر اصلی',
-            2 => 'مدیر',
-            3 => 'کاربر عادی',
-        };
-        return $message;
-    }
-
     public function lastLoginDateTime()
     {
         return $this->hasMany(ActivityLog::class);
