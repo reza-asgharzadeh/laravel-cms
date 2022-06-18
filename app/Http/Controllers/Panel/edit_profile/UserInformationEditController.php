@@ -11,7 +11,7 @@ class UserInformationEditController extends Controller
 {
     public function userInformation()
     {
-        Gate::authorize('edit-profile');
+        Gate::authorize('view-user-information');
 
         $user = auth()->user();
         return view('panel.users.profile.user_information',compact('user'));
@@ -19,7 +19,7 @@ class UserInformationEditController extends Controller
 
     public function userCommunication()
     {
-        Gate::authorize('edit-profile');
+        Gate::authorize('view-user-communication');
 
         $user = auth()->user();
         return view('panel.users.profile.user_communication',compact('user'));
@@ -27,26 +27,34 @@ class UserInformationEditController extends Controller
 
     public function userInformationUpdate(UserInformationRequest $request)
     {
+        Gate::authorize('update-user-information');
+
         $data = $request->validated();
+
         auth()->user()->userInformation()->updateOrCreate(
             [
                 'user_id' => auth()->user()->id,
             ],
             $data
         );
+
         $request->session()->flash('status','اطلاعات فردی شما با موفقیت ویرایش شد !');
         return back();
     }
 
     public function userCommunicationUpdate(UserCommunicationRequest $request)
     {
+        Gate::authorize('update-user-communication');
+
         $data = $request->validated();
+
         auth()->user()->userInformation()->updateOrCreate(
             [
                 'user_id' => auth()->user()->id,
             ],
             $data
         );
+
         $request->session()->flash('status','راه‌های ارتباطی با شما با موفقیت ویرایش شد !');
         return back();
     }
