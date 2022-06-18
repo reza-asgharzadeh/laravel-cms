@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Permission;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,429 +16,973 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        $currentTime = Carbon::now()->format('Y-m-d H:i:s');
+
         Permission::insert([
             [
-                'name' => 'display-dashboard'
+                'name' => 'display-dashboard',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-site'
+                'name' => 'display-site',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-edit-profile'
+                'name' => 'display-edit-profile',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-activities'
+                'name' => 'display-my-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-wallet'
+                'name' => 'display-wallet',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-users'
+                'name' => 'display-users',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-tickets'
+                'name' => 'display-tickets',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-questions-answers'
+                'name' => 'display-questions-answers',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-roles-permissions'
+                'name' => 'display-roles-permissions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-posts'
+                'name' => 'display-pages',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-courses'
+                'name' => 'display-posts',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-episodes'
+                'name' => 'display-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-categories'
+                'name' => 'display-categories',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-tags'
+                'name' => 'display-tags',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-comments'
+                'name' => 'display-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-coupons'
+                'name' => 'display-contact-form',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-offers'
+                'name' => 'display-newsletter',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-orders'
+                'name' => 'display-alert-bar',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'display-payments'
+                'name' => 'display-discount',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'display-orders',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'display-payments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
            [
-               'name' => 'view-dashboard'
+               'name' => 'view-dashboard',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
            ],
 
             [
-                'name' => 'view-site'
+                'name' => 'view-site',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
+            //edit Profile
+            [
+                'name' => 'view-account-information',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-account-information',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-user-information',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-user-information',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-user-communication',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-user-communication',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-account-password',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-account-password',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-activities',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'delete-activities',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+            //
+            [
+                'name' => 'view-my-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-wallet',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-wallet',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-users',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'create-user',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-user',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'edit-users',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-users',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'delete-users',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-tickets',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'create-ticket',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-ticket',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'read-tickets',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'reply-tickets',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-questions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'create-question',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-question',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'read-questions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'answer-questions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-roles',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-role',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'edit-roles',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-roles',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'delete-roles',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-permission-role',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'set-permission-role',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-permissions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-permission',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'edit-permissions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-permissions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'delete-permissions',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-pages',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'create-page',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-page',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'edit-pages',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'is-approved-pages',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'update-pages',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'delete-pages',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'view-posts',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'create-post',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'store-post',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'edit-posts',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
+
+            [
+                'name' => 'is-approved-posts',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
+            ],
 
             [
-                'name' => 'edit-profile'
+                'name' => 'update-posts',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-profile'
+                'name' => 'delete-posts',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-activities'
+                'name' => 'view-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-activities'
+                'name' => 'create-course',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-wallet'
+                'name' => 'store-course',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-users'
+                'name' => 'edit-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-user'
+                'name' => 'is-approved-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-user'
+                'name' => 'update-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-users'
+                'name' => 'delete-courses',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-users'
+                'name' => 'view-course-chapters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-users'
+                'name' => 'view-course-faqs',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-tickets'
+                'name' => 'view-faq-course',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-ticket'
+                'name' => 'view-chapter-course',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-ticket'
+                'name' => 'view-chapter-episodes',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'read-tickets'
+                'name' => 'view-episode-chapter',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'reply-tickets'
+                'name' => 'view-chapters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-questions'
+                'name' => 'create-chapter',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-question'
+                'name' => 'store-chapter',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-question'
+                'name' => 'edit-chapters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'read-questions'
+                'name' => 'update-chapters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'answer-questions'
+                'name' => 'delete-chapters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-roles'
+                'name' => 'view-episodes',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-role'
+                'name' => 'create-episode',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-roles'
+                'name' => 'store-episode',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-roles'
+                'name' => 'edit-episodes',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-roles'
+                'name' => 'update-episodes',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-permission-role'
+                'name' => 'delete-episodes',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'set-permission-role'
+                'name' => 'view-faqs',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-permissions'
+                'name' => 'create-faq',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-permission'
+                'name' => 'store-faq',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-permissions'
+                'name' => 'edit-faqs',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-permissions'
+                'name' => 'update-faqs',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-permissions'
+                'name' => 'delete-faqs',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-posts'
+                'name' => 'view-categories',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-post'
+                'name' => 'store-category',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-post'
+                'name' => 'edit-categories',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-posts'
+                'name' => 'update-categories',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-posts'
+                'name' => 'delete-categories',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-posts'
+                'name' => 'view-tags',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-courses'
+                'name' => 'store-tag',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-course'
+                'name' => 'edit-tags',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-course'
+                'name' => 'update-tags',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-courses'
+                'name' => 'delete-tags',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-courses'
+                'name' => 'view-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-courses'
+                'name' => 'save-comment',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-episodes'
+                'name' => 'edit-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-episode'
+                'name' => 'reply-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-episode'
+                'name' => 'update-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-episodes'
+                'name' => 'is-approved-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-episodes'
+                'name' => 'delete-comments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-episodes'
+                'name' => 'view-contact-forms',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-categories'
+                'name' => 'edit-contact-forms',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-category'
+                'name' => 'update-contact-forms',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-categories'
+                'name' => 'reply-contact-forms',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-categories'
+                'name' => 'save-contact-form',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-categories'
+                'name' => 'delete-contact-forms',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-tags'
+                'name' => 'view-newsletters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-tag'
+                'name' => 'edit-newsletters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-tags'
+                'name' => 'update-newsletters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-tags'
+                'name' => 'is-approved-newsletters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-tags'
+                'name' => 'delete-newsletters',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-comments'
+                'name' => 'view-alert-bars',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'save-comment'
+                'name' => 'create-alert-bar',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-comments'
+                'name' => 'store-alert-bar',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'reply-comments'
+                'name' => 'edit-alert-bars',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-comments'
+                'name' => 'update-alert-bars',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'is-approved-comments'
+                'name' => 'is-approved-alert-bars',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-comments'
+                'name' => 'delete-alert-bars',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-coupons'
+                'name' => 'view-coupons',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-coupon'
+                'name' => 'create-coupon',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-coupon'
+                'name' => 'store-coupon',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-coupons'
+                'name' => 'edit-coupons',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'is-approved-coupons'
+                'name' => 'is-approved-coupons',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-coupons'
+                'name' => 'update-coupons',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-coupons'
+                'name' => 'delete-coupons',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-offers'
+                'name' => 'view-offers',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'create-offer'
+                'name' => 'create-offer',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'store-offer'
+                'name' => 'store-offer',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'edit-offers'
+                'name' => 'edit-offers',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'is-approved-offers'
+                'name' => 'is-approved-offers',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'update-offers'
+                'name' => 'update-offers',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'delete-offers'
+                'name' => 'delete-offers',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-orders'
+                'name' => 'view-orders',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'pay-orders'
+                'name' => 'pay-orders',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
 
             [
-                'name' => 'view-payments'
+                'name' => 'view-payments',
+                'created_at' => $currentTime,
+                'updated_at' => $currentTime
             ],
         ]);
     }
