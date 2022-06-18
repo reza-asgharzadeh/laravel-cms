@@ -84,6 +84,8 @@ class PostController extends Controller
 
     public function isApproved(Request $request, Post $post)
     {
+        Gate::authorize('is-approved-posts');
+
         $post->update([
             'is_approved' => ! $post->is_approved
         ]);
