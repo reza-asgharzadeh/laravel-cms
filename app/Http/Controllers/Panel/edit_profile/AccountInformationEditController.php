@@ -13,7 +13,7 @@ class AccountInformationEditController extends Controller
 {
     public function accountInformation()
     {
-        Gate::authorize('edit-profile');
+        Gate::authorize('view-account-information');
 
         $user = auth()->user();
         return view('panel.users.profile.account_information',compact('user'));
@@ -21,7 +21,7 @@ class AccountInformationEditController extends Controller
 
     public function accountPassword()
     {
-        Gate::authorize('edit-profile');
+        Gate::authorize('view-account-password');
 
         $user = auth()->user();
         return view('panel.users.profile.account_password',compact('user'));
@@ -29,6 +29,8 @@ class AccountInformationEditController extends Controller
 
     public function accountInformationUpdate(AccountInformationRequest $request)
     {
+        Gate::authorize('update-account-information');
+
         $data = $request->validated();
 
         if ($request->hasFile('profile')){
@@ -47,6 +49,8 @@ class AccountInformationEditController extends Controller
 
     public function accountPasswordUpdate(AccountPasswordRequest $request)
     {
+        Gate::authorize('update-account-password');
+
         if (!Hash::check($request->old_password, auth()->user()->password)){
             throw ValidationException::withMessages([
                 'old_password' => ['رمز عبور فعلی را نادرست وارد کرده‌اید.']
