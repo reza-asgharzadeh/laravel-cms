@@ -17,13 +17,15 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $superAdmin = Role::create([
-            'name' => 'super-admin'
+            'name' => 'super-admin',
+            'label' => 'مدیر کل'
         ]);
 
         $superAdmin->permissions()->sync(Permission::all());
 
         $user = Role::create([
-           'name' => 'user'
+           'name' => 'user',
+           'label' => 'کاربر عادی'
         ]);
 
         $user->permissions()->sync([
