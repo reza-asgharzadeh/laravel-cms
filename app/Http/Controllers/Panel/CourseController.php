@@ -72,19 +72,25 @@ class CourseController extends Controller
 
     public function showCourseChapters(Course $course)
     {
+        Gate::authorize('view-course-chapters');
+
         $chapters = $course->chapters()->paginate(5);
         return view('panel.courses.course_chapters',compact('chapters'));
     }
 
     public function showCourseFaqs(Course $course)
     {
+        Gate::authorize('view-course-faqs');
+
         $faqCourses = $course->fagCourses()->paginate(5);
         return view('panel.courses.course_faqs',compact('faqCourses'));
     }
 
     public function myCourses()
     {
-        $orders = Order::where('user_id',auth()->user()->id)->where('order_status',1)->paginate(10);
+        Gate::authorize('view-my-courses');
+
+        $orders = auth()->user()->orders()->where('order_status',1)->paginate(10);
         return view('panel.courses.my_courses',compact('orders'));
     }
 
@@ -106,6 +112,8 @@ class CourseController extends Controller
 
     public function isApproved(Request $request, Course $course)
     {
+        Gate::authorize('is-approved-courses');
+
         $course->update([
             'is_approved' => ! $course->is_approved
         ]);
