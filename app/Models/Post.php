@@ -47,7 +47,7 @@ class Post extends Model
 
     public function getBanner()
     {
-        return asset('articles/banner/' . $this->banner);
+        return asset('images/posts/'. $this->slug ."/". $this->banner);
     }
 
     public function getCreatedAtInJalali()
