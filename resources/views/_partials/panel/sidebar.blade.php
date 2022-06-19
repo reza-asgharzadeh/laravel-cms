@@ -10,9 +10,9 @@
             @can('display-edit-profile')
                 <li><a href="{{route('account.information')}}"><i class="fa fa-user"></i> اطلاعات پروفایل</a></li>
             @endcan
-
+            @can('display-my-courses')
                 <li><a href="{{route('my.courses.index')}}"><i class="fa fa-graduation-cap"></i> دوره‌های من</a></li>
-
+            @endcan
             @can('display-wallet')
                 <li><a href="{{route('wallets.index')}}"><i class="fa fa-shopping-bag"></i> کیف پول</a></li>
             @endcan
@@ -48,12 +48,14 @@
                     </ul>
                 </li>
             @endcan
-                <li><a><i class="fa fa-file"></i> صفحه سایت <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="{{route('pages.create')}}">ایجاد صفحه جدید</a></li>
-                        <li><a href="{{route('pages.index')}}">مدیریت صفحات</a></li>
-                    </ul>
-                </li>
+            @can('display-pages')
+            <li><a><i class="fa fa-file"></i> صفحه سایت <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route('pages.create')}}">ایجاد صفحه جدید</a></li>
+                    <li><a href="{{route('pages.index')}}">مدیریت صفحات</a></li>
+                </ul>
+            </li>
+            @endcan
             @can('display-posts')
                 <li><a><i class="fa fa-edit"></i> مقالات <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -63,14 +65,14 @@
                 </li>
             @endcan
             @can('display-courses')
-            <li><a><i class="fa fa-graduation-cap"></i> دوره‌ها <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="{{route('courses.index')}}">ایجاد و مدیریت دوره‌ها</a></li>
-                    <li><a href="{{route('chapters.index')}}">ایجاد و مدیریت فصل‌های دوره</a></li>
-                    <li><a href="{{route('episodes.index')}}">ایجاد و مدیریت جلسات فصل</a></li>
-                    <li><a href="{{route('faq-courses.index')}}">ایجاد و مدیریت سوالات متداول دوره</a></li>
-                </ul>
-            </li>
+                <li><a><i class="fa fa-graduation-cap"></i> دوره‌ها <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{route('courses.index')}}">ایجاد و مدیریت دوره‌ها</a></li>
+                        <li><a href="{{route('chapters.index')}}">ایجاد و مدیریت فصل‌های دوره</a></li>
+                        <li><a href="{{route('episodes.index')}}">ایجاد و مدیریت جلسات فصل</a></li>
+                        <li><a href="{{route('faq-courses.index')}}">ایجاد و مدیریت سوالات متداول دوره</a></li>
+                    </ul>
+                </li>
             @endcan
             @can('display-categories')
                 <li><a><i class="fa fa-list-alt"></i> دسته‌بندی‌ها <span class="fa fa-chevron-down"></span></a>
@@ -80,11 +82,11 @@
                 </li>
             @endcan
             @can('display-tags')
-            <li><a><i class="fa fa-tags"></i> برچسب‌ها <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="{{route('tags.index')}}">ایجاد و مدیریت برچسب</a></li>
-                </ul>
-            </li>
+                <li><a><i class="fa fa-tags"></i> برچسب‌ها <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{route('tags.index')}}">ایجاد و مدیریت برچسب</a></li>
+                    </ul>
+                </li>
             @endcan
             @can('display-comments')
                 <li><a><i class="fa fa-comments"></i> نظرات <span class="fa fa-chevron-down"></span></a>
@@ -93,23 +95,29 @@
                     </ul>
                 </li>
             @endcan
+            @can('display-contact-forms')
                 <li><a><i class="fa fa-wpforms"></i> فرم تماس با ما <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('contact-us.index')}}">پاسخ و مدیریت تماس‌ها</a></li>
                     </ul>
                 </li>
+            @endcan
+            @can('display-newsletters')
                 <li><a><i class="fa fa-newspaper-o"></i> خبرنامه‌ها <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('newsletters.index')}}">مدیریت خبرنامه‌ها</a></li>
                     </ul>
                 </li>
-                <li><a><i class="fa fa-info"></i> نوار اطلاع‌رسانی <span class="fa fa-chevron-down"></span></a>
+            @endcan
+            @can('display-alert-bars')
+                <li><a><i class="fa fa-info"></i> نوارهای اطلاع‌رسانی <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('alerts.create')}}">ایجاد نوار اطلاع‌رسانی</a></li>
                         <li><a href="{{route('alerts.index')}}">مدیریت نوارهای اطلاع‌رسانی</a></li>
                     </ul>
                 </li>
-            @can('display-coupons')
+            @endcan
+            @can('display-discounts')
                 <li><a><i class="fa fa-percent"></i> جشنواره و کد تخفیف <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{route('coupons.index')}}">ایجاد و مدیریت کدهای تخفیف</a></li>
