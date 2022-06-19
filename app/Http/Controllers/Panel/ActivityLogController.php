@@ -12,7 +12,7 @@ class ActivityLogController extends Controller
 {
     public function index()
     {
-        Gate::authorize('view-posts');
+        Gate::authorize('view-activities');
 
         $userId = auth()->user()->id;
         $sessions = DB::table('sessions')->where('user_id',$userId)->get();
