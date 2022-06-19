@@ -9,12 +9,15 @@ use App\Http\Requests\Panel\Contact\UpdateContactRequest;
 use App\Mail\ContactUsEmail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-contact-forms');
+
         $parentContacts = Contact::where('contact_id',null)->orderByDesc('id')->paginate(5);
         $childrenContacts = Contact::where('contact_id','!=',null)->orderByDesc('id')->paginate(5);
         return view('panel.contacts.index',compact('parentContacts','childrenContacts'));
@@ -40,14 +43,14 @@ class ContactController extends Controller
 
     public function reply(Contact $contact)
     {
-//        Gate::authorize('reply-comments');
+        Gate::authorize('reply-contact-forms');
 
         return view('panel.contacts.reply',compact('contact'));
     }
 
     public function save(ReplyContactRequest $request, Contact $contact)
     {
-//        Gate::authorize('save-comment');
+        Gate::authorize('save-contact-form');
 
         Contact::create([
             'name' => auth()->user()->name,
@@ -65,11 +68,15 @@ class ContactController extends Controller
 
     public function edit(Contact $contact_u)
     {
+        Gate::authorize('edit-contact-forms');
+
         return view('panel.contacts.edit',compact('contact_u'));
     }
 
     public function update(UpdateContactRequest $request, Contact $contact_u)
     {
+        Gate::authorize('update-contact-forms');
+
         $contact_u->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -82,6 +89,8 @@ class ContactController extends Controller
 
     public function destroy(Contact $contact_u, Request $request)
     {
+        Gate::authorize('delete-contact-forms');
+
         $contact_u->delete();
         $request->session()->flash('status','فرم تماس مورد نظر با موفقیت حذف شد !');
         return back();
