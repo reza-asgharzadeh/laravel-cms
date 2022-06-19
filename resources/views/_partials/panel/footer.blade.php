@@ -1,7 +1,6 @@
 <footer class="hidden-print">
     <div class="pull-left">
-        پنل مدیریت  <a href="https://podera.ir">Podera</a> | توسط <a
-            href="https://podera.ir">رضا اصغرزاده</a>
+        پنل {{auth()->user()->role_id == 1 ? 'مدیریت' : 'کاربری'}} | {{env('APP_NAME')}}
     </div>
     <div class="clearfix"></div>
 </footer>
