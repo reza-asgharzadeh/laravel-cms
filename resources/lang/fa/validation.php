@@ -181,5 +181,6 @@ return [
         'pre_course' => 'پیش نیاز دوره',
         'old_password' => 'رمز عبور فعلی',
         'new_password' => 'رمز عبور جدید',
+        'label' => 'نام فارسی'
     ],
 ];
