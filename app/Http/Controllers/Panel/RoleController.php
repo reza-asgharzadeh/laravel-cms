@@ -47,7 +47,7 @@ class RoleController extends Controller
         $permissions = Permission::all();
         $rolePermissions = $role->permissions()->pluck('id')->toArray();
 
-        return view('panel.roles.show',compact('role','permissions','rolePermissions'));
+        return view('panel.roles.set_permissions_role',compact('role','permissions','rolePermissions'));
     }
 
     public function setPermissions(Request $request,Role $role)
