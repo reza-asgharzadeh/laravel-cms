@@ -2,6 +2,7 @@
     <div class="right_col" role="main">
         <!-- top tiles -->
         <div class="row tile_count text-center">
+            @if(auth()->user()->role_id == 1)
             <div class="col-md-4 col-sm-6 col-xs-12 tile_stats_count">
                 <span class="count_top"><i class="fa-x fa-users"></i> تعداد کاربران</span><br><br>
                 <div class="count green">{{$users_count}}</div>
@@ -50,6 +51,12 @@
                 <span class="count_top"><i class="fa-x fa-question-circle"></i> تعداد پرسش ها</span><br><br>
                 <div class="count green">{{$questions_count}}</div>
             </div>
+            @else
+                <div class="col-md-12">
+                    <h2 class="count_top"><i class="fa fa-lg fa-user"></i> {{auth()->user()->name}} عزیز خوش آمدید. </h2><br><br>
+                    <h3 class="count green">این قسمت به زودی تکمیل می‌شود.</h3>
+                </div>
+            @endif
         </div>
         <!-- /top tiles -->
     </div>
