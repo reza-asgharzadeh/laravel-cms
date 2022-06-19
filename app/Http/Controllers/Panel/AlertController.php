@@ -7,22 +7,29 @@ use App\Http\Requests\Panel\Alert\CreateAlertRequest;
 use App\Http\Requests\Panel\Alert\UpdateAlertRequest;
 use App\Models\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AlertController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-alert-bars');
+
         $alerts = Alert::orderByDesc('id')->paginate(5);
         return view('panel.alerts.index',compact('alerts'));
     }
 
     public function create()
     {
+        Gate::authorize('create-alert-bar');
+
         return view('panel.alerts.create');
     }
 
     public function store(CreateAlertRequest $request)
     {
+        Gate::authorize('store-alert-bar');
+
         $data = $request->validated();
         Alert::create(
             $data
@@ -34,11 +41,15 @@ class AlertController extends Controller
 
     public function edit(Alert $alert)
     {
+        Gate::authorize('edit-alert-bars');
+
         return view('panel.alerts.edit',compact('alert'));
     }
 
     public function isApproved(Request $request, Alert $alert)
     {
+        Gate::authorize('is-approved-alert-bars');
+
         $alert->update([
             'is_approved' => ! $alert->is_approved
         ]);
@@ -49,6 +60,8 @@ class AlertController extends Controller
 
     public function update(UpdateAlertRequest $request, Alert $alert)
     {
+        Gate::authorize('update-alert-bars');
+
         $data = $request->validated();
 
         if (!$request->expiry_date){
@@ -65,6 +78,8 @@ class AlertController extends Controller
 
     public function destroy(Request $request, Alert $alert)
     {
+        Gate::authorize('delete-alert-bars');
+
         $alert->delete();
         $request->session()->flash('status','اطلاع رسانی مورد نظر با موفقیت حذف شد !');
         return back();
