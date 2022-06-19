@@ -7,11 +7,14 @@ use App\Http\Requests\Panel\NewsLetter\CreateNewsLetterRequest;
 use App\Http\Requests\Panel\NewsLetter\UpdateNewsLetterRequest;
 use App\Models\NewsLetter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class NewsLetterController extends Controller
 {
     public function index()
     {
+        Gate::authorize('view-newsletters');
+
         $newsletters = NewsLetter::orderByDesc('id')->paginate(5);
         return view('panel.newsletters.index',compact('newsletters'));
     }
@@ -28,11 +31,15 @@ class NewsLetterController extends Controller
 
     public function edit(NewsLetter $newsletter)
     {
+        Gate::authorize('edit-newsletters');
+
         return view('panel.newsletters.edit',compact('newsletter'));
     }
 
     public function status(Request $request, NewsLetter $newsletter)
     {
+        Gate::authorize('is-approved-newsletters');
+
         $newsletter->update([
             'status' => ! $newsletter->status
         ]);
@@ -43,6 +50,7 @@ class NewsLetterController extends Controller
 
     public function update(UpdateNewsLetterRequest $request, NewsLetter $newsletter)
     {
+        Gate::authorize('update-newsletters');
 
         $newsletter->update([
             'email' => $request->email
@@ -54,6 +62,8 @@ class NewsLetterController extends Controller
 
     public function destroy(NewsLetter $newsletter, Request $request)
     {
+        Gate::authorize('delete-newsletters');
+
         $newsletter->delete();
         $request->session()->flash('status','خبرنامه مورد نظر با موفقیت حذف شد !');
         return back();
