@@ -147,9 +147,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="banner">بنر
-                                        <span class="required">*</span>
-                                    </label>
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="banner">بنر</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="file" id="banner" name="banner" accept="image/*"
                                                class="form-control col-md-7 col-xs-12" value="{{$course->banner}}">
