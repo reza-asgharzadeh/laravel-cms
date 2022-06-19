@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="fontiran.com:license" content="Y68A9">
     <link rel="icon" href="{{asset('assets/panel/img')}}favicon.ico" type="image/ico"/>
-    <title>Podera | پنل مدیریت  </title>
+    <title>پنل {{auth()->user()->role_id == 1 ? 'مدیریت' : 'کاربری'}} | {{env('APP_NAME')}}</title>
     @include('_partials.panel.links')
     {{$links ?? ''}}
 </head>
@@ -19,7 +19,7 @@
         <div class="col-md-3 left_col hidden-print">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title text-center" style="border: 0;">
-                    <a href="{{route('panel')}}" class="site_title"><span class="h6">پنل کاربری</span></a>
+                    <a href="{{route('panel')}}" class="site_title"><span class="h6">پنل {{auth()->user()->role_id == 1 ? 'مدیریت' : 'کاربری'}}</span></a>
                 </div>
 
                 <div class="clearfix"></div>
