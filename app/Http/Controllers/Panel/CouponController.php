@@ -39,11 +39,6 @@ class CouponController extends Controller
         return to_route('coupons.index');
     }
 
-    public function show(Coupon $coupon)
-    {
-        //
-    }
-
     public function edit(Coupon $coupon)
     {
         Gate::authorize('edit-coupons');
