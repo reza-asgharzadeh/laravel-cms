@@ -53,13 +53,13 @@
                                 <div style="display: flex; justify-content: space-evenly">
                                     <div>
                                         <span class="text-success h4">نقش کاربری:</span><br><br>
-                                        <div class="h4">{{$role->getRoleName()}}</div>
+                                        <div class="h4">{{$role->label}}</div>
                                     </div>
                                     <div>
                                         <span class="text-success h4">سطوح دسترسی:</span><br><br>
                                         <div>
                                             @foreach($permissions as $permission)
-                                                <input type="checkbox" name="permission_id[]" value="{{$permission->id}}" {{ in_array($permission->id, $rolePermissions) ? 'checked' : '' }}> <span style="margin-left: 2.5rem" class="h4">{{$permission->getPermissionName()}}</span>
+                                                <input type="checkbox" name="permission_id[]" value="{{$permission->id}}" {{ in_array($permission->id, $rolePermissions) ? 'checked' : '' }}> <span style="margin-left: 2.5rem" class="h4">{{$loop->iteration. "- " .$permission->label}}</span>
                                                 <br>
                                             @endforeach
                                         </div>
