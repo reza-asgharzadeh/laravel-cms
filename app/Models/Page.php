@@ -31,7 +31,7 @@ class Page extends Model
 
     public function getBanner()
     {
-        return asset('pages/banner/' . $this->banner);
+        return asset('images/pages/'. $this->slug ."/". $this->banner);
     }
 
     public function getCreatedAtInJalali()
