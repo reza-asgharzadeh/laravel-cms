@@ -44,9 +44,18 @@
                     @error('content')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
+                    <div class="mb-3">
+                        <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                    </div>
+                    @if(Session::has('g-recaptcha-response'))
+                        <p class="text-danger">{{Session::get('g-recaptcha-response')}}</p>
+                    @endif
                     <button type="submit" class="btn btn-primary">ارسال پیام</button>
                 </form>
             </div>
         </div>
     </div>
+    <x-slot name="scripts">
+        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+    </x-slot>
 </x-landing-layout>
