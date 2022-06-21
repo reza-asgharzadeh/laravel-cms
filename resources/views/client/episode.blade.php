@@ -71,6 +71,12 @@
                             <form action="{{route('comment.episode.store',$episode->id)}}" method="post">
                                 @csrf
                                 <textarea class="comments__textarea" name="content" placeholder="محتوای نظر خود را بنویسید..."></textarea>
+                                <div class="mb-3">
+                                    <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                                </div>
+                                @if(Session::has('g-recaptcha-response'))
+                                    <p class="text-danger">{{Session::get('g-recaptcha-response')}}</p>
+                                @endif
                                 <button class="btn btn-purple">ارسال نظر</button>
                                 <button type="reset" class="btn btn-gray">انصراف</button>
                             </form>
@@ -154,5 +160,6 @@
                 })
             </script>
         @endif
+        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
     </x-slot>
 </x-landing-layout>
