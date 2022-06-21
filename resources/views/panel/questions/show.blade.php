@@ -51,34 +51,32 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                                @foreach($questions as $question)
-                                    <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto; background: #e6edf2">
-                                        <div><i class="fa fa-user"></i> {{$question->user->name}}:</div>
-                                        <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$question->created_at->diffForHumans()}}</div>
-                                        <h4>{{$question->title}}</h4>
-                                        <p>{!! $question->content !!}</p>
-                                    </div>
-                                    @foreach($question->children as $child)
-                                    <br>
-                                    <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto;">
-                                        <div><i class="fa fa-user"></i> {{$child->user->name}}:</div>
-                                        <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$child->created_at->diffForHumans()}}</div>
-                                        <div style="margin-top: 10px">{!! $child->answer !!}</div>
-                                    </div>
-                                    @endforeach
-                                @endforeach
+                            <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto; background: #e6edf2">
+                                <div><i class="fa fa-user"></i> {{$question->user->name}}:</div>
+                                <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$question->created_at->diffForHumans()}}</div>
+                                <h4>{{$question->title}}</h4>
+                                <p>{!! $question->content !!}</p>
+                            </div>
+                            @foreach($question->children as $child)
+                                <br>
+                                <div style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 30px 15px;width: 70%;margin: auto;  display: grid;grid-template-columns: auto auto;">
+                                    <div><i class="fa fa-user"></i> {{$child->user->name}}:</div>
+                                    <div style="text-align: left"><i class="fa fa-clock-o"></i> {{$child->created_at->diffForHumans()}}</div>
+                                    <div style="margin-top: 10px">{!! $child->content !!}</div>
+                                </div>
+                            @endforeach
                             <br>
                             <form action="{{route('answers.store',$question->id)}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="answer">پاسخ
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="content">پاسخ
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <textarea id="answer" name="answer"
-                                                  class="form-control col-md-7 col-xs-12"></textarea>
+                                        <textarea id="content" name="content"
+                                                  class="form-control col-md-7 col-xs-12">{{old('content')}}</textarea>
                                     </div>
-                                    @error('answer')
+                                    @error('content')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -99,7 +97,7 @@
     <script src="{{asset('assets/panel/js/ckeditor.js')}}"></script>
     <script>
         ClassicEditor
-            .create( document.querySelector( '#answer' ) )
+            .create( document.querySelector( '#content' ) )
             .then( editor => {
                 console.log( editor );
             } )
