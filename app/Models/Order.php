@@ -20,8 +20,8 @@ class Order extends Model
 
     public function getOrderStatus(){
         $message = match ($this->order_status) {
-            0 => 'ناموفق',
-            1 => 'موفق'
+            0 => 'پرداخت ناموفق',
+            1 => 'پرداخت موفق'
         };
         return $message;
     }
