@@ -37,10 +37,10 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'regex:/[a-z0-9_.]+@((yahoo|gmail)\.com)/' ,'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'regex:/[a-z0-9_.]+@((yahoo|gmail)\.com)/' ,'max:100', 'unique:users'],
             'mobile' => ['required', 'numeric', 'digits:11', 'regex:/09([0-9])/' ,'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string', 'max:256', 'confirmed', Rules\Password::defaults()],
             'g-recaptcha-response' => [new recaptcha()],
         ]);
 
