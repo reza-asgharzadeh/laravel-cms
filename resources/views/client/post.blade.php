@@ -90,6 +90,12 @@
                             <form action="{{route('comment.post.store',$post->id)}}" method="post">
                                 @csrf
                                 <textarea class="comments__textarea" name="content" placeholder="محتوای نظر خود را بنویسید..."></textarea>
+                                <div class="mb-3">
+                                    <div class="g-recaptcha" data-sitekey="{{config('services.recaptcha.key')}}"></div>
+                                </div>
+                                @if(Session::has('g-recaptcha-response'))
+                                    <p class="text-danger">{{Session::get('g-recaptcha-response')}}</p>
+                                @endif
                                 <button class="btn btn-purple">ارسال نظر</button>
                                 <button type="reset" class="btn btn-gray">انصراف</button>
                             </form>
@@ -157,5 +163,6 @@
         <script src="{{asset('assets/landing/js/comment-replies.js')}}"></script>
         <script src="{{asset('assets/landing/js/owl.carousel.min.js')}}"></script>
         <script src="{{asset('assets/landing/js/carousel-jquery.js')}}"></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
     </x-slot>
 </x-landing-layout>
