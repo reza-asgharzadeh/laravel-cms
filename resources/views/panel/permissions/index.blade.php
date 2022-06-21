@@ -51,14 +51,26 @@
                             <form action="{{route('permissions.store')}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام دسترسی
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام سطح دسترسی(انگلیسی)
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="name" name="name"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('name')}}">
                                     </div>
                                     @error('name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="label">نام سطح دسترسی(فارسی)
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="label" name="label"
+                                               class="form-control col-md-7 col-xs-12" value="{{old('label')}}">
+                                    </div>
+                                    @error('label')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -105,7 +117,8 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th>سطح دسترسی</th>
+                                    <th>نام سطح دسترسی (انگلیسی)</th>
+                                    <th>نام سطح دسترسی (فارسی)</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -114,6 +127,7 @@
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$permission->name}}</td>
+                                        <td>{{$permission->label}}</td>
                                         <td>
                                             <a href="{{route('permissions.edit',$permission->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
                                             <a href="{{route('permissions.destroy',$permission->id)}}" onclick="destroyPermission(event, {{ $permission->id }})"><i class="fa-x fa-trash text-danger" title="حذف"></i></a>
