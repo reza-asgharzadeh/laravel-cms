@@ -23,12 +23,12 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-            @include('_partials.panel.profile_tabs')
-            <div class="col-md-3 col-sm-12 col-xs-12">
+            @include('_partials.panel.edit_profile_tabs')
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            <small>تاریخچه 3 ورود اخیر</small>
+                            تاریخچه 3 ورود اخیر
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -73,11 +73,11 @@
             </div>
 
 
-            <div class="col-md-9 col-sm-12 col-xs-12">
+            <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            <small>نشست های فعال</small>
+                            نشست های فعال
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
