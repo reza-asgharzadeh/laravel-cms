@@ -54,9 +54,8 @@
                                     <th>ردیف</th>
                                     <th>دوره های این سفارش</th>
                                     <th>کد سفارش</th>
-                                    <th>وضعیت سفارش</th>
                                     <th>مبلغ سفارش</th>
-                                    <th>عملیات</th>
+                                    <th>وضعیت سفارش</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -69,20 +68,8 @@
                                                 @endforeach
                                             </td>
                                             <td style="vertical-align: middle">{{$order->order_code}}</td>
-                                            <td style="vertical-align: middle" class="{{$order->order_status ? 'text-success' : 'text-danger'}}">{{$order->getOrderStatus()}}</td>
                                             <td style="vertical-align: middle">{{$order->amount}}</td>
-                                            @if($order->order_status == 0)
-                                            <td style="vertical-align: middle">
-                                                <form action="{{route('unpaid.order.request',$order->id)}}" method="post">
-                                                    @csrf
-                                                    <button class="btn btn-success "><i class="fa fa-shopping-bag"></i> پرداخت سفارش</button>
-                                                </form>
-                                            </td>
-                                            @else
-                                                <td style="vertical-align: middle">
-                                                    <i class="fa fa-check text-success"></i><span> پرداخت شده</span>
-                                                </td>
-                                            @endif
+                                            <td style="vertical-align: middle" class="{{$order->order_status ? 'text-success' : 'text-danger'}}"><i class="fa fa-lg {{$order->order_status ? 'fa-check' : 'fa-times'}}"></i> {{$order->getOrderStatus()}}</td>
                                         </tr>
                                 @endforeach
                                 </tbody>
