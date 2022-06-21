@@ -51,14 +51,26 @@
                             <form action="{{route('roles.store')}}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام نقش
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام نقش (انگلیسی)
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="name" name="name"
-                                               class="form-control col-md-7 col-xs-12">
+                                               class="form-control col-md-7 col-xs-12" value="{{old('name')}}">
                                     </div>
                                     @error('name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="label">نام نقش (فارسی)
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="label" name="label"
+                                               class="form-control col-md-7 col-xs-12" value="{{old('label')}}">
+                                    </div>
+                                    @error('label')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -104,16 +116,18 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>شناسه نقش</th>
-                                    <th>نقش کاربری</th>
+                                    <th>ردیف</th>
+                                    <th>نام نقش (انگلیسی)</th>
+                                    <th>نام نقش (فارسی)</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($roles as $role)
                                     <tr>
-                                        <th scope="row">{{$role->id}}</th>
-                                        <td>{{$role->getRoleName()}}</td>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{$role->name}}</td>
+                                        <td>{{$role->label}}</td>
                                         <td>
                                             <a href="{{route('roles.show',$role->id)}}"><i class="fa-x fa-plus text-primary" title="افزودن سطح دسترسی به نقش"></i></a>
                                             <a href="{{route('roles.edit',$role->id)}}"><i class="fa-x fa-edit text-primary" title="ویرایش"></i></a>
