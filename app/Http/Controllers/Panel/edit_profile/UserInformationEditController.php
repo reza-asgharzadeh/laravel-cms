@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel\edit_profile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\User\profile\UserCommunicationRequest;
 use App\Http\Requests\Panel\User\profile\UserInformationRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
 class UserInformationEditController extends Controller
@@ -25,15 +26,15 @@ class UserInformationEditController extends Controller
         return view('panel.users.profile.user_communication',compact('user'));
     }
 
-    public function userInformationUpdate(UserInformationRequest $request)
+    public function userInformationUpdate(UserInformationRequest $request, User $user)
     {
         Gate::authorize('update-user-information');
 
         $data = $request->validated();
 
-        auth()->user()->userInformation()->updateOrCreate(
+        $user->userInformation()->updateOrCreate(
             [
-                'user_id' => auth()->user()->id,
+                'user_id' => $user->id,
             ],
             $data
         );
@@ -42,15 +43,15 @@ class UserInformationEditController extends Controller
         return back();
     }
 
-    public function userCommunicationUpdate(UserCommunicationRequest $request)
+    public function userCommunicationUpdate(UserCommunicationRequest $request, User $user)
     {
         Gate::authorize('update-user-communication');
 
         $data = $request->validated();
 
-        auth()->user()->userInformation()->updateOrCreate(
+        $user->userInformation()->updateOrCreate(
             [
-                'user_id' => auth()->user()->id,
+                'user_id' => $user->id,
             ],
             $data
         );
