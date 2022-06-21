@@ -34,6 +34,7 @@ class QuestionController extends Controller
         Gate::authorize('store-question');
 
         $data = $request->validated();
+        $data['slug'] = str_replace(" ", "-", $data['title']);
         $data['user_id'] = auth()->user()->id;
         Question::create(
             $data
@@ -47,7 +48,7 @@ class QuestionController extends Controller
         Gate::authorize('read-questions');
 
         $this->authorize('view', $question);
-        $questions = Question::where('id',$question->id)->get();
-        return view('panel.questions.show',compact(['question','questions']));
+
+        return view('panel.questions.show',compact('question'));
     }
 }
