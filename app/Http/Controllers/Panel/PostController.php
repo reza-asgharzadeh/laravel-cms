@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
@@ -53,7 +54,7 @@ class PostController extends Controller
 
         $file = $request->file('banner');
         $file_name = $file->getClientOriginalName();
-        $file->storeAs('articles/banner',$file_name,'public_files');
+        $file->storeAs('images/posts/'.$data['slug'],$file_name,'public_files');
         $data['banner'] = $file_name;
 
         $post = Post::create(
@@ -112,10 +113,19 @@ class PostController extends Controller
             unset($data['tags']);
         }
 
+        if ($post->slug != $data['slug']){
+            if (file_exists("images/posts/".$post->slug."/".$post->banner)) {
+                File::move("images/posts/" . $post->slug, "images/posts/" . $data['slug']);
+            }
+        }
+
         if($request->hasFile('banner')){
+            if (file_exists("images/posts/".$data['slug']."/".$post->banner)) {
+                unlink("images/posts/".$data['slug']."/".$post->banner);
+            }
             $file = $request->file('banner');
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('articles/banner',$file_name,'public_files');
+            $file->storeAs('images/posts/'.$data['slug'],$file_name,'public_files');
             $data['banner'] = $file_name;
         }
 
