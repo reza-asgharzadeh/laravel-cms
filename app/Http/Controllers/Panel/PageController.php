@@ -7,6 +7,7 @@ use App\Http\Requests\Panel\Page\CreatePageRequest;
 use App\Http\Requests\Panel\Page\UpdatePageRequest;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 
 class PageController extends Controller
@@ -34,7 +35,7 @@ class PageController extends Controller
 
         $file = $request->file('banner');
         $file_name = $file->getClientOriginalName();
-        $file->storeAs('pages/banner',$file_name,'public_files');
+        $file->storeAs('images/pages/'.$data['slug'],$file_name,'public_files');
         $data['banner'] = $file_name;
 
         Page::create(
@@ -78,10 +79,19 @@ class PageController extends Controller
 
         $data = $request->validated();
 
+        if ($page->slug != $data['slug']){
+            if (file_exists("images/pages/".$page->slug."/".$page->banner)) {
+                File::move("images/pages/" . $page->slug, "images/pages/" . $data['slug']);
+            }
+        }
+
         if ($request->hasFile('banner')){
+            if (file_exists("images/pages/".$data['slug']."/".$page->banner)){
+                unlink("images/pages/".$data['slug']."/".$page->banner);
+            }
             $file = $request->file('banner');
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('pages/banner',$file_name,'public_files');
+            $file->storeAs('images/pages/'.$data['slug'],$file_name,'public_files');
             $data['banner'] = $file_name;
         }
 
