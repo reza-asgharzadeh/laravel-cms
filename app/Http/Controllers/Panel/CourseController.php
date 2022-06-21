@@ -11,6 +11,7 @@ use App\Models\Offer;
 use App\Models\Order;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
@@ -55,7 +56,7 @@ class CourseController extends Controller
 
         $file = $request->file('banner');
         $file_name = $file->getClientOriginalName();
-        $file->storeAs('course/banner',$file_name,'public_files');
+        $file->storeAs('images/courses/'.$data['slug'],$file_name,'public_files');
         $data['banner'] = $file_name;
 
         $course = Course::create(
@@ -140,10 +141,19 @@ class CourseController extends Controller
             unset($data['tags']);
         }
 
+        if ($course->slug != $data['slug']){
+            if (file_exists("images/courses/".$course->slug."/".$course->banner)) {
+                File::move("images/courses/" . $course->slug, "images/courses/" . $data['slug']);
+            }
+        }
+
         if ($request->hasFile('banner')){
+            if (file_exists("images/courses/".$data['slug']."/".$course->banner)) {
+                unlink("images/courses/".$data['slug']."/".$course->banner);
+            }
             $file = $request->file('banner');
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('course/banner',$file_name,'public_files');
+            $file->storeAs('images/courses/'.$data['slug'],$file_name,'public_files');
             $data['banner'] = $file_name;
         }
 
