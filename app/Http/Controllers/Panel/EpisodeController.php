@@ -41,6 +41,8 @@ class EpisodeController extends Controller
 
     public function showEpisodeChapter(Episode $episode)
     {
+        Gate::authorize('view-episode-chapter');
+
         $chapter = $episode->chapter()->first();
         return view('panel.episodes.episode_chapter',compact('chapter'));
     }
