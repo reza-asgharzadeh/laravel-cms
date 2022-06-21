@@ -51,7 +51,7 @@
                                 @csrf
                                 @method('put')
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام نقش
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">نام نقش (انگلیسی)
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -59,6 +59,18 @@
                                                class="form-control col-md-7 col-xs-12" value="{{$role->name}}">
                                     </div>
                                     @error('name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="label">نام نقش (فارسی)
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="label" name="label"
+                                               class="form-control col-md-7 col-xs-12" value="{{$role->label}}">
+                                    </div>
+                                    @error('label')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
