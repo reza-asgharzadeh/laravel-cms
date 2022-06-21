@@ -67,7 +67,7 @@
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->getUserRoleName()}}</td>
+                                        <td>{{$user->role->label}}</td>
                                         <td>{{$user->getCreatedAtInJalali()}}</td>
                                         <td>
                                             @forelse($user->lastLoginDateTime as $lastLogin)
