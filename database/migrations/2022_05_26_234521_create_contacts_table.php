@@ -15,8 +15,8 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
+            $table->string('name',50);
+            $table->string('email',100);
             $table->text('content');
             $table->foreignId('user_id')->nullable()
                 ->constrained()
@@ -27,6 +27,7 @@ class CreateContactsTable extends Migration
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
