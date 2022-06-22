@@ -15,12 +15,13 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
+            $table->string('name',100)->unique();
+            $table->string('slug',100)->unique();
             $table->foreignId('category_id')->nullable()->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
