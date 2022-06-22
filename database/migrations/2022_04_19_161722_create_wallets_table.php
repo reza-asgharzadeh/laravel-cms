@@ -18,8 +18,9 @@ class CreateWalletsTable extends Migration
             $table->foreignId('user_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('value')->default(0);
+            $table->unsignedMediumInteger('value')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
