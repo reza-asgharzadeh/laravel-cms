@@ -15,22 +15,23 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('description');
-            $table->string('keywords');
-            $table->string('banner');
-            $table->string('img_alt');
-            $table->integer('price');
-            $table->longText('content');
-            $table->integer('view_count')->default(0);
-            $table->integer('student_count')->default(0);
-            $table->string('pre_course');
-            $table->string('time');
+            $table->string('name',200);
+            $table->string('slug',200)->unique();
+            $table->string('description',255);
+            $table->string('keywords',200);
+            $table->string('banner',150);
+            $table->string('img_alt',150);
+            $table->unsignedMediumInteger('price');
+            $table->mediumText('content');
+            $table->unsignedMediumInteger('view_count')->default(0);
+            $table->unsignedSmallInteger('student_count')->default(0);
+            $table->string('pre_course',200);
+            $table->string('time',9);
             $table->boolean('course_status');
-            $table->integer('course_level');
+            $table->unsignedTinyInteger('course_level');
             $table->boolean('is_approved');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
