@@ -15,7 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('content');
+            $table->text('content');
             $table->foreignId('user_id')->constrained()
                 ->onUpdate('CASCADE')
                 ->OnDelete('CASCADE');
@@ -23,6 +23,7 @@ class CreateAnswersTable extends Migration
                 ->onUpdate('CASCADE')
                 ->OnDelete('CASCADE');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
