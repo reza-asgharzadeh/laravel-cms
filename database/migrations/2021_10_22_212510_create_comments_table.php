@@ -22,6 +22,7 @@ class CreateCommentsTable extends Migration
                 ->onDelete('cascade');
             $table->morphs('commentable');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
