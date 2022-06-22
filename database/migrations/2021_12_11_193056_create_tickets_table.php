@@ -15,16 +15,17 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('subject')->nullable();
+            $table->string('subject',120)->nullable();
             $table->foreignId('ticket_id')->nullable()
                 ->constrained()
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-            $table->longText('content');
-            $table->string('file')->nullable();
-            $table->integer('code')->nullable();
+            $table->text('content');
+            $table->string('file',150)->nullable();
+            $table->unsignedMediumInteger('code')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
