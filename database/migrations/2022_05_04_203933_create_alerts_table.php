@@ -15,17 +15,18 @@ class CreateAlertsTable extends Migration
     {
         Schema::create('alerts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('btn_txt');
-            $table->string('link');
-            $table->string('title_color');
-            $table->string('btn_color');
-            $table->string('btn_bg_color');
-            $table->string('btn_bg_hover_color');
-            $table->string('bg_color');
+            $table->string('title',200);
+            $table->string('btn_txt',50);
+            $table->string('link',150);
+            $table->string('title_color',7);
+            $table->string('btn_color',7);
+            $table->string('btn_bg_color',7);
+            $table->string('btn_bg_hover_color',7);
+            $table->string('bg_color',7);
             $table->timestamp('expiry_date')->useCurrent();
             $table->boolean('is_approved')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
