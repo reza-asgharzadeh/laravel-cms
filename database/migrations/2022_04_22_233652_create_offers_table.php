@@ -15,12 +15,13 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
+            $table->string('code',50)->unique();
             $table->enum('type',['fixed','percent']);
-            $table->integer('value');
+            $table->unsignedMediumInteger('value');
             $table->timestamp('expiry_date')->useCurrent();
             $table->boolean('is_approved')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
