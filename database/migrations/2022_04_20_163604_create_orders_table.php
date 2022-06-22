@@ -21,10 +21,11 @@ class CreateOrdersTable extends Migration
             $table->foreignId('coupon_id')->nullable()->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');;
-            $table->integer('amount');
-            $table->integer('order_code')->unique();
+            $table->unsignedInteger('amount');
+            $table->unsignedMediumInteger('order_code')->unique();
             $table->boolean('order_status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
