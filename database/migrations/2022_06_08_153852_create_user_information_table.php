@@ -15,17 +15,20 @@ class CreateUserInformationTable extends Migration
     {
         Schema::create('user_information', function (Blueprint $table) {
             $table->id();
-            $table->string('birthday')->nullable();
-            $table->string('job')->nullable();
-            $table->tinyText('about_me')->nullable();
-            $table->string('website')->nullable();
-            $table->string('github')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('telegram')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('user_id')->nullable();
+            $table->string('birthday',10)->nullable();
+            $table->string('job',200)->nullable();
+            $table->text('about_me')->nullable();
+            $table->string('website',120)->nullable();
+            $table->string('github',120)->nullable();
+            $table->string('linkedin',120)->nullable();
+            $table->string('telegram',120)->nullable();
+            $table->string('instagram',120)->nullable();
+            $table->string('twitter',120)->nullable();
+            $table->foreignId('user_id')->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
