@@ -15,12 +15,13 @@ class CreateFaqCoursesTable extends Migration
     {
         Schema::create('faq_courses', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
-            $table->tinyText('answer');
+            $table->string('question',200);
+            $table->text('answer');
             $table->foreignId('course_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
