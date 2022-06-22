@@ -15,15 +15,16 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
-            $table->mediumText('content');
+            $table->string('title',120);
+            $table->string('slug',120);
+            $table->text('content');
             $table->foreignId('user_id')->constrained()
                 ->onUpdate('CASCADE')
                 ->OnDelete('CASCADE');
             $table->boolean('answer_status')->default(0);
-            $table->integer('best_answer')->nullable();
+            $table->unsignedMediumInteger('best_answer')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
