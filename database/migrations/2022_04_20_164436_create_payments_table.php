@@ -15,15 +15,16 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->string('authority')->nullable();
-            $table->string('RefID')->nullable();
+            $table->string('transaction_id',100)->nullable();
+            $table->string('RefID',100)->nullable();
+            $table->unsignedInteger('total');
+            $table->string('description',255);
             $table->enum('payment_type',['gateway','card','wallet','cash'])->nullable()->default('gateway');
-            $table->string('gateway_name')->nullable();
-            $table->string('status_code');
+            $table->string('gateway_name',60)->nullable();
+            $table->morphs('paymentable');
+            $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
