@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Panel\Comment;
 
+use App\Rules\recaptcha;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateCommentRequest extends FormRequest
@@ -24,8 +25,9 @@ class CreateCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => ['required'],
-            'comment_id' => ['nullable']
+            'content' => ['required','string','max:30000'],
+            'comment_id' => ['nullable', 'integer'],
+            'g-recaptcha-response' => [new recaptcha()]
         ];
     }
 }
