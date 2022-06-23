@@ -26,13 +26,13 @@ class UpdatePageRequest extends FormRequest
     {
         $page = $this->route('page');
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:200'],
             'description' => ['required', 'string', 'max:255'],
-            'keywords' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('pages')->ignore($page->id)],
+            'keywords' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', Rule::unique('pages')->ignore($page->id)],
             'banner' => ['nullable', 'image', 'max:2024'],
-            'img_alt' => ['required', 'string', 'max:255'],
-            'content' => ['required'],
+            'img_alt' => ['required', 'string', 'max:150'],
+            'content' => ['required','string'],
             'is_approved' => ['required','boolean']
         ];
     }
