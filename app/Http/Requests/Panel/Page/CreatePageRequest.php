@@ -24,13 +24,13 @@ class CreatePageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:200'],
             'description' => ['required', 'string', 'max:255'],
-            'keywords' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:pages'],
+            'keywords' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', 'unique:pages'],
             'banner' => ['required', 'image', 'max:2024'],
-            'img_alt' => ['required', 'string', 'max:255'],
-            'content' => ['required'],
+            'img_alt' => ['required', 'string', 'max:150'],
+            'content' => ['required','string'],
             'is_approved' => ['required','boolean']
         ];
     }
