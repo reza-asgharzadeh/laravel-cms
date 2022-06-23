@@ -24,7 +24,7 @@ class AccountInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:40'],
+            'name' => ['required', 'string', 'max:50'],
             'profile' => ['nullable', 'image', 'max:2024'],
         ];
     }
