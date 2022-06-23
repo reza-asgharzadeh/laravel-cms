@@ -26,7 +26,7 @@ class UpdateNewsLetterRequest extends FormRequest
     {
         $newsletter = $this->route('newsletter');
         return [
-            'email' => ['required', 'string', 'max:255', Rule::unique('news_letters')->ignore($newsletter->id)],
+            'email' => ['required', 'string', 'email', 'max:100', Rule::unique('news_letters')->ignore($newsletter->id)],
         ];
     }
 }
