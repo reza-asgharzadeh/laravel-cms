@@ -27,9 +27,9 @@ class UpdateCategoryRequest extends FormRequest
         $category = $this->route('category');
 
         return [
-            'name' => ['required', 'string', 'max:255', Rule::unique('categories')->ignore($category->id)],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('categories')->ignore($category->id)],
-            'category_id' => ['nullable']
+            'name' => ['required', 'string', 'max:100', Rule::unique('categories')->ignore($category->id)],
+            'slug' => ['required', 'string', 'max:100', Rule::unique('categories')->ignore($category->id)],
+            'category_id' => ['nullable','integer']
         ];
     }
 }
