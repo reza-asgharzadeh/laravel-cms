@@ -25,8 +25,8 @@ class UserInformationRequest extends FormRequest
     {
         return [
             'birthday' => ['nullable','date', 'date_format:Y/m/d', 'max:10'],
-            'job' => ['nullable', 'string', 'max:30'],
-            'about_me' => ['nullable', 'string', 'max:255'],
+            'job' => ['nullable', 'string', 'max:200'],
+            'about_me' => ['nullable','string','max:30000']
         ];
     }
 }
