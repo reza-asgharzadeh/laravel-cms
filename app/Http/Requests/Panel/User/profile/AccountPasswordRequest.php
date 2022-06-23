@@ -25,8 +25,8 @@ class AccountPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'old_password' => ['required', Rules\Password::defaults()],
-            'new_password' => ['required', Rules\Password::defaults()],
+            'old_password' => ['required', 'string', 'max:256', Rules\Password::defaults()],
+            'new_password' => ['required', 'string', 'max:256', Rules\Password::defaults()],
         ];
     }
 }
