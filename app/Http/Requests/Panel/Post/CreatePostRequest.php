@@ -24,17 +24,17 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:posts'],
+            'title' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', 'unique:posts'],
             'description' => ['required', 'string', 'max:255'],
-            'keywords' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:200'],
             'tags' => ['required', 'array'],
             'tags.*' => ['required', 'string'],
             'categories' => ['required', 'array'],
             'categories.*' => ['required', 'string'],
             'banner' => ['required', 'image', 'max:2024'],
-            'img_alt' => ['required', 'string', 'max:255'],
-            'content' => ['required'],
+            'img_alt' => ['required', 'string', 'max:150'],
+            'content' => ['required','string'],
             'is_approved' => ['required','boolean']
         ];
     }
