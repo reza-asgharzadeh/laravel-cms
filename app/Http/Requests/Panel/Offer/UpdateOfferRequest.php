@@ -27,9 +27,9 @@ class UpdateOfferRequest extends FormRequest
         $offer = $this->route('offer');
 
         return [
-            'code' => ['required','string', 'max:255', Rule::unique('offers')->ignore($offer->id)],
+            'code' => ['required','string', 'max:50', Rule::unique('offers')->ignore($offer->id)],
             'type' => ['required','in:fixed,percent'],
-            'value' => ['required','integer','between:1,100'],
+            'value' => ['required','integer'],
             'expiry_date' => ['nullable','date_format:Y-m-d H:i:s']
         ];
     }
