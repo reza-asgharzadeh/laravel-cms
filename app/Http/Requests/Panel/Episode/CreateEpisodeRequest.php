@@ -24,12 +24,12 @@ class CreateEpisodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:episodes'],
-            'downloadUrl' => ['required', 'string', 'max:255', 'unique:episodes'],
+            'name' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', 'unique:episodes'],
+            'downloadUrl' => ['required', 'string', 'max:200', 'unique:episodes'],
             'description' => ['required', 'string', 'max:255'],
-            'keywords' => ['required', 'string', 'max:255'],
-            'time' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:200'],
+            'time' => ['required', 'string', 'max:9'],
             'display' => ['required', 'boolean'],
             'chapter_id' => ['required','integer']
         ];
