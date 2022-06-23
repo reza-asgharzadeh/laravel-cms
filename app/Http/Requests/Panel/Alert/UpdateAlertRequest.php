@@ -24,14 +24,14 @@ class UpdateAlertRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required','string', 'max:255'],
-            'btn_txt' => ['required','string', 'max:255'],
-            'link' => ['required','string', 'max:255'],
-            'title_color' => ['required','string', 'max:10'],
-            'btn_color' => ['required','string', 'max:10'],
-            'btn_bg_color' => ['required','string', 'max:10'],
-            'btn_bg_hover_color' => ['required','string', 'max:10'],
-            'bg_color' => ['required','string', 'max:10'],
+            'title' => ['required','string', 'max:200'],
+            'btn_txt' => ['required','string', 'max:50'],
+            'link' => ['required','string', 'max:150'],
+            'title_color' => ['required','string', 'max:7'],
+            'btn_color' => ['required','string', 'max:7'],
+            'btn_bg_color' => ['required','string', 'max:7'],
+            'btn_bg_hover_color' => ['required','string', 'max:7'],
+            'bg_color' => ['required','string', 'max:7'],
             'expiry_date' => ['nullable','date_format:Y-m-d H:i:s']
         ];
     }
