@@ -25,7 +25,7 @@ class ReplyTicketRequest extends FormRequest
     {
         return [
             'file' =>  ['nullable', 'image', 'max:2024'],
-            'content' => ['required']
+            'content' => ['required','string','max:30000']
         ];
     }
 }
