@@ -24,12 +24,12 @@ class UserCommunicationRequest extends FormRequest
     public function rules()
     {
         return [
-            'website' => ['nullable', 'string', 'max:60'],
-            'github' => ['nullable', 'string', 'max:60'],
-            'linkedin' => ['nullable', 'string', 'max:60'],
-            'telegram' => ['nullable', 'string', 'max:60'],
-            'instagram' => ['nullable', 'string', 'max:60'],
-            'twitter' => ['nullable', 'string', 'max:60']
+            'website' => ['nullable', 'string', 'max:120'],
+            'github' => ['nullable', 'string', 'max:120'],
+            'linkedin' => ['nullable', 'string', 'max:120'],
+            'telegram' => ['nullable', 'string', 'max:120'],
+            'instagram' => ['nullable', 'string', 'max:120'],
+            'twitter' => ['nullable', 'string', 'max:120']
         ];
     }
 }
