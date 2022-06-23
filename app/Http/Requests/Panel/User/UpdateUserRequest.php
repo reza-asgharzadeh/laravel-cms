@@ -27,10 +27,10 @@ class UpdateUserRequest extends FormRequest
     {
         $user = $this->route('user');
         return [
-            'name' => ['required', 'string', 'max:40'],
+            'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:100', Rule::unique('users')->ignore($user->id)],
             'mobile' => ['required', 'numeric', 'digits:11'],
-            'password' => ['nullable', Rules\Password::defaults()],
+            'password' => ['nullable', 'string', 'max:256', Rules\Password::defaults()],
             'role_id' => ['required', 'integer']
         ];
     }
