@@ -26,8 +26,8 @@ class UpdateTagRequest extends FormRequest
     {
         $tag = $this->route('tag');
         return [
-            'name' => ['required', 'string', 'max:255', Rule::unique('tags')->ignore($tag->id)],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('tags')->ignore($tag->id)],
+            'name' => ['required', 'string', 'max:100', Rule::unique('tags')->ignore($tag->id)],
+            'slug' => ['required', 'string', 'max:100', Rule::unique('tags')->ignore($tag->id)],
         ];
     }
 }
