@@ -24,9 +24,9 @@ class CreateTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            'subject' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:120'],
             'file' =>  ['nullable', 'image', 'max:2024'],
-            'content' => ['required']
+            'content' => ['required','string','max:30000']
         ];
     }
 }
