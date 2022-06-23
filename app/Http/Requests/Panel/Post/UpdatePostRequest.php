@@ -26,17 +26,17 @@ class UpdatePostRequest extends FormRequest
     {
         $post = $this->route('post');
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('posts')->ignore($post->id)],
+            'title' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', Rule::unique('posts')->ignore($post->id)],
             'description' => ['required', 'string', 'max:255'],
-            'keywords' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:200'],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['nullable', 'string'],
             'categories' => ['required', 'array'],
             'categories.*' => ['required', 'string'],
             'banner' => ['nullable', 'image', 'max:2024'],
-            'img_alt' => ['required', 'string', 'max:255'],
-            'content' => ['required'],
+            'img_alt' => ['required', 'string', 'max:150'],
+            'content' => ['required','string'],
             'is_approved' => ['required','boolean']
         ];
     }
