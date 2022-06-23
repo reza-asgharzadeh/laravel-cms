@@ -24,8 +24,8 @@ class UpdateFaqCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'question' => ['required', 'string', 'max:100'],
-            'answer' => ['required'],
+            'question' => ['required', 'string', 'max:200'],
+            'answer' => ['required','string','max:30000'],
             'course_id' => ['required','integer']
         ];
     }
