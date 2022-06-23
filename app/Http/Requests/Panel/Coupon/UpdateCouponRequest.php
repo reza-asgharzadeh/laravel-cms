@@ -27,9 +27,9 @@ class UpdateCouponRequest extends FormRequest
         $coupon = $this->route('coupon');
 
         return [
-            'code' => ['required','string', 'max:255', Rule::unique('coupons')->ignore($coupon->id)],
+            'code' => ['required','string', 'max:50', Rule::unique('coupons')->ignore($coupon->id)],
             'type' => ['required','in:fixed,percent'],
-            'value' => ['required','integer','between:1,100'],
+            'value' => ['required','integer'],
             'cart_value' => ['required','integer'],
             'quantity' => ['required','integer'],
             'expiry_date' => ['nullable','date_format:Y-m-d H:i:s']
