@@ -26,12 +26,12 @@ class UpdateEpisodeRequest extends FormRequest
     {
         $episode = $this->route('episode');
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('episodes')->ignore($episode->id)],
-            'downloadUrl' => ['required', 'string', 'max:255', Rule::unique('episodes')->ignore($episode->id)],
+            'name' => ['required', 'string', 'max:200'],
+            'slug' => ['required', 'string', 'max:200', Rule::unique('episodes')->ignore($episode->id)],
+            'downloadUrl' => ['required', 'string', 'max:200', Rule::unique('episodes')->ignore($episode->id)],
             'description' => ['required', 'string', 'max:255'],
-            'keywords' => ['required', 'string', 'max:255'],
-            'time' => ['required', 'string', 'max:255'],
+            'keywords' => ['required', 'string', 'max:200'],
+            'time' => ['required', 'string', 'max:9'],
             'display' => ['required', 'boolean'],
             'chapter_id' => ['required','integer']
         ];
