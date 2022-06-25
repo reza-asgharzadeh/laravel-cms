@@ -58,13 +58,13 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{$wallet->user->name}}</td>
-                                        <td>{{$wallet->value}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->wallet->value}}</td>
                                         <td>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flipFlop">
                                                 <i class="fa fa-plus-circle"></i> افزایش موجودی
                                             </button>
-
+                                            
                                             <!-- The modal -->
                                             <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -76,9 +76,11 @@
                                                             <h4 class="modal-title" id="modalLabel">افزایش موجودی کیف پول</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <input id="price_payment" type="text" placeholder="مبلغ را به تومان وارد کنید.">
-                                                            <button class="price-payment btn btn-success">پرداخت مبلغ</button>
-                                                            <div class="message text-danger"></div>
+                                                            <form action="{{route('wallet.charge')}}" method="post">
+                                                                @csrf
+                                                                <input type="text" name="price" placeholder="مبلغ را به تومان وارد کنید.">
+                                                                <button class="btn btn-success">پرداخت مبلغ</button>
+                                                            </form>
                                                         </div>
                                                         <div style="text-align: right" class="modal-footer">
                                                             <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
@@ -98,41 +100,5 @@
     </div>
     <x-slot name="scripts">
         <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
-        <script>
-            $(".price-payment").on('click', function (e) {
-                e.preventDefault();
-
-                var price = $("#price_payment").val();
-
-                var regex = /^\d+$/;
-
-                if(!regex.test(price)){
-                    $(".message").html("مبلغ باید عدد صحیح باشد.");
-                    return false;
-                }
-
-                if (parseInt(price) < 50000){
-                    $(".message").html("مبلغ نباید زیر 50000 تومان باشد.");
-                    return false;
-                }
-
-                $.ajax({
-                    url: '{{ route('wallets.update',auth()->user()->id) }}',
-                    method: "patch",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        price_payment: price
-                    },
-                    success: function (response) {
-                        $(".message").html(response.message);
-                    },
-                    statusCode: {
-                        403: function() {
-                            $(".message").html("شما دسترسی لازم برای پرداخت کیف پول را ندارید.");
-                        }
-                    }
-                });
-            });
-        </script>
     </x-slot>
 </x-panel-layout>
