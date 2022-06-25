@@ -7,7 +7,6 @@ use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\CoursesController;
 use App\Http\Controllers\Client\DiscussController;
 use App\Http\Controllers\Client\SearchController;
-use App\Http\Controllers\Client\ShowDiscussController;
 use App\Http\Controllers\Client\ShowOfferPageController;
 use App\Http\Controllers\Client\SitemapController;
 use App\Http\Controllers\Panel\AlertController;
@@ -143,7 +142,8 @@ Route::middleware(['auth', 'verified'])->prefix('/panel')->group(function (){
     Route::resource('/offers',OfferController::class);
     Route::put('/offers/{offer}/status',[OfferController::class,'isApproved'])->name('offers.status');
     //Wallet
-    Route::resource('/wallets',WalletController::class)->only(['index','update']);
+    Route::resource('/wallets',WalletController::class)->only('index');
+    Route::post('/wallet/charge',[WalletController::class,'chargeWallet'])->name('wallet.charge');
     //Alert Bar
     Route::resource('/alerts',AlertController::class)->except('show');
     Route::put('/alerts/{alert}/status',[AlertController::class,'isApproved'])->name('alerts.status');
@@ -179,10 +179,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 //Transaction
 Route::middleware(['auth', 'verified'])->prefix('/transaction')->group(function (){
-    Route::post('/order/{order}',[TransactionController::class,'unpaidOrders'])->name('unpaid.order.request');
-    Route::post('/order',[TransactionController::class,'newOrders'])->name('new.order.request');
-    Route::post('/request',[TransactionController::class,'request'])->name('request');
-    Route::get('/callback',[TransactionController::class,'callback'])->name('callback');
+    Route::post('/order',[OrderController::class,'order'])->name('new.order');
+    Route::post('/invoice',[TransactionController::class,'invoice'])->name('invoice');
+    Route::get('/verify',[TransactionController::class,'callBackFromGateway'])->name('callback');
 });
 
 //Login Google
