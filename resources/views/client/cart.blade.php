@@ -74,7 +74,7 @@
                         @if(auth()->user()->wallet->value > 0)
                             <button id="update-wallet" class="btn btn-sm btn-warning">اعمال کیف</button>
                         @endif
-                        <form action="{{route('new.order.request')}}" method="post">
+                        <form action="{{route('new.order')}}" method="post">
                             @csrf
                             <button class="btn btn-sm btn-success">پرداخت سفارش</button>
                         </form>
