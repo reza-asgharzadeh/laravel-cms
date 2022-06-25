@@ -18,4 +18,9 @@ class Wallet extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function payments()
+    {
+        return $this->morphMany(Payment::class, 'paymentable');
+    }
 }
