@@ -2,47 +2,50 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Http\Controllers\Controller;
 use App\Http\RandomUniqueCode;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class OrderController extends Controller
+class OrderController extends TransactionController
 {
-    public static $order;
-
     public function index(Request $request)
     {
         Gate::authorize('view-orders');
 
+        $user = auth()->user();
+
         if(isset($request->order_status)) {
-            $orders = auth()->user()->orders()->where('order_status', $request->order_status)->paginate(10);
+            $orders = $user->orders()->where('order_status', $request->order_status)->orderByDesc('id')->paginate(10);
         } else {
-            $orders = auth()->user()->orders()->paginate(10);
+            $orders = $user->orders()->orderByDesc('id')->paginate(10);
         }
 
         return view('panel.orders.index',compact('orders'));
     }
 
-    public static function store()
+    public function order()
     {
         $cart = collect(session("cart"));
         $ids = $cart->keys();
-        $amount = session()->get("payable") ?? collect(session("cart"))->sum("price");
+        $amount = session()->get("payable") ?? $cart->sum("price");
         $coupon_id = session()->get("coupon_id");
 
-        self::$order = Order::create([
+        $order = Order::create([
             'user_id' => auth()->user()->id,
             'coupon_id' => $coupon_id,
             'amount' => $amount,
             'order_code' => RandomUniqueCode::randomString(6),
         ]);
-        self::$order->courses()->sync($ids);
+        $order->courses()->sync($ids);
+
+        return $this->invoice($order,$order->amount,'course');
     }
 
-    public static function update(){
-        self::$order->update([
+    public static function update($record){
+        $order = Order::where('id',$record->paymentable_id)->first();
+
+        $order->update([
             'order_status' => 1
         ]);
     }
