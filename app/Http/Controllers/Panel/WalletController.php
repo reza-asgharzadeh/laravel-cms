@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Panel;
 
+use App\Http\Requests\Panel\Wallet\ChargeWalletRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -15,7 +16,7 @@ class WalletController extends TransactionController
         return view('panel.users.wallet',compact('user'));
     }
 
-    public function chargeWallet(Request $request)
+    public function chargeWallet(ChargeWalletRequest $request)
     {
         $user = auth()->user()->wallet;
 
