@@ -18,7 +18,6 @@ class CreatePaymentsTable extends Migration
             $table->string('transaction_id',100)->nullable();
             $table->string('RefID',100)->nullable();
             $table->unsignedInteger('total');
-            $table->string('description',255);
             $table->enum('payment_type',['gateway','card','wallet','cash'])->nullable()->default('gateway');
             $table->string('gateway_name',60)->nullable();
             $table->morphs('paymentable');
