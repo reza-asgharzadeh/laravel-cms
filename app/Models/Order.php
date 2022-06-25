@@ -34,8 +34,12 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function payments(){
-        return $this->hasMany(Payment::class,'order_id');
+//    public function payments(){
+//        return $this->hasMany(Payment::class,'order_id');
+//    }
+    public function payments()
+    {
+        return $this->morphMany(Payment::class,'paymentable');
     }
 
     public function coupon(){
