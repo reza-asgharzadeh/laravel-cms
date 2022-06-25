@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Panel\Comment\CreateCommentRequest;
+use App\Http\Requests\Panel\Comment\SaveCommentRequest;
 use App\Http\Requests\Panel\Comment\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Course;
@@ -23,7 +23,7 @@ class CommentController extends Controller
         return view('panel.comments.index',compact(['parentComments','childrenComments']));
     }
 
-    public function save(CreateCommentRequest $request, Comment $comment)
+    public function save(SaveCommentRequest $request, Comment $comment)
     {
         Gate::authorize('save-comment');
 
