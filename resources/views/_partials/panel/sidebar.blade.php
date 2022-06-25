@@ -126,20 +126,16 @@
                 </li>
             @endcan
             @can('display-orders')
-                <li><a><i class="fa fa-shopping-basket"></i> لیست سفارشات <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-shopping-basket"></i> سفارشات <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="{{route('orders.index')}}">همه سفارشات</a></li>
-                        <li><a href="{{route('orders.index',['order_status'=>1])}}">سفارشات موفق</a></li>
-                        <li><a href="{{route('orders.index',['order_status'=>0])}}">سفارشات ناموفق</a></li>
+                        <li><a href="{{route('orders.index')}}">لیست سفارشات</a></li>
                     </ul>
                 </li>
             @endcan
             @can('display-payments')
-                <li><a><i class="fa fa-money"></i> لیست پرداخت‌ها <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-money"></i> پرداخت‌ها <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="{{route('payments.index')}}">همه پرداخت‌ها</a></li>
-                        <li><a href="{{route('payments.index',['status_code'=>true])}}">پرداخت‌های موفق</a></li>
-                        <li><a href="{{route('payments.index',['status_code'=>false])}}">پرداخت‌های ناموفق</a></li>
+                        <li><a href="{{route('payments.index')}}">لیست پرداخت‌ها</a></li>
                     </ul>
                 </li>
             @endcan
