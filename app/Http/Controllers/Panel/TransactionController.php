@@ -3,103 +3,70 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
+use Illuminate\Http\Request;
+use Shetabit\Multipay\Exceptions\InvalidPaymentException;
+use Shetabit\Multipay\Invoice;
+use Shetabit\Payment\Facade\Payment;
 
 class TransactionController extends Controller
 {
-    public int $amount;
-    public int $order_id;
-
-    public function unpaidOrders(Order $order)
+    public function invoice($dataModel,$amount,$type)
     {
-        $this->amount = $order->amount;
-        $this->order_id = $order->id;
-        return $this->request();
+        $description = match ($type) {
+            "course" => "خرید دوره با شناسه سفارش $dataModel->id",
+            "wallet" => "شارژ کیف پول با شناسه کاربری $dataModel->user_id"
+        };
+
+        $configPath = "payments.drivers." . config('payment.default');
+        config([
+            $configPath.'.description'=>$description,
+        ]);
+
+        $invoice = new Invoice;
+        $invoice->amount($amount);
+        $invoice->detail([
+            'description' => config($configPath.'.description'),
+        ]);
+
+        $invoice->via(config('payment.default'));
+
+        return $this->sendToGateway($invoice,$dataModel);
     }
 
-    public function newOrders()
+    public function sendToGateway($invoice,$dataModel)
     {
-        OrderController::store();
-        $this->amount = OrderController::$order->amount;
-        $this->order_id = OrderController::$order->id;
-        return $this->request();
+        return Payment::purchase($invoice, function($driver, $transactionId) use ($invoice,$dataModel) {
+            PaymentController::storeSuccessRequest($invoice,$dataModel,$transactionId);
+        })->pay()->render();
     }
 
-    public function request()
+    public function callBackFromGateway(Request $request)
     {
-        $merchant_id = env('MERCHANT_ID');
-        $amount = $this->amount * 10;
-        $order_id = $this->order_id;
+        $record = \App\Models\Payment::where('transaction_id',$request->Authority)->first();
 
-        $data = array("merchant_id" => $merchant_id,
-            "amount" => $amount,
-            "callback_url" => route('callback'),
-            "description" => "خرید دوره با شناسه سفارش $order_id",
-            "metadata" => ["email" => auth()->user()->email, "mobile" => auth()->user()->mobile],
-        );
+        try {
 
-        $jsonData = json_encode($data);
-        $ch = curl_init('https://api.zarinpal.com/pg/v4/payment/request.json');
-        curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v1');
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($jsonData)
-        ));
+            $receipt = Payment::amount($record->total)->transactionId($record->transaction_id)->verify();
 
-        $result = curl_exec($ch);
-        $err = curl_error($ch);
-        $result = json_decode($result, true, JSON_PRETTY_PRINT);
-        curl_close($ch);
+            session()->forget(['cart','coupon','coupon_id','discount','payable','wallet','newWalletValue']);
 
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            if (empty($result['errors'])) {
-                if ($result['data']['code'] == 100) {
-                    PaymentController::storeSuccessRequest($result);
-                    return redirect('https://www.zarinpal.com/pg/StartPay/' . $result['data']["authority"]);
-                }
-            } else {
-                PaymentController::storeErrorRequest($result);
+
+            PaymentController::updateSuccessCallBack($record,$receipt);
+
+            if ($record->paymentable_type == "App\Models\Order"){
+                OrderController::update($record);
+                return view('client.transaction.success_callback',compact('record'));
             }
-        }
-    }
 
-    public function callback()
-    {
-        $amount = $this->amount * 10;
-        $merchant_id = env('MERCHANT_ID');
-        $Authority = $_GET['Authority'];
+            WalletController::update($record);
+            $request->session()->flash('status','کیف پول شما با موفقیت شارژ شد !');
+            return to_route('wallets.index');
 
-        $data = array("merchant_id" => $merchant_id, "authority" => $Authority, "amount" => $amount);
-        $jsonData = json_encode($data);
-        $ch = curl_init('https://api.zarinpal.com/pg/v4/payment/verify.json');
-        curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v4');
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($jsonData)
-        ));
+        } catch (InvalidPaymentException $exception) {
 
-        $result = curl_exec($ch);
-        $err = curl_error($ch);
-        curl_close($ch);
-        $result = json_decode($result, true);
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            if ($result['data']['code'] == 100) {
-                session()->forget(['coupon','coupon_id','discount','payable','wallet','newWalletValue']);
-                OrderController::update();
-                PaymentController::storeSuccessCallBack($result,$Authority);
-            } else {
-                PaymentController::storeErrorCallBack($result,$Authority);
-            }
+            session()->forget(['cart','coupon','coupon_id','discount','payable','wallet','newWalletValue']);
+
+            return view('client.transaction.error_callback',compact('exception'));
         }
     }
 }
