@@ -64,7 +64,9 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flipFlop">
                                                 <i class="fa fa-plus-circle"></i> افزایش موجودی
                                             </button>
-                                            
+                                            @error('price')
+                                            <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                             <!-- The modal -->
                                             <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
