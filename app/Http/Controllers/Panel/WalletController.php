@@ -2,23 +2,32 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Http\Controllers\Controller;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class WalletController extends Controller
+class WalletController extends TransactionController
 {
     public function index()
     {
         Gate::authorize('view-wallet');
 
-        $wallet = auth()->user()->wallet()->first();
-        return view('panel.users.wallet',compact('wallet'));
+        $user = auth()->user();
+        return view('panel.users.wallet',compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function chargeWallet(Request $request)
     {
-        //
+        $user = auth()->user()->wallet;
+
+        return $this->invoice($user,$request->price,'wallet');
+    }
+
+    public static function update($record)
+    {
+        Gate::authorize('update-wallet');
+
+        auth()->user()->wallet->update([
+            'value' =>  $record->total
+        ]);
     }
 }
