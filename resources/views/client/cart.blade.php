@@ -89,7 +89,7 @@
         </div>
     </div>
 <x-slot name="scripts">
-    <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
+    <script src="{{asset('assets/landing/js/sweetalert2.all.min.js')}}"></script>
     <script type="text/javascript">
         $("#update-wallet").on('click', function (e) {
             e.preventDefault();
@@ -157,7 +157,7 @@
                     $("#payable").html(response.payable);
                     $("#wallet-value").html(response.wallet);
                     Swal.fire({
-                        title: "دوره با موفقیت از سبد خرید پاک شد",
+                        title: "دوره با موفقیت از سبد خرید پاک شد.",
                         icon: "success",
                         button: "باشه",
                         showConfirmButton: false,
