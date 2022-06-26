@@ -37,7 +37,7 @@ class CartController extends Controller
             ];
         }
         session()->put('cart', $cart);
-        session()->flash('add-remove-cart', 'دوره با موفقیت به سبد خرید افزوده شد');
+        session()->flash('add-remove-cart', 'دوره با موفقیت به سبد خرید افزوده شد.');
         return back();
     }
 
