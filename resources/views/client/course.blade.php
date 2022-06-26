@@ -181,7 +181,7 @@
         <script src="{{asset('assets/landing/js/owl.carousel.min.js')}}"></script>
         <script src="{{asset('assets/landing/js/carousel-jquery.js')}}"></script>
         @if(Session::has('add-remove-cart'))
-            <script src="{{asset('assets/panel/js/sweetalert2.all.min.js')}}"></script>
+            <script src="{{asset('assets/landing/js/sweetalert2.all.min.js')}}"></script>
             <script>
                 Swal.fire({
                     title: "{{Session::get('add-remove-cart')}}",
