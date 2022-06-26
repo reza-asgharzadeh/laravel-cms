@@ -1,6 +1,5 @@
 .site-navbar {
     margin-bottom: 0;
-    z-index: 1999;
     position: relative;
     top: 0;
     width: 100%; }
@@ -188,7 +187,7 @@
     position: relative;
     display: block; }
 .site-mobile-menu .site-nav-wrap li .active {
-    color: #007bff; }
+    color: #6b6b6b; }
 .site-mobile-menu .site-nav-wrap .social {
     display: inline-block; }
 .site-mobile-menu .site-nav-wrap .arrow-collapse {
@@ -231,7 +230,7 @@
     width: auto !important; }
 .site-mobile-menu .site-nav-wrap > li > a {
     padding-left: 20px;
-    font-size: 1.2rem; }
+    font-size: 1rem; }
 .site-mobile-menu .site-nav-wrap > li > ul {
     padding: 0;
     margin: 0;
@@ -240,7 +239,9 @@
     display: block; }
 .site-mobile-menu .site-nav-wrap > li > ul > li > a {
     padding-left: 40px;
-    font-size: 1rem; }
+    font-size: 0.9rem;
+    background: #fdfcfc
+}
 .site-mobile-menu .site-nav-wrap > li > ul > li > ul {
     padding: 0;
     margin: 0; }
