@@ -1,4 +1,3 @@
-@include('_partials.landing.offer_alert')
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -8,6 +7,7 @@
     <div class="site-mobile-menu-body"></div>
 </div>
 
+@include('_partials.landing.offer_alert')
 
 <header class="site-navbar site-navbar-target p-3" role="banner">
     <div class="container">
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="w-50 js-clone-nav d-none d-lg-inline-block">
-                    <form action="{{route('search')}}">
+                    <form class="mt-3 mt-lg-0" action="{{route('search')}}">
                         <button class="btn btn-outline-secondary border-0 position-absolute">
                             <i class="fa fa-search"></i>
                         </button>
@@ -31,7 +31,7 @@
                     <div>
                         <ul class="site-menu main-menu js-clone-nav d-none d-lg-inline-block mx-5">
                             <div class="btn-group dropdown">
-                                <button type="button" class="btn-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn-cart mt-3 mb-2 mb-lg-0 mt-lg-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> سبد خرید <span id="count-basket" class="badge bg-danger">{{ count((array) session('cart')) }}</span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
