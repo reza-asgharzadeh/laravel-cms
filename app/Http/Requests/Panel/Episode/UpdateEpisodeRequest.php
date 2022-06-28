@@ -31,6 +31,7 @@ class UpdateEpisodeRequest extends FormRequest
             'downloadUrl' => ['required', 'string', 'max:200', Rule::unique('episodes')->ignore($episode->id)],
             'description' => ['required', 'string', 'max:255'],
             'keywords' => ['required', 'string', 'max:200'],
+            'orders' => ['required','integer','between:1,1000'],
             'time' => ['required', 'string', 'max:9'],
             'display' => ['required', 'boolean'],
             'chapter_id' => ['required','integer']
