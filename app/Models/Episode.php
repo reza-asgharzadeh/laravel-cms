@@ -16,6 +16,7 @@ class Episode extends Model
         'downloadUrl',
         'description',
         'keywords',
+        'orders',
         'time',
         'display',
         'chapter_id'
