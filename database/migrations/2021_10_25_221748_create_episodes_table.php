@@ -20,6 +20,7 @@ class CreateEpisodesTable extends Migration
             $table->string('downloadUrl',200)->unique();
             $table->string('description',255);
             $table->string('keywords',200);
+            $table->unsignedSmallInteger('orders');
             $table->string('time',9);
             $table->boolean('display');
             $table->timestamps();
