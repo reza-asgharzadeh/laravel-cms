@@ -25,7 +25,8 @@ class UpdateChapterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:200'],
-            'course_id' => ['required','integer']
+            'course_id' => ['required','integer'],
+            'orders' => ['required','integer','between:1,1000']
         ];
     }
 }
