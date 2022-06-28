@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">نام جلسه
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="name">نام فصل
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -71,6 +71,18 @@
                                                class="form-control col-md-7 col-xs-12" value="{{$chapter->name}}">
                                     </div>
                                     @error('name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="orders">ترتیب فصل
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="number" id="orders" name="orders"
+                                               class="form-control col-md-7 col-xs-12" value="{{$chapter->orders}}">
+                                    </div>
+                                    @error('orders')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
