@@ -20,7 +20,7 @@
         </div>
         <h3 class="text-center text-primary mt-5 mb-5">روش دوم: تماس با ما از طریق فرم زیر</h3>
         <div class="row">
-            <div class="col-md-6 offset-3 mb-5">
+            <div class="col-md-6 m-auto mb-5">
                 <form action="{{route('contact.store')}}" method="post">
                     @csrf
                     <div class="mb-3">
