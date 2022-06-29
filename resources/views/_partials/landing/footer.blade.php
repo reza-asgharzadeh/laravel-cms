@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="d-flex">
-            <span class="mb-3 mt-3">2022 &copy کلیه حقوق مادی و معنوی این وب‌سایت متعلق به {{env('APP_NAME')}} می باشد.</span>
+            <span class="mb-3 mt-3">2022 &copy کلیه حقوق مادی و معنوی این وب‌سایت متعلق به {{env('APP_NAME')}} می‌باشد.</span>
         </div>
     </div>
 </footer>
