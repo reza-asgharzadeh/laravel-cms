@@ -7,7 +7,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <h2 class="main-color display-3 mb-3">آکادمی برنامه نویسی</h2>
+            <h2 class="main-color display-3 mb-3">آکادمی {{env('APP_NAME')}}</h2>
             <p class="text-muted h5 mb-5">پلتفرمی برای یادگیری برنامه نویسی وب</p>
             <a class="btn-color-purple" href="{{route('courses')}}">برای شروع کلیک کنید</a>
         </div>
