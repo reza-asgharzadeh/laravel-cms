@@ -180,6 +180,7 @@
         <script src="{{asset('assets/landing/js/comment-replies.js')}}"></script>
         <script src="{{asset('assets/landing/js/owl.carousel.min.js')}}"></script>
         <script src="{{asset('assets/landing/js/carousel-jquery.js')}}"></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
         @if(Session::has('add-remove-cart'))
             <script src="{{asset('assets/landing/js/sweetalert2.all.min.js')}}"></script>
             <script>
@@ -192,6 +193,5 @@
                 })
             </script>
         @endif
-        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
     </x-slot>
 </x-landing-layout>
