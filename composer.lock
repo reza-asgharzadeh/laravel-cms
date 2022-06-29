@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2a6588c4390a36c93efe6f29379faf6",
+    "content-hash": "923a7f919f455ed9dc51e7e5c1764602",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1303,6 +1303,51 @@
                 "source": "https://github.com/hisorange/browser-detect/tree/4.5.1"
             },
             "time": "2022-05-20T15:26:01+00:00"
+        },
+        {
+            "name": "ippanel/php-rest-sdk",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ippanel/php-rest-sdk.git",
+                "reference": "ef0375c46502ebdcf5cf2aec955492d0b7f384f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ippanel/php-rest-sdk/zipball/ef0375c46502ebdcf5cf2aec955492d0b7f384f9",
+                "reference": "ef0375c46502ebdcf5cf2aec955492d0b7f384f9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "IPPanel\\": "src/IPPanel/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "ippanel",
+                    "email": "dev@ippanel.com"
+                }
+            ],
+            "description": "IPPanel REST API client",
+            "homepage": "https://github.com/ippanel/php-rest-sdk",
+            "support": {
+                "issues": "https://github.com/ippanel/php-rest-sdk/issues",
+                "source": "https://github.com/ippanel/php-rest-sdk/tree/v1.0.1"
+            },
+            "time": "2020-02-18T14:41:21+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
