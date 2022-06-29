@@ -497,3 +497,5 @@ article{
 .text-pink{color: #d71473 !important;}
 
 .h-400{height: 400px;}
+.btn-login-register-purple{padding: 8px 10px;transition: 0.3s;color: white;background: #7560E8;border-radius: 5px;border: none;}
+.btn-login-register-purple:hover{background: #583eee;}
