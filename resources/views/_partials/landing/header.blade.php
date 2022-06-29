@@ -88,8 +88,22 @@
                     </div>
                 @else
                     <div>
-                        <a href="{{route('register')}}" class="btn btn-gray m-1">ثبت نام</a>
-                        <a href="{{route('login')}}" class="btn btn-purple">ورود</a>
+                        <span class="d-none d-lg-block">
+                            <a href="{{route('register')}}" class="btn btn-gray m-1">ثبت نام</a>
+                            <a href="{{route('login')}}" class="btn btn-purple">ورود</a>
+                        </span>
+                        <span class="d-lg-none">
+                            <div class="d-inline">
+                              <button class="btn-login-register-purple" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ثبت نام | ورود
+                              </button>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="{{route('register')}}">ثبت نام</a></li>
+                                  <li><hr class="dropdown-divider"></li>
+                                  <li><a class="dropdown-item" href="{{route('login')}}">ورود</a></li>
+                              </ul>
+                            </div>
+                        </span>
                         <span class="d-lg-none mx-3">
                             <a href="#" class="site-menu-toggle js-menu-toggle"><i class="fa fa-lg fa-bars"></i></a>
                         </span>
