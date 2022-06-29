@@ -47,13 +47,12 @@
                     </ul>
                     <span class="mt-2">
                         <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
-                        <img src="{{asset('assets/landing/img/samandehi.png')}}" alt="samandehi">
                     </span>
                 </div>
             </div>
         </div>
         <div class="d-flex">
-            <span class="mb-3 mt-3">2022 &copy کلیه حقوق مادی و معنوی این وب‌سایت متعلق به رضا اصغرزاده می باشد.</span>
+            <span class="mb-3 mt-3">2022 &copy کلیه حقوق مادی و معنوی این وب‌سایت متعلق به {{env('APP_NAME')}} می باشد.</span>
         </div>
     </div>
 </footer>
