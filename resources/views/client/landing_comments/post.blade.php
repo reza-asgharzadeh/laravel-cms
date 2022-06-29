@@ -13,11 +13,11 @@
                 <!-- Reply form start -->
                     <div class="d-flex flex-column">
                         @auth
-                            <a class="reply-color" onclick="{{$comment->id}}.style.display='block'" data-toggle="reply-form" data-target="{{$comment->id}}">پاسخ</a>
+                            <a class="reply-color" onclick="'comment'.{{$comment->id}}.style.display='block'" data-toggle="reply-form" data-target="comment{{$comment->id}}">پاسخ</a>
                         @else
                             <p class="reply-color"><small>برای ارسال پاسخ ابتدا وارد سایت شوید.</small></p>
                         @endauth
-                        <form action="{{route('reply.comment.post.store',[$post_id,$comment->id])}}" method="post" class="reply-form d-none" id="{{$comment->id}}">
+                        <form action="{{route('reply.comment.post.store',[$post_id,$comment->id])}}" method="post" class="reply-form d-none" id="comment{{$comment->id}}">
                             @csrf
                             <textarea placeholder="متن پاسخ خود را بنویسید..." rows="4" name="content"></textarea>
                             <div class="mb-3">
@@ -27,7 +27,7 @@
                                 <p class="text-danger">{{Session::get('g-recaptcha-response')}}</p>
                             @endif
                             <button class="btn btn-purple" type="submit">ثبت پاسخ</button>
-                            <button class="btn btn-gray" type="button" data-toggle="reply-form" data-target="{{$comment->id}}">لغو</button>
+                            <button class="btn btn-gray" type="button" data-toggle="reply-form" data-target="comment{{$comment->id}}">لغو</button>
                         </form>
                     </div>
                 <!-- Reply form end -->
